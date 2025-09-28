@@ -4,11 +4,11 @@
 
 {% block content %}
 <!-- Page Header -->
-<section class="bg-primary text-white py-5" style="margin-top: 76px;">
+<section class="bg-gradient-primary text-white py-5" style="margin-top: 76px;">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
-                <h1 class="display-4 fw-bold mb-3">핵심 서비스</h1>
+                <h1 class="display-4 fw-bold mb-3">서비스</h1>
                 <p class="lead">
                     AI와 모빌리티 기술을 융합한 혁신적인 솔루션으로 중고차 산업을 혁신합니다.
                 </p>
@@ -19,15 +19,20 @@
 
 <!-- Services Section -->
 <section class="py-5">
-    <div class="container">
-        <!-- Online Auction Service -->
+    <div class="container py-5">
+        <!-- Online Auction Service - Primary Focus -->
         <div class="row align-items-center mb-5">
             <div class="col-lg-6">
                 <div class="service-content">
-                    <div class="service-icon bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                        <i class="fas fa-gavel fa-lg"></i>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-gavel fa-lg"></i>
+                        </div>
+                        <div>
+                            <h2 class="fw-bold mb-1">온라인 경매 및 공매 운영</h2>
+                            <span class="badge bg-primary bg-opacity-20 text-primary">핵심 서비스</span>
+                        </div>
                     </div>
-                    <h2 class="fw-bold mb-3">온라인 경매 및 공매 운영</h2>
                     <p class="lead text-muted mb-4">
                         부산지역을 기반으로 소비자와 딜러를 연결하는 C2B 온라인 경매 플랫폼과 
                         공공기관 및 법인 차량 대상 공매 시스템을 운영합니다.
@@ -75,21 +80,31 @@
             </div>
             <div class="col-lg-6">
                 <div class="service-image text-center">
-                    <i class="fas fa-laptop fa-10x text-primary opacity-25"></i>
+                    <div class="card border-0 shadow-lg rounded-4 p-5">
+                        <div class="display-1 text-primary mb-3">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h5 class="fw-bold">온라인 경매 플랫폼</h5>
+                        <p class="text-muted">투명하고 효율적인 중고차 거래</p>
+                    </div>
                 </div>
             </div>
         </div>
-
+        
         <hr class="my-5">
-
+        
         <!-- EV Diagnosis Service -->
         <div class="row align-items-center mb-5">
             <div class="col-lg-6 order-lg-2">
                 <div class="service-content">
-                    <div class="service-icon bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                        <i class="fas fa-battery-full fa-lg"></i>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-battery-full fa-lg"></i>
+                        </div>
+                        <div>
+                            <h2 class="fw-bold mb-1">EV 진단 활성화 및 사전 고장 진단 플랫폼</h2>
+                        </div>
                     </div>
-                    <h2 class="fw-bold mb-3">EV 진단 활성화 및 사전 고장 진단 플랫폼</h2>
                     <p class="lead text-muted mb-4">
                         BLE 기반 OBD-II 진단기를 활용하여 전기차 배터리 상태를 실시간으로 측정하고, 
                         AI로 분석하여 고장 패턴을 사전에 예측합니다.
@@ -138,21 +153,31 @@
             </div>
             <div class="col-lg-6 order-lg-1">
                 <div class="service-image text-center">
-                    <i class="fas fa-battery-half fa-10x text-success opacity-25"></i>
+                    <div class="card border-0 shadow-lg rounded-4 p-5">
+                        <div class="display-1 text-success mb-3">
+                            <i class="fas fa-battery-half"></i>
+                        </div>
+                        <h5 class="fw-bold">EV 진단 솔루션</h5>
+                        <p class="text-muted">전기차 전문 진단 시스템</p>
+                    </div>
                 </div>
             </div>
         </div>
-
+        
         <hr class="my-5">
-
+        
         <!-- Price Estimation Service -->
         <div class="row align-items-center mb-5">
             <div class="col-lg-6">
                 <div class="service-content">
-                    <div class="service-icon bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                        <i class="fas fa-chart-line fa-lg"></i>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-chart-line fa-lg"></i>
+                        </div>
+                        <div>
+                            <h2 class="fw-bold mb-1">빅데이터 기반 가격 산정 시스템</h2>
+                        </div>
                     </div>
-                    <h2 class="fw-bold mb-3">빅데이터 기반 가격 산정 시스템</h2>
                     <p class="lead text-muted mb-4">
                         국토부, 조합, 보험사, 플랫폼 데이터와 자체 EV 진단 데이터를 통합하여 
                         정확한 차량 가격을 산정합니다.
@@ -201,21 +226,31 @@
             </div>
             <div class="col-lg-6">
                 <div class="service-image text-center">
-                    <i class="fas fa-chart-bar fa-10x text-info opacity-25"></i>
+                    <div class="card border-0 shadow-lg rounded-4 p-5">
+                        <div class="display-1 text-info mb-3">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h5 class="fw-bold">가격 산정 시스템</h5>
+                        <p class="text-muted">AI 기반 정확한 가격 분석</p>
+                    </div>
                 </div>
             </div>
         </div>
-
+        
         <hr class="my-5">
-
+        
         <!-- Logistics Service -->
         <div class="row align-items-center mb-5">
             <div class="col-lg-6 order-lg-2">
                 <div class="service-content">
-                    <div class="service-icon bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                        <i class="fas fa-truck fa-lg"></i>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center me-3" style="width: 60px; height: 60px;">
+                            <i class="fas fa-truck fa-lg"></i>
+                        </div>
+                        <div>
+                            <h2 class="fw-bold mb-1">탁송 관재시스템 및 ERP</h2>
+                        </div>
                     </div>
-                    <h2 class="fw-bold mb-3">탁송 관재시스템 및 ERP</h2>
                     <p class="lead text-muted mb-4">
                         탁송 과정의 모든 행위를 전산화하고, GPS 기반 실시간 위치 추적과 
                         통합 회계 처리를 제공합니다.
@@ -264,71 +299,13 @@
             </div>
             <div class="col-lg-6 order-lg-1">
                 <div class="service-image text-center">
-                    <i class="fas fa-route fa-10x text-warning opacity-25"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Technology Stack Section -->
-<section class="bg-light py-5">
-    <div class="container">
-        <div class="row text-center mb-5">
-            <div class="col-lg-8 mx-auto">
-                <h2 class="display-5 fw-bold mb-3">기술 스택</h2>
-                <p class="lead text-muted">
-                    최신 기술을 활용하여 안정적이고 확장 가능한 솔루션을 제공합니다.
-                </p>
-            </div>
-        </div>
-        <div class="row g-4">
-            <div class="col-lg-2 col-md-4 col-6">
-                <div class="tech-stack-item text-center">
-                    <div class="tech-icon bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                        <i class="fab fa-python fa-lg"></i>
+                    <div class="card border-0 shadow-lg rounded-4 p-5">
+                        <div class="display-1 text-warning mb-3">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <h5 class="fw-bold">탁송 관재 시스템</h5>
+                        <p class="text-muted">통합 물류 관리 솔루션</p>
                     </div>
-                    <h6 class="fw-bold">Python 3.11</h6>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-6">
-                <div class="tech-stack-item text-center">
-                    <div class="tech-icon bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                        <i class="fas fa-flask fa-lg"></i>
-                    </div>
-                    <h6 class="fw-bold">Flask</h6>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-6">
-                <div class="tech-stack-item text-center">
-                    <div class="tech-icon bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                        <i class="fas fa-database fa-lg"></i>
-                    </div>
-                    <h6 class="fw-bold">SQLite</h6>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-6">
-                <div class="tech-stack-item text-center">
-                    <div class="tech-icon bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                        <i class="fab fa-docker fa-lg"></i>
-                    </div>
-                    <h6 class="fw-bold">Docker</h6>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-6">
-                <div class="tech-stack-item text-center">
-                    <div class="tech-icon bg-danger text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                        <i class="fab fa-js-square fa-lg"></i>
-                    </div>
-                    <h6 class="fw-bold">JavaScript</h6>
-                </div>
-            </div>
-            <div class="col-lg-2 col-md-4 col-6">
-                <div class="tech-stack-item text-center">
-                    <div class="tech-icon bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
-                        <i class="fab fa-bootstrap fa-lg"></i>
-                    </div>
-                    <h6 class="fw-bold">Bootstrap 5</h6>
                 </div>
             </div>
         </div>
@@ -336,19 +313,57 @@
 </section>
 
 <!-- CTA Section -->
-<section class="bg-primary text-white py-5">
-    <div class="container">
+<section class="py-5 bg-primary text-white">
+    <div class="container py-5">
         <div class="row text-center">
             <div class="col-lg-8 mx-auto">
-                <h2 class="display-5 fw-bold mb-3">서비스 문의하기</h2>
+                <h2 class="display-5 fw-bold mb-3">서비스 문의</h2>
                 <p class="lead mb-4">
-                    AI 기반 모빌리티 솔루션에 대한 자세한 정보를 확인하고 문의해보세요.
+                    BLH COMPANY의 혁신적인 솔루션에 대해 자세히 알아보고 싶으시다면 언제든지 문의해주세요.
                 </p>
-                <a href="{{ url_for('contact') }}" class="btn btn-warning btn-lg px-5">
-                    <i class="fas fa-envelope me-2"></i>문의하기
-                </a>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{{ url_for('contact') }}" class="btn btn-warning btn-lg px-4 py-3 fw-semibold">
+                        <i class="fas fa-phone me-2"></i>무료 상담 신청
+                    </a>
+                    <a href="{{ url_for('about') }}" class="btn btn-outline-light btn-lg px-4 py-3 fw-semibold">
+                        <i class="fas fa-info-circle me-2"></i>회사소개 보기
+                    </a>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+/* Card Hover Effects */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+}
+
+/* Service Image Animation */
+.service-image .card {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .service-image .card {
+        animation: none;
+    }
+    
+    .display-1 {
+        font-size: 3rem;
+    }
+}
+</style>
 {% endblock %}

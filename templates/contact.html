@@ -4,250 +4,159 @@
 
 {% block content %}
 <!-- Page Header -->
-<section class="bg-primary text-white py-5" style="margin-top: 76px;">
+<section class="bg-gradient-primary text-white py-5" style="margin-top: 76px;">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 mx-auto text-center">
                 <h1 class="display-4 fw-bold mb-3">문의하기</h1>
                 <p class="lead">
-                    AI 기반 모빌리티 솔루션에 대한 문의사항이나 파트너십 제안을 언제든지 연락해주세요.
+                    BLH COMPANY의 서비스에 대해 궁금한 점이 있으시면 언제든지 문의해주세요.
                 </p>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Contact Section -->
+<!-- Contact Form Section -->
 <section class="py-5">
-    <div class="container">
+    <div class="container py-5">
         <div class="row">
-            <!-- Contact Form -->
-            <div class="col-lg-8 mb-5">
-                <div class="card border-0 shadow-sm">
+            <div class="col-lg-8 mx-auto">
+                <div class="card border-0 shadow-lg rounded-4">
+                    <div class="card-header bg-primary text-white py-4">
+                        <h4 class="fw-bold mb-0">문의 양식</h4>
+                    </div>
                     <div class="card-body p-5">
-                        <h3 class="fw-bold mb-4">문의 양식</h3>
-                        <form id="contactForm">
-                            <div class="row g-3">
+                        <form>
+                            <div class="row g-4">
                                 <div class="col-md-6">
-                                    <label for="name" class="form-label">이름 *</label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
+                                    <label for="name" class="form-label fw-semibold">이름 *</label>
+                                    <input type="text" class="form-control form-control-lg" id="name" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="email" class="form-label">이메일 *</label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <label for="email" class="form-label fw-semibold">이메일 *</label>
+                                    <input type="email" class="form-control form-control-lg" id="email" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="phone" class="form-label">연락처</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone">
+                                    <label for="phone" class="form-label fw-semibold">연락처</label>
+                                    <input type="tel" class="form-control form-control-lg" id="phone">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="company" class="form-label">회사명</label>
-                                    <input type="text" class="form-control" id="company" name="company">
+                                    <label for="company" class="form-label fw-semibold">회사명</label>
+                                    <input type="text" class="form-control form-control-lg" id="company">
                                 </div>
                                 <div class="col-12">
-                                    <label for="service_type" class="form-label">관심 서비스 *</label>
-                                    <select class="form-select" id="service_type" name="service_type" required>
-                                        <option value="">서비스를 선택해주세요</option>
+                                    <label for="service" class="form-label fw-semibold">관심 서비스 *</label>
+                                    <select class="form-select form-select-lg" id="service" required>
+                                        <option value="">선택해주세요</option>
                                         <option value="auction">온라인 경매 플랫폼</option>
-                                        <option value="ev_diagnosis">EV 진단 솔루션</option>
-                                        <option value="price_estimation">가격 산정 시스템</option>
+                                        <option value="ev-diagnosis">EV 진단 솔루션</option>
+                                        <option value="price-estimation">가격 산정 시스템</option>
                                         <option value="logistics">탁송 관재 시스템</option>
                                         <option value="partnership">파트너십</option>
                                         <option value="other">기타</option>
                                     </select>
                                 </div>
                                 <div class="col-12">
-                                    <label for="message" class="form-label">문의 내용 *</label>
-                                    <textarea class="form-control" id="message" name="message" rows="5" required placeholder="문의하실 내용을 자세히 적어주세요."></textarea>
+                                    <label for="message" class="form-label fw-semibold">문의 내용 *</label>
+                                    <textarea class="form-control form-control-lg" id="message" rows="5" required></textarea>
                                 </div>
                                 <div class="col-12">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="privacy" required>
                                         <label class="form-check-label" for="privacy">
-                                            <a href="#" class="text-decoration-none">개인정보 처리방침</a>에 동의합니다. *
+                                            개인정보 처리방침에 동의합니다. *
                                         </label>
                                     </div>
                                 </div>
                                 <div class="col-12">
-                                    <button type="submit" class="btn btn-primary btn-lg px-5">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5 py-3 fw-semibold">
                                         <i class="fas fa-paper-plane me-2"></i>문의하기
                                     </button>
                                 </div>
                             </div>
                         </form>
-                        
-                        <!-- Success/Error Messages -->
-                        <div id="messageAlert" class="alert mt-3" style="display: none;"></div>
                     </div>
                 </div>
             </div>
-            
-            <!-- Contact Information -->
-            <div class="col-lg-4">
-                <div class="card border-0 shadow-sm h-100">
-                    <div class="card-body p-4">
-                        <h4 class="fw-bold mb-4">연락처 정보</h4>
-                        
-                        <div class="contact-item mb-4">
-                            <div class="d-flex align-items-start">
-                                <div class="contact-icon bg-primary text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+        </div>
+    </div>
+</section>
+
+<!-- Contact Information -->
+<section class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="display-5 fw-bold text-center mb-5">연락처 정보</h2>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow rounded-4 text-center">
+                            <div class="card-body p-4">
+                                <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
                                     <i class="fas fa-map-marker-alt"></i>
                                 </div>
-                                <div>
-                                    <h6 class="fw-bold mb-1">주소</h6>
-                                    <p class="text-muted mb-0">
-                                        부산시 해운대 우동 1436<br>
-                                        카이저빌 613호
-                                    </p>
-                                </div>
+                                <h5 class="fw-bold mb-3">주소</h5>
+                                <p class="text-muted mb-0">
+                                    부산시 해운대 우동 1436<br>
+                                    카이저빌 613호
+                                </p>
                             </div>
                         </div>
-                        
-                        <div class="contact-item mb-4">
-                            <div class="d-flex align-items-start">
-                                <div class="contact-icon bg-success text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow rounded-4 text-center">
+                            <div class="card-body p-4">
+                                <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
                                     <i class="fas fa-phone"></i>
                                 </div>
-                                <div>
-                                    <h6 class="fw-bold mb-1">전화번호</h6>
-                                    <p class="text-muted mb-0">051-123-4567</p>
-                                </div>
+                                <h5 class="fw-bold mb-3">전화</h5>
+                                <p class="text-muted mb-0">
+                                    051-123-4567
+                                </p>
                             </div>
                         </div>
-                        
-                        <div class="contact-item mb-4">
-                            <div class="d-flex align-items-start">
-                                <div class="contact-icon bg-info text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                    </div>
+                    
+                    <div class="col-md-4">
+                        <div class="card h-100 border-0 shadow rounded-4 text-center">
+                            <div class="card-body p-4">
+                                <div class="bg-info text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
                                     <i class="fas fa-envelope"></i>
                                 </div>
-                                <div>
-                                    <h6 class="fw-bold mb-1">이메일</h6>
-                                    <p class="text-muted mb-0">info@blhcompany.com</p>
-                                </div>
+                                <h5 class="fw-bold mb-3">이메일</h5>
+                                <p class="text-muted mb-0">
+                                    info@blhcompany.com
+                                </p>
                             </div>
-                        </div>
-                        
-                        <div class="contact-item mb-4">
-                            <div class="d-flex align-items-start">
-                                <div class="contact-icon bg-warning text-white rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <div>
-                                    <h6 class="fw-bold mb-1">운영시간</h6>
-                                    <p class="text-muted mb-0">
-                                        평일: 09:00 - 18:00<br>
-                                        토요일: 09:00 - 13:00<br>
-                                        일요일: 휴무
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <hr class="my-4">
-                        
-                        <h5 class="fw-bold mb-3">빠른 문의</h5>
-                        <div class="d-grid gap-2">
-                            <a href="tel:051-123-4567" class="btn btn-outline-primary">
-                                <i class="fas fa-phone me-2"></i>전화 문의
-                            </a>
-                            <a href="mailto:info@blhcompany.com" class="btn btn-outline-success">
-                                <i class="fas fa-envelope me-2"></i>이메일 문의
-                            </a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FAQ Section -->
-<section class="bg-light py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h2 class="display-5 fw-bold text-center mb-5">자주 묻는 질문</h2>
                 
-                <div class="accordion" id="faqAccordion">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="faq1">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1">
-                                온라인 경매 플랫폼은 어떻게 이용하나요?
-                            </button>
-                        </h2>
-                        <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                온라인 경매 플랫폼은 2026년 초반에 정식 오픈 예정입니다. 
-                                차량 진단, 가격 산정, 탁송 서비스까지 통합적으로 제공하여 
-                                투명하고 안전한 중고차 거래를 지원합니다.
+                <div class="text-center mt-5">
+                    <div class="card border-0 shadow rounded-4 p-4">
+                        <h5 class="fw-bold mb-3">운영시간</h5>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <strong>평일</strong><br>
+                                    <span class="text-muted">09:00 - 18:00</span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="faq2">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2">
-                                EV 진단 솔루션의 특징은 무엇인가요?
-                            </button>
-                        </h2>
-                        <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                BLE 기반 OBD-II 진단기를 활용하여 전기차 배터리 SOH, 셀 전압 편차, 
-                                절연저항, 모터 상태 등을 실시간으로 측정합니다. 
-                                글로벌 진단 장비 대비 1/5 수준의 가격으로 제공되며, 
-                                Plug&Play 방식으로 쉽게 사용할 수 있습니다.
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <strong>토요일</strong><br>
+                                    <span class="text-muted">09:00 - 13:00</span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="faq3">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3">
-                                가격 산정 시스템의 정확도는 어느 정도인가요?
-                            </button>
-                        </h2>
-                        <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                빅데이터와 AI 알고리즘을 활용하여 예측 오차율 ±2.5% 이내의 
-                                정확한 가격을 산정합니다. 24시간 이내로 시세를 반영하며, 
-                                개별 차량의 진단 데이터를 반영한 맞춤형 가격을 제공합니다.
+                            <div class="col-md-4">
+                                <div class="text-center">
+                                    <strong>일요일</strong><br>
+                                    <span class="text-muted">휴무</span>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="faq4">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4">
-                                탁송 관재 시스템은 어떤 기능을 제공하나요?
-                            </button>
-                        </h2>
-                        <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                탁송 과정에서 발생하는 모든 행위를 전산화합니다. 
-                                사진 촬영, 문서 징수, 비용 청구, 탁송 기사 관리, 보험 청구 등을 
-                                자동화하고, GPS 기반 실시간 위치 추적과 ETA를 제공합니다. 
-                                또한 통합 회계 처리까지 시스템에서 진행할 수 있습니다.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Map Section -->
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h2 class="display-5 fw-bold text-center mb-5">오시는 길</h2>
-                <div class="map-container bg-light rounded" style="height: 400px;">
-                    <div class="d-flex align-items-center justify-content-center h-100">
-                        <div class="text-center">
-                            <i class="fas fa-map fa-3x text-muted mb-3"></i>
-                            <h5 class="text-muted">부산시 해운대 우동 1436 카이저빌 613호</h5>
-                            <p class="text-muted">지도가 여기에 표시됩니다.</p>
                         </div>
                     </div>
                 </div>
@@ -257,8 +166,8 @@
 </section>
 
 <!-- FAQ Section -->
-<section class="py-5 bg-light">
-    <div class="container">
+<section class="py-5">
+    <div class="container py-5">
         <div class="row text-center mb-5">
             <div class="col-lg-8 mx-auto">
                 <h2 class="display-5 fw-bold mb-3">자주 묻는 질문</h2>
@@ -272,14 +181,14 @@
             <div class="col-lg-8 mx-auto">
                 <div class="accordion" id="faqAccordion">
                     <!-- FAQ Item 1 -->
-                    <div class="accordion-item">
+                    <div class="accordion-item border-0 shadow-sm rounded-4 mb-3">
                         <h2 class="accordion-header" id="faq1">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
-                                <i class="fas fa-question-circle text-primary me-2"></i>
+                            <button class="accordion-button collapsed rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
+                                <i class="fas fa-question-circle text-primary me-3"></i>
                                 EV 진단 서비스는 어떤 차량에 사용할 수 있나요?
                             </button>
                         </h2>
-                        <div id="collapse1" class="accordion-collapse collapse show" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
+                        <div id="collapse1" class="accordion-collapse collapse" aria-labelledby="faq1" data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
                                 BLE 기반 OBD-II 진단기를 통해 대부분의 전기차와 하이브리드 차량에 사용할 수 있습니다. 
                                 주요 지원 차량으로는 테슬라, BMW i시리즈, 현대 아이오닉, 기아 EV6, 제네시스 전기차 등이 포함됩니다.
@@ -288,10 +197,10 @@
                     </div>
                     
                     <!-- FAQ Item 2 -->
-                    <div class="accordion-item">
+                    <div class="accordion-item border-0 shadow-sm rounded-4 mb-3">
                         <h2 class="accordion-header" id="faq2">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
-                                <i class="fas fa-question-circle text-primary me-2"></i>
+                            <button class="accordion-button collapsed rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                                <i class="fas fa-question-circle text-primary me-3"></i>
                                 가격 산정 시스템의 정확도는 어느 정도인가요?
                             </button>
                         </h2>
@@ -305,10 +214,10 @@
                     </div>
                     
                     <!-- FAQ Item 3 -->
-                    <div class="accordion-item">
+                    <div class="accordion-item border-0 shadow-sm rounded-4 mb-3">
                         <h2 class="accordion-header" id="faq3">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
-                                <i class="fas fa-question-circle text-primary me-2"></i>
+                            <button class="accordion-button collapsed rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                                <i class="fas fa-question-circle text-primary me-3"></i>
                                 온라인 경매 서비스는 어떻게 이용하나요?
                             </button>
                         </h2>
@@ -321,10 +230,10 @@
                     </div>
                     
                     <!-- FAQ Item 4 -->
-                    <div class="accordion-item">
+                    <div class="accordion-item border-0 shadow-sm rounded-4 mb-3">
                         <h2 class="accordion-header" id="faq4">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
-                                <i class="fas fa-question-circle text-primary me-2"></i>
+                            <button class="accordion-button collapsed rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                                <i class="fas fa-question-circle text-primary me-3"></i>
                                 탁송 관재시스템의 구독 비용은 어떻게 되나요?
                             </button>
                         </h2>
@@ -337,10 +246,10 @@
                     </div>
                     
                     <!-- FAQ Item 5 -->
-                    <div class="accordion-item">
+                    <div class="accordion-item border-0 shadow-sm rounded-4 mb-3">
                         <h2 class="accordion-header" id="faq5">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                                <i class="fas fa-question-circle text-primary me-2"></i>
+                            <button class="accordion-button collapsed rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                                <i class="fas fa-question-circle text-primary me-3"></i>
                                 기술 지원은 어떻게 받을 수 있나요?
                             </button>
                         </h2>
@@ -353,10 +262,10 @@
                     </div>
                     
                     <!-- FAQ Item 6 -->
-                    <div class="accordion-item">
+                    <div class="accordion-item border-0 shadow-sm rounded-4 mb-3">
                         <h2 class="accordion-header" id="faq6">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
-                                <i class="fas fa-question-circle text-primary me-2"></i>
+                            <button class="accordion-button collapsed rounded-4" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                                <i class="fas fa-question-circle text-primary me-3"></i>
                                 파트너십 제안은 어떻게 할 수 있나요?
                             </button>
                         </h2>
@@ -372,46 +281,43 @@
         </div>
     </div>
 </section>
-{% endblock %}
 
-{% block extra_js %}
-<script>
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+<style>
+/* Card Hover Effects */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+}
+
+/* Form Styling */
+.form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Accordion Styling */
+.accordion-button:not(.collapsed) {
+    background-color: #e7f1ff;
+    color: #0d6efd;
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
     
-    const formData = new FormData(this);
-    const data = Object.fromEntries(formData.entries());
-    
-    fetch('/api/inquiry', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(result => {
-        const alertDiv = document.getElementById('messageAlert');
-        if (result.success) {
-            alertDiv.className = 'alert alert-success mt-3';
-            alertDiv.textContent = result.message;
-            alertDiv.style.display = 'block';
-            document.getElementById('contactForm').reset();
-        } else {
-            alertDiv.className = 'alert alert-danger mt-3';
-            alertDiv.textContent = result.message;
-            alertDiv.style.display = 'block';
-        }
-        
-        // Scroll to alert
-        alertDiv.scrollIntoView({ behavior: 'smooth' });
-    })
-    .catch(error => {
-        const alertDiv = document.getElementById('messageAlert');
-        alertDiv.className = 'alert alert-danger mt-3';
-        alertDiv.textContent = '오류가 발생했습니다. 다시 시도해주세요.';
-        alertDiv.style.display = 'block';
-    });
-});
-</script>
+    .display-5 {
+        font-size: 2rem;
+    }
+}
+</style>
 {% endblock %}
