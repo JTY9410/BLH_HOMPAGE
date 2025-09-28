@@ -160,6 +160,18 @@
             z-index: 4;
             border: 2px solid rgba(37, 99, 235, 0.5);
             backdrop-filter: blur(10px);
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .home-navigation-text:hover {
+            background: rgba(37, 99, 235, 0.9);
+            transform: translateX(-50%) translateY(-5px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+        
+        .home-navigation-text:active {
+            transform: translateX(-50%) translateY(-2px);
         }
         
         .home-navigation-text.show {
@@ -484,23 +496,35 @@
                 console.log('Video faded out and delayed content shown');
             }, 5000);
             
-            // Button click animation
-            const enterButton = document.querySelector('.enter-button');
-            enterButton.addEventListener('click', function(e) {
-                // Add loading state
-                this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>이동 중...';
-                this.style.pointerEvents = 'none';
-                
-                // Small delay for UX
-                setTimeout(() => {
-                    window.location.href = this.href;
-                }, 500);
-            });
+            // 홈페이지 이동 버튼 클릭 이벤트
+            const homepageButton = document.querySelector('.btn-homepage');
+            if (homepageButton) {
+                homepageButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Add loading state
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>이동 중...';
+                    this.style.pointerEvents = 'none';
+                    
+                    // Small delay for UX
+                    setTimeout(() => {
+                        window.location.href = '{{ url_for("index") }}';
+                    }, 500);
+                });
+            }
             
             // 홈페이지 이동 문구 클릭 시 홈페이지로 이동
-            homeNavigationText.addEventListener('click', function() {
-                window.location.href = '{{ url_for("index") }}';
-            });
+            if (homeNavigationText) {
+                homeNavigationText.addEventListener('click', function() {
+                    // Add loading state
+                    this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>이동 중...';
+                    this.style.pointerEvents = 'none';
+                    
+                    // Small delay for UX
+                    setTimeout(() => {
+                        window.location.href = '{{ url_for("index") }}';
+                    }, 500);
+                });
+            }
         });
         
         // Performance monitoring
