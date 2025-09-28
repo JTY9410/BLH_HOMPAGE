@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BLH COMPANY - AI 기반 모빌리티 솔루션{% endblock %}</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ url_for('index') }}">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BLH COMPANY" class="me-2" style="height: 40px; width: auto;">
+                BLH COMPANY
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('index') }}">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('services') }}">서비스</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('about') }}">회사소개</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('notices') }}">
+                            <i class="fas fa-bullhorn me-1"></i>공지사항
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact') }}">문의하기</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer - PLAN A Style -->
+    <footer class="footer-minimal">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BLH COMPANY" class="me-3" style="height: 50px; width: auto;">
+                        <h3 class="footer-title mb-0">BLH COMPANY</h3>
+                    </div>
+                    <p class="footer-description">
+                        AI 기반 모빌리티 솔루션으로 중고차 거래의 투명성과 효율성을 제고합니다.
+                    </p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h6 class="footer-heading">서비스</h6>
+                        <ul class="footer-list">
+                            <li><a href="{{ url_for('services') }}">온라인 경매</a></li>
+                            <li><a href="{{ url_for('services') }}">EV 진단</a></li>
+                            <li><a href="{{ url_for('services') }}">가격 산정</a></li>
+                            <li><a href="{{ url_for('services') }}">위탁 관리</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h6 class="footer-heading">회사</h6>
+                        <ul class="footer-list">
+                            <li><a href="{{ url_for('about') }}">회사소개</a></li>
+                            <li><a href="{{ url_for('notices') }}">공지사항</a></li>
+                            <li><a href="{{ url_for('contact') }}">문의하기</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h6 class="footer-heading">연락처</h6>
+                        <div class="footer-contact">
+                            <p>부산시 해운대 우동 1436<br>카이저빌 613호</p>
+                            <p>info@blhcompany.com</p>
+                            <p>051-123-4567</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-copyright">
+                    <p>&copy; 2025 BLH COMPANY. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Twitter</a>
+                    <a href="#" class="social-link">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
