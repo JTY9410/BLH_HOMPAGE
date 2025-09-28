@@ -193,6 +193,79 @@
             animation: bounce 1.5s infinite;
         }
         
+        /* 5초 후 나타나는 문구 스타일 */
+        .delayed-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 3;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 1s ease-in-out;
+        }
+        
+        .delayed-content.show {
+            opacity: 1;
+            visibility: visible;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .delayed-text {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px 60px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(37, 99, 235, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .delayed-title {
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .delayed-description {
+            color: #e2e8f0;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .delayed-features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .feature-item i {
+            font-size: 2rem;
+            color: #3b82f6;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        .feature-item span {
+            font-size: 0.9rem;
+        }
+        
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -271,6 +344,23 @@
                 padding: 12px 25px;
                 font-size: 1rem;
             }
+            
+            .delayed-text {
+                padding: 30px 40px;
+                margin: 0 20px;
+            }
+            
+            .delayed-title {
+                font-size: 2rem;
+            }
+            
+            .delayed-description {
+                font-size: 1.1rem;
+            }
+            
+            .delayed-features {
+                gap: 30px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -295,6 +385,28 @@
                 bottom: 15px;
                 padding: 10px 20px;
                 font-size: 0.9rem;
+            }
+            
+            .delayed-text {
+                padding: 25px 30px;
+                margin: 0 15px;
+            }
+            
+            .delayed-title {
+                font-size: 1.8rem;
+            }
+            
+            .delayed-description {
+                font-size: 1rem;
+            }
+            
+            .delayed-features {
+                gap: 20px;
+                flex-direction: column;
+            }
+            
+            .feature-item {
+                margin-bottom: 15px;
             }
         }
     </style>
@@ -332,6 +444,30 @@
             </p>
         </div>
         
+        <!-- 5초 후 나타나는 문구 -->
+        <div class="delayed-content" id="delayedContent">
+            <div class="delayed-text">
+                <h3 class="delayed-title">모빌리티의 미래가 시작됩니다</h3>
+                <p class="delayed-description">
+                    AI와 빅데이터로 혁신하는 중고차 거래의 새로운 기준
+                </p>
+                <div class="delayed-features">
+                    <div class="feature-item">
+                        <i class="fas fa-robot"></i>
+                        <span>AI 기반 진단</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>정확한 가격 산정</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-truck"></i>
+                        <span>스마트 탁송</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <!-- 5초 후 나타나는 홈페이지 이동 문구 -->
         <div class="home-navigation-text" id="homeNavigationText">
             <i class="fas fa-home me-2"></i>
@@ -348,6 +484,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.querySelector('.video-background');
             const homeNavigationText = document.getElementById('homeNavigationText');
+            const delayedContent = document.getElementById('delayedContent');
             
             // Ensure video plays on mobile
             video.addEventListener('loadeddata', function() {
@@ -363,15 +500,18 @@
                 });
             });
             
-            // 5초 후 동영상 투명도 변경 및 홈페이지 이동 문구 표시
+            // 5초 후 동영상 투명도 변경 및 새로운 문구 표시
             setTimeout(function() {
                 // 동영상 투명도를 50%로 변경
                 video.classList.add('fade-out');
                 
-                // 홈페이지 이동 문구 표시
+                // 5초 후 나타나는 문구 표시
+                delayedContent.classList.add('show');
+                
+                // 홈페이지 이동 문구도 표시
                 homeNavigationText.classList.add('show');
                 
-                console.log('Video faded out and navigation text shown');
+                console.log('Video faded out and delayed content shown');
             }, 5000);
             
             // Button click animation
