@@ -1,0 +1,569 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        
+    - name: Build static files
+      run: |
+        # Create static files directory structure
+        mkdir -p docs/static/css
+        mkdir -p docs/static/js
+        mkdir -p docs/static/images
+        mkdir -p docs/static/videos
+        
+        # Copy static files
+        cp -r static/* docs/static/
+        
+        # Create index.html (landing page)
+        cat > docs/index.html << 'EOF'
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLH COMPANY - AI 기반 모빌리티 솔루션</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="static/images/logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000;
+            color: #fff;
+            height: 100%;
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow: hidden;
+        }
+        
+        .landing-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 1;
+            transition: opacity 2s ease-in-out;
+        }
+        
+        .video-background.fade-out {
+            opacity: 0.5;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+        
+        .landing-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 30px;
+            filter: brightness(1.2);
+        }
+        
+        .delayed-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 3;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 1s ease-in-out;
+        }
+        
+        .delayed-content.show {
+            opacity: 1;
+            visibility: visible;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .delayed-text {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px 60px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(37, 99, 235, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .delayed-title {
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #3b82f6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .delayed-description {
+            color: #e2e8f0;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .delayed-features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #ffffff;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .feature-item i {
+            font-size: 2rem;
+            color: #3b82f6;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
+        
+        .feature-item span {
+            font-size: 0.9rem;
+        }
+        
+        .home-navigation-text {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease-in-out;
+            z-index: 4;
+            border: 2px solid rgba(37, 99, 235, 0.5);
+            backdrop-filter: blur(10px);
+            cursor: pointer;
+        }
+        
+        .home-navigation-text.show {
+            opacity: 1;
+            visibility: visible;
+            animation: slideInUp 0.8s ease-out;
+        }
+        
+        .home-navigation-text .arrow {
+            display: inline-block;
+            margin-left: 10px;
+            animation: bounce 1.5s infinite;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo {
+                width: 100px;
+            }
+            
+            .home-navigation-text {
+                bottom: 20px;
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .delayed-text {
+                padding: 30px 40px;
+                margin: 0 20px;
+            }
+            
+            .delayed-title {
+                font-size: 2rem;
+            }
+            
+            .delayed-description {
+                font-size: 1.1rem;
+            }
+            
+            .delayed-features {
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .home-navigation-text {
+                bottom: 15px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .delayed-text {
+                padding: 25px 30px;
+                margin: 0 15px;
+            }
+            
+            .delayed-title {
+                font-size: 1.8rem;
+            }
+            
+            .delayed-description {
+                font-size: 1rem;
+            }
+            
+            .delayed-features {
+                gap: 20px;
+                flex-direction: column;
+            }
+            
+            .feature-item {
+                margin-bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-container">
+        <!-- Video Background -->
+        <video autoplay muted loop playsinline class="video-background">
+            <source src="static/videos/landing-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Video Overlay -->
+        <div class="video-overlay"></div>
+        
+        <!-- Landing Content - Only Logo -->
+        <div class="landing-content">
+            <img src="static/images/logo.png" alt="BLH COMPANY" class="logo">
+        </div>
+        
+        <!-- 5초 후 나타나는 문구 -->
+        <div class="delayed-content" id="delayedContent">
+            <div class="delayed-text">
+                <h3 class="delayed-title">모빌리티의 미래가 시작됩니다</h3>
+                <p class="delayed-description">
+                    AI와 빅데이터로 혁신하는 중고차 거래의 새로운 기준
+                </p>
+                <div class="delayed-features">
+                    <div class="feature-item">
+                        <i class="fas fa-robot"></i>
+                        <span>AI 기반 진단</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>정확한 가격 산정</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-truck"></i>
+                        <span>스마트 탁송</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 5초 후 나타나는 홈페이지 이동 문구 -->
+        <div class="home-navigation-text" id="homeNavigationText">
+            <i class="fas fa-home"></i>
+            홈페이지로 이동하세요
+            <span class="arrow">↓</span>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.video-background');
+            const homeNavigationText = document.getElementById('homeNavigationText');
+            const delayedContent = document.getElementById('delayedContent');
+            
+            // Ensure video plays on mobile
+            video.addEventListener('loadeddata', function() {
+                video.play().catch(function(error) {
+                    console.log('Video autoplay failed:', error);
+                });
+            });
+            
+            // Add click to play for mobile
+            document.addEventListener('touchstart', function() {
+                video.play().catch(function(error) {
+                    console.log('Video play failed:', error);
+                });
+            });
+            
+            // 5초 후 동영상 투명도 변경 및 새로운 문구 표시
+            setTimeout(function() {
+                // 동영상 투명도를 50%로 변경
+                video.classList.add('fade-out');
+                
+                // 5초 후 나타나는 문구 표시
+                delayedContent.classList.add('show');
+                
+                // 홈페이지 이동 문구도 표시
+                homeNavigationText.classList.add('show');
+                
+                console.log('Video faded out and delayed content shown');
+            }, 5000);
+            
+            // 홈페이지 이동 문구 클릭 시 홈페이지로 이동
+            homeNavigationText.addEventListener('click', function() {
+                window.location.href = 'home.html';
+            });
+        });
+    </script>
+</body>
+</html>
+EOF
+        
+        # Create home.html (main homepage)
+        cat > docs/home.html << 'EOF'
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLH COMPANY - AI 기반 모빌리티 솔루션</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="static/images/logo.png">
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold d-flex align-items-center" href="index.html">
+                <img src="static/images/logo.png" alt="BLH COMPANY" class="me-2" style="height: 40px; width: auto;" loading="eager">
+                BLH COMPANY
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html">홈</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">회사소개</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.html">서비스</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">문의하기</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="margin-top: 76px;">
+        <div class="container">
+            <div class="row align-items-center min-vh-80">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <div class="hero-badge mb-4 fade-in-up">
+                            <span class="badge-text pulse-animation">AI 기반 모빌리티 솔루션</span>
+                        </div>
+                        <h1 class="hero-title mb-4 fade-in-up">
+                            중고차 거래의<br>
+                            <span class="text-accent">디지털 혁신</span>
+                        </h1>
+                        <p class="hero-description mb-5 fade-in-up">
+                            투명하고 효율적인 중고차 거래를 위한 AI 진단 기술과 
+                            빅데이터 기반 가격 산정 시스템으로 
+                            모빌리티 산업의 미래를 선도합니다.
+                        </p>
+                        <div class="hero-stats mb-5 fade-in-up">
+                            <div class="row g-4">
+                                <div class="col-4">
+                                    <div class="stat-item glow-animation">
+                                        <div class="stat-number">32조원</div>
+                                        <div class="stat-label">중고차 시장 규모</div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="stat-item glow-animation">
+                                        <div class="stat-number">12.21%</div>
+                                        <div class="stat-label">EV 성장률</div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="stat-item glow-animation">
+                                        <div class="stat-number">±2.5%</div>
+                                        <div class="stat-label">가격 정확도</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-actions fade-in-up">
+                            <a href="#services" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-rocket me-2"></i>서비스 보기
+                            </a>
+                            <a href="contact.html" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-phone me-2"></i>문의하기
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-visual text-center">
+                        <i class="fas fa-car fa-10x text-primary opacity-25"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional content would go here -->
+    <div class="container py-5">
+        <div class="row text-center">
+            <div class="col-12">
+                <h2>BLH COMPANY에 오신 것을 환영합니다</h2>
+                <p class="lead">AI와 모빌리티 기술을 융합한 혁신적인 솔루션을 제공합니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="static/images/logo.png" alt="BLH COMPANY" class="me-2" style="height: 30px; width: auto;">
+                        <h5 class="mb-0">BLH COMPANY</h5>
+                    </div>
+                    <p class="text-muted">AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신</p>
+                </div>
+                <div class="col-md-6">
+                    <h6>연락처</h6>
+                    <p class="text-muted mb-1">📧 info@blhcompany.com</p>
+                    <p class="text-muted mb-1">📞 051-123-4567</p>
+                    <p class="text-muted">📍 부산시 해운대 우동 1436 카이저빌 613호</p>
+                </div>
+            </div>
+            <hr class="my-3">
+            <div class="text-center text-muted">
+                <p>&copy; 2025 BLH COMPANY. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+EOF
+        
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs
