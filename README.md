@@ -56,7 +56,13 @@ pip install -r requirements.txt
 python app.py
 ```
 
-### 5. Docker를 사용한 실행
+### 5. Docker Hub를 사용한 배포 (권장)
+```bash
+# 프로덕션 환경용 Docker Compose 파일 사용
+docker-compose -f docker-compose.prod.yml up -d
+```
+
+### 6. 로컬 Docker를 사용한 실행
 ```bash
 docker-compose up -d
 ```
@@ -65,6 +71,19 @@ docker-compose up -d
 
 - **로컬 개발**: http://localhost:5000
 - **Docker**: http://localhost:80
+
+## 🐳 Docker Hub
+
+이 프로젝트는 Docker Hub에 업로드되어 있습니다:
+
+- **이미지**: `wecarmobility/blh-homepage:latest`
+- **Docker Hub URL**: https://hub.docker.com/r/wecarmobility/blh-homepage
+
+### Docker Hub에서 직접 실행
+```bash
+# Docker Hub에서 이미지 다운로드 및 실행
+docker run -d -p 80:80 wecarmobility/blh-homepage:latest
+```
 
 ## 📁 프로젝트 구조
 

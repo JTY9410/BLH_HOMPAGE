@@ -1,0 +1,39 @@
+services:
+  web:
+    image: wecarmobility/blh-homepage:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - FLASK_ENV=production
+      - REDIS_URL=redis://redis:6379/0
+    depends_on:
+      - redis
+    restart: unless-stopped
+    volumes:
+      - ./static:/app/static
+      - ./templates:/app/templates
+      - ./blh_company.db:/app/blh_company.db
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./ssl:/etc/nginx/ssl
+      - ./static:/app/static
+    depends_on:
+      - web
+    restart: unless-stopped
+
+volumes:
+  redis_data:

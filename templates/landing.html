@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BLH COMPANY - Welcome</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신을 선도하는 BLH COMPANY에 오신 것을 환영합니다.">
+    <meta name="keywords" content="BLH COMPANY, AI, 모빌리티, 중고차, 전기차 진단, 가격 산정, 온라인 경매">
+    <meta name="author" content="BLH COMPANY">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="BLH COMPANY - AI 기반 모빌리티 솔루션">
+    <meta property="og:description" content="AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신을 선도하는 벤처기업">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:image" content="{{ url_for('static', filename='images/logo.png', _external=True) }}">
+    <meta property="og:site_name" content="BLH COMPANY">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BLH COMPANY - AI 기반 모빌리티 솔루션">
+    <meta name="twitter:description" content="AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신">
+    <meta name="twitter:image" content="{{ url_for('static', filename='images/logo.png', _external=True) }}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ request.url }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body, html {
+            height: 100%;
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow: hidden;
+        }
+        
+        .landing-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+        }
+        
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 1;
+            transition: opacity 2s ease-in-out;
+        }
+        
+        .video-background.fade-out {
+            opacity: 0.5;
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 2;
+        }
+        
+        .landing-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            width: 120px;
+            height: auto;
+            margin-bottom: 30px;
+            filter: brightness(1.2);
+        }
+        
+        .landing-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .landing-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .landing-description {
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+        
+        .enter-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            animation: fadeInUp 1s ease-out 0.9s both;
+            border: 2px solid transparent;
+        }
+        
+        .enter-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
+            color: white;
+            text-decoration: none;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+        
+        .enter-button:active {
+            transform: translateY(-1px);
+        }
+        
+        .loading-text {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            animation: fadeInUp 1s ease-out 1.2s both;
+        }
+        
+        .home-navigation-text {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s ease-in-out;
+            z-index: 4;
+            border: 2px solid rgba(37, 99, 235, 0.5);
+            backdrop-filter: blur(10px);
+        }
+        
+        .home-navigation-text.show {
+            opacity: 1;
+            visibility: visible;
+            animation: slideInUp 0.8s ease-out;
+        }
+        
+        .home-navigation-text .arrow {
+            display: inline-block;
+            margin-left: 10px;
+            animation: bounce 1.5s infinite;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            }
+            50% {
+                box-shadow: 0 4px 25px rgba(37, 99, 235, 0.8);
+            }
+            100% {
+                box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            }
+        }
+        
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .enter-button.pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .landing-title {
+                font-size: 2.5rem;
+            }
+            
+            .landing-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .landing-description {
+                font-size: 1rem;
+            }
+            
+            .enter-button {
+                padding: 12px 30px;
+                font-size: 1.1rem;
+            }
+            
+            .logo {
+                width: 100px;
+            }
+            
+            .home-navigation-text {
+                bottom: 20px;
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .landing-title {
+                font-size: 2rem;
+            }
+            
+            .landing-subtitle {
+                font-size: 1rem;
+            }
+            
+            .landing-description {
+                font-size: 0.9rem;
+            }
+            
+            .enter-button {
+                padding: 10px 25px;
+                font-size: 1rem;
+            }
+            
+            .home-navigation-text {
+                bottom: 15px;
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="landing-container">
+        <!-- Video Background -->
+        <video class="video-background" autoplay muted loop playsinline>
+            <source src="{{ url_for('static', filename='videos/landing-video.mp4') }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <!-- Video Overlay -->
+        <div class="video-overlay"></div>
+        
+        <!-- Landing Content -->
+        <div class="landing-content">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BLH COMPANY" class="logo">
+            
+            <h1 class="landing-title">BLH COMPANY</h1>
+            <h2 class="landing-subtitle">AI 기반 모빌리티 솔루션</h2>
+            <p class="landing-description">
+                중고차 거래의 디지털 혁신을 선도하는<br>
+                투명하고 효율적인 모빌리티 플랫폼
+            </p>
+            
+            <a href="{{ url_for('index') }}" class="enter-button pulse">
+                <i class="fas fa-arrow-right me-2"></i>
+                홈페이지로 이동
+            </a>
+            
+            <p class="loading-text">
+                <i class="fas fa-spinner fa-spin me-2"></i>
+                최적의 경험을 위해 준비 중입니다...
+            </p>
+        </div>
+        
+        <!-- 5초 후 나타나는 홈페이지 이동 문구 -->
+        <div class="home-navigation-text" id="homeNavigationText">
+            <i class="fas fa-home me-2"></i>
+            홈페이지로 이동하세요
+            <span class="arrow">↓</span>
+        </div>
+    </div>
+    
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Video autoplay fallback for mobile devices
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.querySelector('.video-background');
+            const homeNavigationText = document.getElementById('homeNavigationText');
+            
+            // Ensure video plays on mobile
+            video.addEventListener('loadeddata', function() {
+                video.play().catch(function(error) {
+                    console.log('Video autoplay failed:', error);
+                });
+            });
+            
+            // Add click to play for mobile
+            document.addEventListener('touchstart', function() {
+                video.play().catch(function(error) {
+                    console.log('Video play failed:', error);
+                });
+            });
+            
+            // 5초 후 동영상 투명도 변경 및 홈페이지 이동 문구 표시
+            setTimeout(function() {
+                // 동영상 투명도를 50%로 변경
+                video.classList.add('fade-out');
+                
+                // 홈페이지 이동 문구 표시
+                homeNavigationText.classList.add('show');
+                
+                console.log('Video faded out and navigation text shown');
+            }, 5000);
+            
+            // Button click animation
+            const enterButton = document.querySelector('.enter-button');
+            enterButton.addEventListener('click', function(e) {
+                // Add loading state
+                this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>이동 중...';
+                this.style.pointerEvents = 'none';
+                
+                // Small delay for UX
+                setTimeout(() => {
+                    window.location.href = this.href;
+                }, 500);
+            });
+            
+            // 홈페이지 이동 문구 클릭 시 홈페이지로 이동
+            homeNavigationText.addEventListener('click', function() {
+                window.location.href = '{{ url_for("index") }}';
+            });
+        });
+        
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            console.log('Landing page load time:', loadTime + 'ms');
+        });
+    </script>
+</body>
+</html>

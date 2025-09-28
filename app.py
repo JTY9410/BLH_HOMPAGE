@@ -10,6 +10,24 @@ app = Flask(__name__, static_folder='static', static_url_path='/static')
 def static_files(filename):
     return app.send_static_file(filename)
 
+# SEO 라우트
+@app.route('/sitemap.xml')
+def sitemap():
+    return app.send_static_file('sitemap.xml')
+
+@app.route('/robots.txt')
+def robots():
+    return app.send_static_file('robots.txt')
+
+# 헬스체크 엔드포인트
+@app.route('/health')
+def health_check():
+    return jsonify({
+        'status': 'healthy',
+        'timestamp': datetime.now().isoformat(),
+        'version': '1.0.0'
+    })
+
 # 데이터베이스 초기화
 def init_db():
     conn = sqlite3.connect('blh_company.db')
@@ -97,6 +115,10 @@ def init_db():
 
 # 라우트 정의
 @app.route('/')
+def landing():
+    return render_template('landing.html')
+
+@app.route('/home')
 def index():
     return render_template('index.html')
 

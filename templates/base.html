@@ -5,6 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}BLH COMPANY - AI 기반 모빌리티 솔루션{% endblock %}</title>
     
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{% block description %}AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신. 온라인 경매, EV 진단, 가격 산정, 탁송 관재 시스템을 제공하는 BLH COMPANY입니다.{% endblock %}">
+    <meta name="keywords" content="중고차, AI, 모빌리티, 전기차 진단, 가격 산정, 온라인 경매, 탁송 관재, 부산, BLH COMPANY">
+    <meta name="author" content="BLH COMPANY">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{% block og_title %}BLH COMPANY - AI 기반 모빌리티 솔루션{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신. 투명하고 효율적인 중고차 거래를 위한 혁신적인 솔루션을 제공합니다.{% endblock %}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:image" content="{{ url_for('static', filename='images/logo.png', _external=True) }}">
+    <meta property="og:site_name" content="BLH COMPANY">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{% block twitter_title %}BLH COMPANY - AI 기반 모빌리티 솔루션{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신{% endblock %}">
+    <meta name="twitter:image" content="{{ url_for('static', filename='images/logo.png', _external=True) }}">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ request.url }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo.png') }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
+    
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
@@ -14,6 +41,53 @@
     <!-- Custom CSS -->
     <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
     
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "BLH COMPANY",
+        "alternateName": "주식회사 비엘에이치컴퍼니",
+        "url": "{{ request.url_root }}",
+        "logo": "{{ url_for('static', filename='images/logo.png', _external=True) }}",
+        "description": "AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신을 선도하는 벤처기업",
+        "foundingDate": "2025",
+        "founders": [
+            {
+                "@type": "Person",
+                "name": "홍독경"
+            },
+            {
+                "@type": "Person", 
+                "name": "정태영"
+            }
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "부산시 해운대 우동 1436 카이저빌 613호",
+            "addressLocality": "부산",
+            "addressCountry": "KR"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+82-51-123-4567",
+            "contactType": "customer service",
+            "email": "info@blhcompany.com",
+            "availableLanguage": "Korean"
+        },
+        "sameAs": [
+            "https://github.com/JTY9410/blh_homepage"
+        ],
+        "knowsAbout": [
+            "AI 기반 모빌리티 솔루션",
+            "중고차 온라인 경매",
+            "전기차 진단 기술",
+            "빅데이터 가격 산정",
+            "탁송 관재 시스템"
+        ]
+    }
+    </script>
+    
     {% block extra_css %}{% endblock %}
 </head>
 <body>
@@ -21,7 +95,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="{{ url_for('index') }}">
-                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BLH COMPANY" class="me-2" style="height: 40px; width: auto;">
+                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BLH COMPANY" class="me-2" style="height: 40px; width: auto;" loading="eager">
                 BLH COMPANY
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -120,5 +194,37 @@
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     
     {% block extra_js %}{% endblock %}
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID', {
+            'page_title': document.title,
+            'page_location': window.location.href
+        });
+    </script>
+    
+    <!-- Google Search Console -->
+    <meta name="google-site-verification" content="GOOGLE_SITE_VERIFICATION_CODE">
+    
+    <!-- Performance Monitoring -->
+    <script>
+        // Basic performance monitoring
+        window.addEventListener('load', function() {
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            console.log('Page load time:', loadTime + 'ms');
+            
+            // Send to analytics if needed
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_load_time', {
+                    'value': loadTime,
+                    'event_category': 'Performance'
+                });
+            }
+        });
+    </script>
 </body>
 </html>
