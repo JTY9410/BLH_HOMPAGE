@@ -3,127 +3,91 @@
 {% block title %}{{ notice[1] }} - BLH COMPANY{% endblock %}
 
 {% block content %}
-<!-- Page Header -->
-<section class="page-header bg-primary text-white py-4" style="margin-top: 76px;">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a href="{{ url_for('index') }}" class="text-white text-decoration-none">홈</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <a href="{{ url_for('notices') }}" class="text-white text-decoration-none">공지사항</a>
-                        </li>
-                        <li class="breadcrumb-item active text-white" aria-current="page">상세보기</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
+<!-- Breadcrumb -->
+<section class="pt-32 pb-8 bg-neutral-50">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav class="flex" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="{{ url_for('index') }}" class="inline-flex items-center text-sm font-medium text-neutral-700 hover:text-primary-900 transition-colors duration-300">
+                        <i class="fas fa-home mr-2"></i>홈
+                    </a>
+                </li>
+                <li>
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-neutral-400 mx-2"></i>
+                        <a href="{{ url_for('notices') }}" class="ml-1 text-sm font-medium text-neutral-700 hover:text-primary-900 transition-colors duration-300">공지사항</a>
+                    </div>
+                </li>
+                <li aria-current="page">
+                    <div class="flex items-center">
+                        <i class="fas fa-chevron-right text-neutral-400 mx-2"></i>
+                        <span class="ml-1 text-sm font-medium text-neutral-500">상세보기</span>
+                    </div>
+                </li>
+            </ol>
+        </nav>
     </div>
 </section>
 
 <!-- Notice Detail -->
-<section class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <article class="notice-detail">
-                    <div class="card">
-                        <div class="card-header bg-light">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h1 class="h3 mb-0">{{ notice[1] }}</h1>
-                                <div class="notice-stats">
-                                    <small class="text-muted">
-                                        <i class="fas fa-eye me-1"></i>{{ notice[6] }}회 조회
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-body">
-                            <div class="notice-meta mb-4 pb-3 border-bottom">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <small class="text-muted">
-                                            <i class="fas fa-user me-2"></i>작성자: {{ notice[3] }}
-                                        </small>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <small class="text-muted">
-                                            <i class="fas fa-calendar me-2"></i>작성일: {{ notice[4].split(' ')[0] }}
-                                        </small>
-                                    </div>
-                                </div>
-                                {% if notice[5] and notice[5] != notice[4] %}
-                                <div class="row mt-2">
-                                    <div class="col-12">
-                                        <small class="text-muted">
-                                            <i class="fas fa-edit me-2"></i>수정일: {{ notice[5].split(' ')[0] }}
-                                        </small>
-                                    </div>
-                                </div>
-                                {% endif %}
-                            </div>
-                            
-                            <div class="notice-content">
-                                {{ notice[2] | replace('\n', '<br>') | safe }}
-                            </div>
-                        </div>
-                        
-                        <div class="card-footer bg-light">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <a href="{{ url_for('notices') }}" class="btn btn-outline-secondary">
-                                    <i class="fas fa-list me-2"></i>목록으로
-                                </a>
-                                <div class="share-buttons">
-                                    <button class="btn btn-outline-primary btn-sm" onclick="shareNotice()">
-                                        <i class="fas fa-share me-1"></i>공유
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Related Notices -->
-<section class="py-4 bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 mx-auto">
-                <h5 class="mb-3">다른 공지사항</h5>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">EV 진단 솔루션 2.0 출시</h6>
-                                <p class="card-text small text-muted">더욱 정확하고 빠른 전기차 진단을 위한 새로운 버전이 출시되었습니다.</p>
-                                <small class="text-muted">2025.09.28</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">모빌리티 혁신상 수상</h6>
-                                <p class="card-text small text-muted">AI 기반 모빌리티 솔루션으로 2025 모빌리티 혁신상을 수상했습니다.</p>
-                                <small class="text-muted">2025.09.15</small>
-                            </div>
-                        </div>
+<section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <article class="bg-white rounded-3xl shadow-xl border border-neutral-200 overflow-hidden">
+            <!-- Header -->
+            <div class="p-8 bg-gradient-to-r from-primary-50 to-accent-50 border-b border-neutral-200">
+                <div class="flex justify-between items-start mb-4">
+                    <h1 class="text-3xl font-bold text-primary-900 leading-tight">{{ notice[1] }}</h1>
+                    <div class="flex items-center text-sm text-neutral-500">
+                        <i class="fas fa-eye mr-1"></i>
+                        <span>{{ notice[6] }}회 조회</span>
                     </div>
                 </div>
+                
+                <div class="flex flex-wrap items-center gap-6 text-sm text-neutral-600">
+                    <div class="flex items-center">
+                        <i class="fas fa-user mr-2 text-neutral-400"></i>
+                        <span>{{ notice[3] }}</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-calendar mr-2 text-neutral-400"></i>
+                        <span>{{ notice[4].split(' ')[0] }}</span>
+                    </div>
+                    {% if notice[5] and notice[5] != notice[4] %}
+                    <div class="flex items-center">
+                        <i class="fas fa-edit mr-2 text-neutral-400"></i>
+                        <span>수정: {{ notice[5].split(' ')[0] }}</span>
+                    </div>
+                    {% endif %}
+                </div>
             </div>
-        </div>
+            
+            <!-- Content -->
+            <div class="p-8">
+                <div class="prose prose-lg max-w-none">
+                    <div class="text-neutral-700 leading-relaxed whitespace-pre-line">{{ notice[2] }}</div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div class="p-8 bg-neutral-50 border-t border-neutral-200">
+                <div class="flex justify-between items-center">
+                    <a href="{{ url_for('notices') }}" 
+                       class="inline-flex items-center px-6 py-3 bg-neutral-600 text-white font-medium rounded-xl hover:bg-neutral-700 transition-all duration-300">
+                        <i class="fas fa-list mr-2"></i>목록으로 돌아가기
+                    </a>
+                    <button onclick="shareNotice()" 
+                            class="inline-flex items-center px-6 py-3 border-2 border-accent-600 text-accent-600 font-medium rounded-xl hover:bg-accent-600 hover:text-white transition-all duration-300">
+                        <i class="fas fa-share mr-2"></i>공유하기
+                    </button>
+                </div>
+            </div>
+        </article>
     </div>
 </section>
 {% endblock %}
 
-{% block scripts %}
+{% block extra_js %}
 <script>
 function shareNotice() {
     if (navigator.share) {
@@ -136,6 +100,15 @@ function shareNotice() {
         // Fallback for browsers that don't support Web Share API
         const url = window.location.href;
         navigator.clipboard.writeText(url).then(() => {
+            alert('링크가 클립보드에 복사되었습니다.');
+        }).catch(() => {
+            // Manual fallback
+            const textarea = document.createElement('textarea');
+            textarea.value = url;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
             alert('링크가 클립보드에 복사되었습니다.');
         });
     }
