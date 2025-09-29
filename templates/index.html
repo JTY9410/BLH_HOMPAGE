@@ -12,61 +12,56 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="relative min-h-screen pt-20 overflow-hidden bg-gradient-to-br from-tech-900 via-mobility-900 to-tech-800">
-    <!-- Background Effects -->
-    <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-gradient-to-r from-mobility-500/10 via-transparent to-tech-500/10"></div>
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-mobility-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-tech-500/20 rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
+<section class="relative min-h-screen pt-16 overflow-hidden bg-gradient-to-br from-neutral-50 to-white">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.15) 1px, transparent 0); background-size: 20px 20px;"></div>
     </div>
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <!-- Left Content -->
-            <div class="text-white space-y-8">
+            <div class="space-y-8">
                 <!-- Badge -->
-                <div class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-mobility-600/20 to-tech-600/20 rounded-full border border-mobility-500/30 backdrop-blur-sm">
-                    <i class="fas fa-robot mr-2 text-mobility-400"></i>
-                    <span class="text-sm font-medium text-mobility-200">AI 기반 모빌리티 솔루션</span>
+                <div class="inline-flex items-center px-4 py-2 bg-accent-50 border border-accent-200 rounded-full">
+                    <i class="fas fa-robot mr-2 text-accent-600 text-sm"></i>
+                    <span class="text-sm font-medium text-accent-700">AI 기반 모빌리티 솔루션</span>
                 </div>
                 
                 <!-- Main Title -->
-                <h1 class="text-5xl lg:text-7xl font-bold leading-tight">
+                <h1 class="text-5xl lg:text-6xl font-bold leading-tight text-primary-900">
                     중고차 거래의<br>
-                    <span class="bg-gradient-to-r from-mobility-400 to-tech-400 bg-clip-text text-transparent">디지털 혁신</span>
+                    <span class="text-accent-600">디지털 혁신</span>
                 </h1>
                 
                 <!-- Description -->
-                <p class="text-xl text-tech-300 leading-relaxed max-w-2xl">
-                    투명하고 효율적인 중고차 거래를 온라인 경매, 공매 사이트 운영과 전기차를 진단을 포함한 빅데이터 플랫폼 운영 및 중고차 거래 안전을 위한 AI기반의 가격산정 플랫폼 개발등 중고차 거래의 디지털 혁신을 BLHCOMPANY가 만들어 모빌리티 산업의 미래를 선도하겠습니다.
+                <p class="text-xl text-neutral-600 leading-relaxed max-w-2xl">
+                    투명하고 효율적인 중고차 거래를 위한 AI 기반 솔루션. 온라인 경매, EV 진단, 가격 산정, 탁송 관재 시스템으로 모빌리티 산업의 미래를 선도합니다.
                 </p>
                 
                 <!-- Stats -->
                 <div class="grid grid-cols-3 gap-8 py-8">
                     <div class="text-center">
-                        <div class="text-3xl lg:text-4xl font-bold text-mobility-400 mb-2">36만대</div>
-                        <div class="text-sm text-tech-400">중고차 누적 진단</div>
+                        <div class="text-3xl lg:text-4xl font-bold text-primary-900 mb-2">36만대</div>
+                        <div class="text-sm text-neutral-500 font-medium">중고차 누적 진단</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-3xl lg:text-4xl font-bold text-mobility-400 mb-2">5건</div>
-                        <div class="text-sm text-tech-400">플랫폼 개발 및 운영</div>
+                        <div class="text-3xl lg:text-4xl font-bold text-primary-900 mb-2">5건</div>
+                        <div class="text-sm text-neutral-500 font-medium">플랫폼 개발 및 운영</div>
                     </div>
                     <div class="text-center">
-                        <div class="text-3xl lg:text-4xl font-bold text-mobility-400 mb-2">10만대</div>
-                        <div class="text-sm text-tech-400">탁송물류시스템 적용</div>
+                        <div class="text-3xl lg:text-4xl font-bold text-primary-900 mb-2">10만대</div>
+                        <div class="text-sm text-neutral-500 font-medium">탁송물류시스템 적용</div>
                     </div>
                 </div>
                 
                 <!-- CTA Buttons -->
                 <div class="flex flex-wrap gap-4">
-                    <a href="{{ url_for('services') }}" class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-mobility-600 to-mobility-700 text-white font-semibold rounded-full hover:from-mobility-700 hover:to-mobility-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-mobility-500/25">
+                    <a href="{{ url_for('services') }}" class="inline-flex items-center px-8 py-4 bg-primary-900 text-white font-semibold rounded-full hover:bg-primary-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
                         <i class="fas fa-rocket mr-2"></i>서비스 보기
                     </a>
-                    <a href="{{ url_for('contact') }}" class="inline-flex items-center px-8 py-4 border-2 border-tech-500 text-white font-semibold rounded-full hover:bg-tech-500/10 transition-all duration-300">
+                    <a href="{{ url_for('contact') }}" class="inline-flex items-center px-8 py-4 border-2 border-neutral-300 text-neutral-700 font-semibold rounded-full hover:bg-neutral-50 transition-all duration-300">
                         <i class="fas fa-envelope mr-2"></i>문의하기
-                    </a>
-                    <a href="#demo" class="inline-flex items-center px-6 py-4 text-mobility-300 font-semibold hover:text-mobility-200 transition-colors duration-300">
-                        <i class="fas fa-play mr-2"></i>데모 보기 →
                     </a>
                 </div>
             </div>
@@ -74,35 +69,35 @@
             <!-- Right Visual -->
             <div class="relative">
                 <!-- Main Card -->
-                <div class="relative bg-gradient-to-br from-tech-800/40 to-mobility-800/40 backdrop-blur-lg rounded-3xl border border-tech-600/30 p-8 shadow-2xl">
-                    <div class="text-center text-white">
-                        <div class="w-24 h-24 bg-gradient-to-br from-mobility-500 to-tech-500 rounded-2xl mx-auto mb-6 flex items-center justify-center">
-                            <i class="fas fa-car text-3xl"></i>
+                <div class="relative bg-white rounded-3xl border border-neutral-200 p-8 shadow-xl">
+                    <div class="text-center">
+                        <div class="w-24 h-24 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
+                            <i class="fas fa-car text-3xl text-white"></i>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4">AI 진단 시스템</h3>
-                        <p class="text-tech-300">실시간 차량 상태 분석</p>
+                        <h3 class="text-2xl font-bold text-primary-900 mb-4">AI 진단 시스템</h3>
+                        <p class="text-neutral-600">실시간 차량 상태 분석</p>
                     </div>
                 </div>
                 
                 <!-- Floating Cards -->
-                <div class="absolute -top-4 -left-4 bg-gradient-to-br from-green-500/20 to-green-600/20 backdrop-blur-lg rounded-2xl border border-green-500/30 p-4 animate-float">
-                    <div class="text-center text-white">
-                        <i class="fas fa-chart-line text-2xl text-green-400 mb-2"></i>
-                        <div class="text-sm font-semibold">가격 산정</div>
+                <div class="absolute -top-4 -left-4 bg-white rounded-2xl border border-neutral-200 p-4 shadow-lg animate-float">
+                    <div class="text-center">
+                        <i class="fas fa-chart-line text-2xl text-green-500 mb-2"></i>
+                        <div class="text-sm font-semibold text-neutral-700">가격 산정</div>
                     </div>
                 </div>
                 
-                <div class="absolute -top-4 -right-4 bg-gradient-to-br from-blue-500/20 to-blue-600/20 backdrop-blur-lg rounded-2xl border border-blue-500/30 p-4 animate-float delay-1000">
-                    <div class="text-center text-white">
-                        <i class="fas fa-battery-full text-2xl text-blue-400 mb-2"></i>
-                        <div class="text-sm font-semibold">EV 진단</div>
+                <div class="absolute -top-4 -right-4 bg-white rounded-2xl border border-neutral-200 p-4 shadow-lg animate-float delay-1000">
+                    <div class="text-center">
+                        <i class="fas fa-battery-full text-2xl text-blue-500 mb-2"></i>
+                        <div class="text-sm font-semibold text-neutral-700">EV 진단</div>
                     </div>
                 </div>
                 
-                <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-gradient-to-br from-yellow-500/20 to-yellow-600/20 backdrop-blur-lg rounded-2xl border border-yellow-500/30 p-4 animate-float delay-2000">
-                    <div class="text-center text-white">
-                        <i class="fas fa-truck text-2xl text-yellow-400 mb-2"></i>
-                        <div class="text-sm font-semibold">탁송 관리</div>
+                <div class="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-white rounded-2xl border border-neutral-200 p-4 shadow-lg animate-float delay-2000">
+                    <div class="text-center">
+                        <i class="fas fa-truck text-2xl text-yellow-500 mb-2"></i>
+                        <div class="text-sm font-semibold text-neutral-700">탁송 관리</div>
                     </div>
                 </div>
             </div>
@@ -111,12 +106,12 @@
 </section>
 
 <!-- Services Section -->
-<section class="py-20 bg-gradient-to-b from-tech-50 to-white">
+<section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
         <div class="text-center mb-16">
-            <h2 class="text-4xl lg:text-5xl font-bold text-tech-900 mb-6">핵심 서비스</h2>
-            <p class="text-xl text-tech-600 max-w-3xl mx-auto">
+            <h2 class="text-4xl lg:text-5xl font-bold text-primary-900 mb-6">핵심 서비스</h2>
+            <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
                 AI와 모빌리티 기술을 융합한 독창적인 솔루션으로 중고차 산업을 혁신합니다.
             </p>
         </div>
@@ -125,34 +120,34 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <!-- Primary Service -->
             <div class="lg:col-span-1">
-                <div class="bg-gradient-to-br from-mobility-600 to-mobility-700 rounded-3xl p-8 text-white shadow-2xl transform hover:scale-105 transition-all duration-300">
+                <div class="bg-primary-900 rounded-3xl p-8 text-white shadow-xl hover:shadow-2xl transition-all duration-300">
                     <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mr-4">
+                        <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mr-4">
                             <i class="fas fa-gavel text-2xl"></i>
                         </div>
                         <div>
                             <h3 class="text-2xl font-bold mb-1">중고차 경매 및 공매</h3>
-                            <span class="px-3 py-1 bg-white/20 rounded-full text-sm font-medium">핵심 서비스</span>
+                            <span class="px-3 py-1 bg-white/10 rounded-full text-sm font-medium">핵심 서비스</span>
                         </div>
                     </div>
-                    <p class="text-mobility-100 text-lg mb-6">
+                    <p class="text-neutral-200 text-lg mb-6">
                         C2B 온라인 중고차 경매 플랫폼 개발과 중고차 공매시스템 개발 운영으로 투명하고 효율적인 중고차 거래를 제공합니다.
                     </p>
                     <ul class="space-y-3">
                         <li class="flex items-center">
-                            <i class="fas fa-check mr-3 text-green-300"></i>
+                            <i class="fas fa-check mr-3 text-green-400"></i>
                             <span>자동차 진단에 특화된 기술 도입</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check mr-3 text-green-300"></i>
+                            <i class="fas fa-check mr-3 text-green-400"></i>
                             <span>위치 기반 자동차 탁송 시스템</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check mr-3 text-green-300"></i>
+                            <i class="fas fa-check mr-3 text-green-400"></i>
                             <span>AI 기반 중고차 도매시세 제공</span>
                         </li>
                         <li class="flex items-center">
-                            <i class="fas fa-check mr-3 text-green-300"></i>
+                            <i class="fas fa-check mr-3 text-green-400"></i>
                             <span>투명하고 안정적인 거래 환경</span>
                         </li>
                     </ul>
@@ -161,38 +156,38 @@
             
             <!-- Secondary Services -->
             <div class="space-y-6">
-                <div class="bg-white rounded-2xl p-6 shadow-lg border border-tech-200 hover:shadow-xl transition-shadow duration-300">
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-neutral-200 hover:shadow-xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mr-4">
+                        <div class="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mr-4">
                             <i class="fas fa-battery-full text-xl text-green-600"></i>
                         </div>
-                        <h4 class="text-xl font-bold text-tech-900">EV 진단</h4>
+                        <h4 class="text-xl font-bold text-primary-900">EV 진단</h4>
                     </div>
-                    <p class="text-tech-600">
+                    <p class="text-neutral-600">
                         BLE 기반 OBD-II 진단기로 전기차 배터리 상태를 실시간으로 측정하고 분석하며 빅데이터 기반의 전기차 사전 예방 플랫폼을 제공합니다.
                     </p>
                 </div>
                 
-                <div class="bg-white rounded-2xl p-6 shadow-lg border border-tech-200 hover:shadow-xl transition-shadow duration-300">
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-neutral-200 hover:shadow-xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mr-4">
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mr-4">
                             <i class="fas fa-chart-line text-xl text-blue-600"></i>
                         </div>
-                        <h4 class="text-xl font-bold text-tech-900">가격 산정</h4>
+                        <h4 class="text-xl font-bold text-primary-900">가격 산정</h4>
                     </div>
-                    <p class="text-tech-600">
+                    <p class="text-neutral-600">
                         빅데이터와 AI를 활용한 정확한 차량 가격 산정 시스템을 제공합니다.
                     </p>
                 </div>
                 
-                <div class="bg-white rounded-2xl p-6 shadow-lg border border-tech-200 hover:shadow-xl transition-shadow duration-300">
+                <div class="bg-white rounded-2xl p-6 shadow-lg border border-neutral-200 hover:shadow-xl transition-shadow duration-300">
                     <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mr-4">
+                        <div class="w-12 h-12 bg-yellow-50 rounded-xl flex items-center justify-center mr-4">
                             <i class="fas fa-truck text-xl text-yellow-600"></i>
                         </div>
-                        <h4 class="text-xl font-bold text-tech-900">탁송 관재</h4>
+                        <h4 class="text-xl font-bold text-primary-900">탁송 관재</h4>
                     </div>
-                    <p class="text-tech-600">
+                    <p class="text-neutral-600">
                         GPS 기반 실시간 위치 추적과 통합 ERP 시스템으로 효율적인 탁송 관리를 제공합니다.
                     </p>
                 </div>
@@ -202,54 +197,54 @@
 </section>
 
 <!-- Technology Section -->
-<section class="py-20 bg-gradient-to-br from-tech-900 to-mobility-900">
+<section class="py-20 bg-neutral-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <!-- Left Content -->
-            <div class="text-white space-y-8">
-                <h2 class="text-4xl lg:text-5xl font-bold leading-tight">기술력</h2>
-                <p class="text-xl text-tech-300">
+            <div class="space-y-8">
+                <h2 class="text-4xl lg:text-5xl font-bold leading-tight text-primary-900">기술력</h2>
+                <p class="text-xl text-neutral-600">
                     최첨단 AI 기술과 빅데이터 분석을 통해 중고차 산업의 혁신을 이끕니다.
                 </p>
                 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-mobility-500 to-mobility-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-brain text-white"></i>
+                        <div class="w-12 h-12 bg-accent-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-brain text-accent-600"></i>
                         </div>
                         <div>
-                            <h4 class="text-lg font-semibold mb-2">AI 기반 진단</h4>
-                            <p class="text-tech-400 text-sm">머신러닝 알고리즘을 활용한 실시간 차량 상태 진단 및 예측 분석</p>
+                            <h4 class="text-lg font-semibold mb-2 text-primary-900">AI 기반 진단</h4>
+                            <p class="text-neutral-600 text-sm">머신러닝 알고리즘을 활용한 실시간 차량 상태 진단 및 예측 분석</p>
                         </div>
                     </div>
                     
                     <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-database text-white"></i>
+                        <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-database text-green-600"></i>
                         </div>
                         <div>
-                            <h4 class="text-lg font-semibold mb-2">빅데이터 분석</h4>
-                            <p class="text-tech-400 text-sm">수백만 건의 거래 데이터를 분석하여 정확한 시세 정보 제공</p>
+                            <h4 class="text-lg font-semibold mb-2 text-primary-900">빅데이터 분석</h4>
+                            <p class="text-neutral-600 text-sm">수백만 건의 거래 데이터를 분석하여 정확한 시세 정보 제공</p>
                         </div>
                     </div>
                     
                     <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-shield-alt text-white"></i>
+                        <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-shield-alt text-blue-600"></i>
                         </div>
                         <div>
-                            <h4 class="text-lg font-semibold mb-2">보안 및 안전</h4>
-                            <p class="text-tech-400 text-sm">최고 수준의 보안 기술로 안전하고 신뢰할 수 있는 거래 환경 제공</p>
+                            <h4 class="text-lg font-semibold mb-2 text-primary-900">보안 및 안전</h4>
+                            <p class="text-neutral-600 text-sm">최고 수준의 보안 기술로 안전하고 신뢰할 수 있는 거래 환경 제공</p>
                         </div>
                     </div>
                     
                     <div class="flex items-start space-x-4">
-                        <div class="w-12 h-12 bg-gradient-to-br from-yellow-500 to-yellow-600 rounded-xl flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-cogs text-white"></i>
+                        <div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-cogs text-yellow-600"></i>
                         </div>
                         <div>
-                            <h4 class="text-lg font-semibold mb-2">통합 솔루션</h4>
-                            <p class="text-tech-400 text-sm">중고차 거래의 모든 과정을 아우르는 통합적인 솔루션 제공</p>
+                            <h4 class="text-lg font-semibold mb-2 text-primary-900">통합 솔루션</h4>
+                            <p class="text-neutral-600 text-sm">중고차 거래의 모든 과정을 아우르는 통합적인 솔루션 제공</p>
                         </div>
                     </div>
                 </div>
@@ -257,12 +252,12 @@
             
             <!-- Right Visual -->
             <div class="relative">
-                <div class="bg-gradient-to-br from-mobility-600/20 to-tech-600/20 backdrop-blur-lg rounded-3xl border border-mobility-500/30 p-12 text-center">
-                    <div class="w-32 h-32 bg-gradient-to-br from-mobility-500 to-tech-500 rounded-3xl mx-auto mb-8 flex items-center justify-center">
+                <div class="bg-white rounded-3xl border border-neutral-200 p-12 text-center shadow-xl">
+                    <div class="w-32 h-32 bg-gradient-to-br from-accent-500 to-accent-600 rounded-3xl mx-auto mb-8 flex items-center justify-center">
                         <i class="fas fa-robot text-5xl text-white"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-white mb-4">AI 기반 모빌리티 솔루션</h3>
-                    <p class="text-tech-300">
+                    <h3 class="text-2xl font-bold text-primary-900 mb-4">AI 기반 모빌리티 솔루션</h3>
+                    <p class="text-neutral-600">
                         차세대 기술로 중고차 거래의 새로운 패러다임을 제시합니다.
                     </p>
                 </div>
@@ -272,26 +267,26 @@
 </section>
 
 <!-- Customer Reviews Section -->
-<section class="py-20 bg-gradient-to-b from-white to-tech-50">
+<section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Header -->
         <div class="text-center mb-16">
-            <h2 class="text-4xl lg:text-5xl font-bold text-tech-900 mb-6">고객 후기</h2>
-            <p class="text-xl text-tech-600 max-w-3xl mx-auto">
+            <h2 class="text-4xl lg:text-5xl font-bold text-primary-900 mb-6">고객 후기</h2>
+            <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
                 BLH COMPANY의 솔루션을 사용하는 고객들의 생생한 후기
             </p>
         </div>
         
         <!-- Reviews Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div class="bg-white rounded-2xl p-8 shadow-lg border border-tech-200 hover:shadow-xl transition-shadow duration-300">
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-neutral-200 hover:shadow-xl transition-shadow duration-300">
                 <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mr-4">
-                        <i class="fas fa-user text-white"></i>
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-user text-blue-600"></i>
                     </div>
                     <div>
-                        <h4 class="font-bold text-tech-900">김딜러</h4>
-                        <p class="text-sm text-tech-500">중고차 딜러</p>
+                        <h4 class="font-bold text-primary-900">김딜러</h4>
+                        <p class="text-sm text-neutral-500">중고차 딜러</p>
                     </div>
                 </div>
                 <div class="flex mb-4">
@@ -301,19 +296,19 @@
                     <i class="fas fa-star text-yellow-400"></i>
                     <i class="fas fa-star text-yellow-400"></i>
                 </div>
-                <p class="text-tech-600 leading-relaxed">
+                <p class="text-neutral-600 leading-relaxed">
                     "AI 가격 산정 시스템 덕분에 정확한 매입가를 알 수 있어서 수익성이 크게 향상되었습니다. 기존에는 감으로 판단했던 부분이 데이터 기반으로 바뀌면서 훨씬 안정적인 사업을 할 수 있게 되었어요."
                 </p>
             </div>
             
-            <div class="bg-white rounded-2xl p-8 shadow-lg border border-tech-200 hover:shadow-xl transition-shadow duration-300">
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-neutral-200 hover:shadow-xl transition-shadow duration-300">
                 <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mr-4">
-                        <i class="fas fa-user text-white"></i>
+                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-user text-green-600"></i>
                     </div>
                     <div>
-                        <h4 class="font-bold text-tech-900">이소유자</h4>
-                        <p class="text-sm text-tech-500">전기차 소유자</p>
+                        <h4 class="font-bold text-primary-900">이소유자</h4>
+                        <p class="text-sm text-neutral-500">전기차 소유자</p>
                     </div>
                 </div>
                 <div class="flex mb-4">
@@ -323,19 +318,19 @@
                     <i class="fas fa-star text-yellow-400"></i>
                     <i class="fas fa-star text-yellow-400"></i>
                 </div>
-                <p class="text-tech-600 leading-relaxed">
+                <p class="text-neutral-600 leading-relaxed">
                     "전기차 배터리 상태를 실시간으로 확인할 수 있어서 안심이 됩니다. 특히 장거리 운전 전에 배터리 상태를 미리 체크할 수 있어서 매우 유용해요. 고장 예측 기능도 정말 정확합니다."
                 </p>
             </div>
             
-            <div class="bg-white rounded-2xl p-8 shadow-lg border border-tech-200 hover:shadow-xl transition-shadow duration-300">
+            <div class="bg-white rounded-2xl p-8 shadow-lg border border-neutral-200 hover:shadow-xl transition-shadow duration-300">
                 <div class="flex items-center mb-6">
-                    <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mr-4">
-                        <i class="fas fa-user text-white"></i>
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mr-4">
+                        <i class="fas fa-user text-purple-600"></i>
                     </div>
                     <div>
-                        <h4 class="font-bold text-tech-900">박사장</h4>
-                        <p class="text-sm text-tech-500">렌터카 사업자</p>
+                        <h4 class="font-bold text-primary-900">박사장</h4>
+                        <p class="text-sm text-neutral-500">렌터카 사업자</p>
                     </div>
                 </div>
                 <div class="flex mb-4">
@@ -345,7 +340,7 @@
                     <i class="fas fa-star text-yellow-400"></i>
                     <i class="fas fa-star text-yellow-400"></i>
                 </div>
-                <p class="text-tech-600 leading-relaxed">
+                <p class="text-neutral-600 leading-relaxed">
                     "탁송 관재 시스템이 정말 편리합니다. 실시간 위치 추적과 자동 정산 기능으로 업무 효율성이 크게 향상되었어요. 고객 문의가 와도 정확한 위치를 바로 알려드릴 수 있어서 고객 만족도도 높아졌습니다."
                 </p>
             </div>
@@ -354,14 +349,14 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-20 bg-gradient-to-r from-mobility-600 via-mobility-700 to-tech-600">
+<section class="py-20 bg-primary-900">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 class="text-4xl lg:text-5xl font-bold text-white mb-6">지금 시작하세요</h2>
-        <p class="text-xl text-mobility-100 mb-8 max-w-3xl mx-auto">
+        <p class="text-xl text-neutral-200 mb-8 max-w-3xl mx-auto">
             AI 기반 모빌리티 솔루션으로 중고차 거래의 새로운 경험을 만나보세요.
         </p>
         <div class="flex flex-wrap justify-center gap-4">
-            <a href="{{ url_for('contact') }}" class="inline-flex items-center px-8 py-4 bg-white text-mobility-700 font-semibold rounded-full hover:bg-tech-50 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <a href="{{ url_for('contact') }}" class="inline-flex items-center px-8 py-4 bg-white text-primary-900 font-semibold rounded-full hover:bg-neutral-100 transition-all duration-300 transform hover:scale-105 shadow-lg">
                 <i class="fas fa-phone mr-2"></i>무료 상담 신청
             </a>
             <a href="{{ url_for('services') }}" class="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-full hover:bg-white/10 transition-all duration-300">

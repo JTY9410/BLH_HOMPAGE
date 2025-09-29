@@ -47,19 +47,8 @@
             theme: {
                 extend: {
                     colors: {
-                        'mobility': {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e',
-                        },
-                        'tech': {
+                        // 현대적이고 단순한 색상 팔레트
+                        'primary': {
                             50: '#f8fafc',
                             100: '#f1f5f9',
                             200: '#e2e8f0',
@@ -70,15 +59,42 @@
                             700: '#334155',
                             800: '#1e293b',
                             900: '#0f172a',
+                        },
+                        'accent': {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe', 
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        // 단순한 그레이 스케일
+                        'neutral': {
+                            50: '#fafafa',
+                            100: '#f5f5f5',
+                            200: '#e5e5e5',
+                            300: '#d4d4d4',
+                            400: '#a3a3a3',
+                            500: '#737373',
+                            600: '#525252',
+                            700: '#404040',
+                            800: '#262626',
+                            900: '#171717',
                         }
                     },
                     fontFamily: {
-                        'sans': ['Inter', 'Noto Sans KR', 'sans-serif'],
+                        'sans': ['Inter', 'Noto Sans KR', 'system-ui', 'sans-serif'],
                     },
                     animation: {
                         'float': 'float 6s ease-in-out infinite',
                         'gradient': 'gradient 15s ease infinite',
                         'pulse-slow': 'pulse 4s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
                     },
                     keyframes: {
                         float: {
@@ -88,7 +104,18 @@
                         gradient: {
                             '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
                             '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
                         }
+                    },
+                    backdropBlur: {
+                        xs: '2px',
                     }
                 }
             }
@@ -148,30 +175,30 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full z-50 bg-gradient-to-r from-tech-900 via-mobility-800 to-tech-900 backdrop-blur-lg border-b border-tech-700/50">
+    <nav class="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-lg border-b border-neutral-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20">
+            <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <a href="{{ url_for('index') }}" class="flex items-center space-x-3 text-white hover:text-mobility-300 transition-colors duration-300">
-                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BLH COMPANY" class="h-10 w-auto filter brightness-110" loading="eager">
-                        <span class="font-bold text-xl tracking-tight">BLH COMPANY</span>
+                    <a href="{{ url_for('index') }}" class="flex items-center space-x-3 text-primary-900 hover:text-accent-600 transition-colors duration-300">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BLH COMPANY" class="h-8 w-auto" loading="eager">
+                        <span class="font-semibold text-lg tracking-tight">BLH COMPANY</span>
                     </a>
                 </div>
                 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ url_for('index') }}" class="text-tech-200 hover:text-mobility-300 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-tech-800/50">홈</a>
-                    <a href="{{ url_for('services') }}" class="text-tech-200 hover:text-mobility-300 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-tech-800/50">서비스</a>
-                    <a href="{{ url_for('about') }}" class="text-tech-200 hover:text-mobility-300 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-tech-800/50">회사소개</a>
-                    <a href="{{ url_for('notices') }}" class="text-tech-200 hover:text-mobility-300 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-tech-800/50 flex items-center">
-                        <i class="fas fa-bullhorn mr-2"></i>공지사항
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="{{ url_for('index') }}" class="text-neutral-600 hover:text-primary-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-neutral-50">홈</a>
+                    <a href="{{ url_for('services') }}" class="text-neutral-600 hover:text-primary-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-neutral-50">서비스</a>
+                    <a href="{{ url_for('about') }}" class="text-neutral-600 hover:text-primary-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-neutral-50">회사소개</a>
+                    <a href="{{ url_for('notices') }}" class="text-neutral-600 hover:text-primary-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-neutral-50 flex items-center">
+                        <i class="fas fa-bullhorn mr-2 text-xs"></i>공지사항
                     </a>
-                    <a href="{{ url_for('contact') }}" class="bg-gradient-to-r from-mobility-600 to-mobility-700 text-white px-6 py-2 rounded-full text-sm font-semibold hover:from-mobility-700 hover:to-mobility-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-mobility-500/25">문의하기</a>
+                    <a href="{{ url_for('contact') }}" class="ml-4 bg-primary-900 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-primary-800 transition-all duration-300 transform hover:scale-105">문의하기</a>
                 </div>
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
-                    <button type="button" class="text-tech-200 hover:text-white focus:outline-none focus:text-white transition-colors duration-300" id="mobile-menu-toggle">
+                    <button type="button" class="text-neutral-600 hover:text-primary-900 focus:outline-none transition-colors duration-300" id="mobile-menu-toggle">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         </svg>
@@ -182,14 +209,14 @@
         
         <!-- Mobile Navigation -->
         <div class="md:hidden hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 bg-tech-900/95 backdrop-blur-lg border-t border-tech-700/50">
-                <a href="{{ url_for('index') }}" class="text-tech-200 hover:text-mobility-300 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">홈</a>
-                <a href="{{ url_for('services') }}" class="text-tech-200 hover:text-mobility-300 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">서비스</a>
-                <a href="{{ url_for('about') }}" class="text-tech-200 hover:text-mobility-300 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">회사소개</a>
-                <a href="{{ url_for('notices') }}" class="text-tech-200 hover:text-mobility-300 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">
-                    <i class="fas fa-bullhorn mr-2"></i>공지사항
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-lg border-t border-neutral-200">
+                <a href="{{ url_for('index') }}" class="text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">홈</a>
+                <a href="{{ url_for('services') }}" class="text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">서비스</a>
+                <a href="{{ url_for('about') }}" class="text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">회사소개</a>
+                <a href="{{ url_for('notices') }}" class="text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">
+                    <i class="fas fa-bullhorn mr-2 text-xs"></i>공지사항
                 </a>
-                <a href="{{ url_for('contact') }}" class="bg-gradient-to-r from-mobility-600 to-mobility-700 text-white block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300 mt-2">문의하기</a>
+                <a href="{{ url_for('contact') }}" class="bg-primary-900 text-white block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300 mt-2">문의하기</a>
             </div>
         </div>
     </nav>
@@ -199,86 +226,65 @@
         {% block content %}{% endblock %}
     </main>
 
-    <!-- Footer - PLAN A Style -->
-    <footer class="bg-gradient-to-br from-tech-900 via-tech-800 to-mobility-900 text-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <!-- Footer -->
+    <footer class="bg-neutral-50 border-t border-neutral-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Company Info -->
                 <div class="lg:col-span-2">
-                    <div class="flex items-center space-x-3 mb-6">
-                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BLH COMPANY" class="h-12 w-auto filter brightness-110">
-                        <span class="text-2xl font-bold tracking-tight">BLH COMPANY</span>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BLH COMPANY" class="h-8 w-auto">
+                        <span class="text-xl font-semibold text-primary-900 tracking-tight">BLH COMPANY</span>
                     </div>
-                    <p class="text-tech-300 text-lg leading-relaxed mb-6 max-w-md">
+                    <p class="text-neutral-600 leading-relaxed mb-6 max-w-md">
                         AI 기반 모빌리티 솔루션으로 중고차 거래의 투명성과 효율성을 제고합니다.
                     </p>
-                    <div class="flex space-x-4">
-                        <div class="w-2 h-16 bg-gradient-to-b from-mobility-500 to-mobility-700 rounded-full"></div>
-                        <div class="w-2 h-12 bg-gradient-to-b from-mobility-600 to-mobility-800 rounded-full mt-2"></div>
-                        <div class="w-2 h-8 bg-gradient-to-b from-mobility-700 to-mobility-900 rounded-full mt-4"></div>
-                    </div>
                 </div>
                 
                 <!-- Services -->
                 <div>
-                    <h3 class="text-white font-semibold text-lg mb-6 border-b border-tech-700 pb-2">서비스</h3>
-                    <ul class="space-y-3">
-                        <li><a href="{{ url_for('services') }}" class="text-tech-300 hover:text-mobility-300 transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-gavel w-4 mr-2 group-hover:text-mobility-400"></i>온라인 경매
-                        </a></li>
-                        <li><a href="{{ url_for('services') }}" class="text-tech-300 hover:text-mobility-300 transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-battery-full w-4 mr-2 group-hover:text-mobility-400"></i>EV 진단
-                        </a></li>
-                        <li><a href="{{ url_for('services') }}" class="text-tech-300 hover:text-mobility-300 transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-chart-line w-4 mr-2 group-hover:text-mobility-400"></i>가격 산정
-                        </a></li>
-                        <li><a href="{{ url_for('services') }}" class="text-tech-300 hover:text-mobility-300 transition-colors duration-300 flex items-center group">
-                            <i class="fas fa-truck w-4 mr-2 group-hover:text-mobility-400"></i>탁송 관재
-                        </a></li>
+                    <h3 class="text-primary-900 font-medium text-sm uppercase tracking-wide mb-4">서비스</h3>
+                    <ul class="space-y-2">
+                        <li><a href="{{ url_for('services') }}" class="text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">온라인 경매</a></li>
+                        <li><a href="{{ url_for('services') }}" class="text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">EV 진단</a></li>
+                        <li><a href="{{ url_for('services') }}" class="text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">가격 산정</a></li>
+                        <li><a href="{{ url_for('services') }}" class="text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">탁송 관재</a></li>
                     </ul>
                 </div>
                 
-                <!-- Company & Contact -->
+                <!-- Contact -->
                 <div>
-                    <h3 class="text-white font-semibold text-lg mb-6 border-b border-tech-700 pb-2">연락처</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-start space-x-3">
-                            <i class="fas fa-map-marker-alt text-mobility-400 mt-1"></i>
-                            <div class="text-tech-300">
-                                <p>부산시 해운대 우동 1436</p>
-                                <p>카이저빌 613호</p>
-                            </div>
+                    <h3 class="text-primary-900 font-medium text-sm uppercase tracking-wide mb-4">연락처</h3>
+                    <div class="space-y-2">
+                        <div class="text-neutral-600 text-sm">
+                            <p>부산시 해운대 우동 1436</p>
+                            <p>카이저빌 613호</p>
                         </div>
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-envelope text-mobility-400"></i>
-                            <a href="mailto:info@blhcompany.com" class="text-tech-300 hover:text-mobility-300 transition-colors duration-300">info@blhcompany.com</a>
+                        <div>
+                            <a href="mailto:info@blhcompany.com" class="text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">info@blhcompany.com</a>
                         </div>
-                        <div class="flex items-center space-x-3">
-                            <i class="fas fa-phone text-mobility-400"></i>
-                            <a href="tel:051-123-4567" class="text-tech-300 hover:text-mobility-300 transition-colors duration-300">051-123-4567</a>
+                        <div>
+                            <a href="tel:051-123-4567" class="text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">051-123-4567</a>
                         </div>
                     </div>
                     
-                    <div class="mt-6 pt-4 border-t border-tech-700">
-                        <ul class="space-y-2">
-                            <li><a href="{{ url_for('about') }}" class="text-tech-300 hover:text-mobility-300 transition-colors duration-300">회사소개</a></li>
-                            <li><a href="{{ url_for('notices') }}" class="text-tech-300 hover:text-mobility-300 transition-colors duration-300">공지사항</a></li>
-                            <li><a href="{{ url_for('contact') }}" class="text-tech-300 hover:text-mobility-300 transition-colors duration-300">문의하기</a></li>
-                        </ul>
+                    <div class="mt-6 space-y-2">
+                        <a href="{{ url_for('about') }}" class="block text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">회사소개</a>
+                        <a href="{{ url_for('notices') }}" class="block text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">공지사항</a>
+                        <a href="{{ url_for('contact') }}" class="block text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">문의하기</a>
                     </div>
                 </div>
             </div>
             
             <!-- Bottom Bar -->
-            <div class="mt-12 pt-8 border-t border-tech-700">
+            <div class="mt-8 pt-6 border-t border-neutral-200">
                 <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-tech-400 text-sm">&copy; 2025 BLH COMPANY. All rights reserved.</p>
-                    <div class="flex items-center space-x-6 mt-4 md:mt-0">
-                        <div class="flex items-center space-x-2 text-tech-400 text-xs">
-                            <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    <p class="text-neutral-500 text-sm">&copy; 2025 BLH COMPANY. All rights reserved.</p>
+                    <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                        <div class="flex items-center space-x-2 text-neutral-500 text-xs">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
                             <span>시스템 정상 운영</span>
                         </div>
-                        <span class="text-tech-500 text-xs">Made with AI Technology</span>
                     </div>
                 </div>
             </div>
