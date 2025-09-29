@@ -18,6 +18,32 @@
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.15) 1px, transparent 0); background-size: 20px 20px;"></div>
     </div>
     
+    <!-- Background Video -->
+    <div class="absolute inset-0 flex items-center justify-center">
+        <video 
+            id="hero-video" 
+            class="w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+            autoplay 
+            muted 
+            loop 
+            playsinline
+        >
+            <source src="{{ url_for('static', filename='videos/landing-video.mp4') }}" type="video/mp4">
+        </video>
+        <!-- Video Overlay -->
+        <div class="absolute inset-0 bg-white/30"></div>
+    </div>
+    
+    <!-- Future Text Overlay -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div class="text-center z-10 bg-white/80 backdrop-blur-sm rounded-2xl px-8 py-6 mx-4">
+            <h2 id="future-text" class="text-4xl lg:text-6xl font-extrabold text-primary-900 opacity-0 transition-all duration-1000 delay-[6000ms] leading-tight">
+                모빌리티의 미래가<br>
+                <span class="text-accent-600">시작됩니다</span>
+            </h2>
+        </div>
+    </div>
+    
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <!-- Left Content -->
@@ -365,4 +391,54 @@
         </div>
     </div>
 </section>
+
+<!-- Video Animation Script -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('hero-video');
+    const futureText = document.getElementById('future-text');
+    
+    // 동영상 로드 완료 후 애니메이션 시작
+    if (video) {
+        video.addEventListener('loadeddata', function() {
+            console.log('Video loaded successfully');
+            
+            // 5초 후 동영상을 50% 투명도로 부드럽게 표시
+            setTimeout(function() {
+                video.style.opacity = '0.5';
+                video.style.transition = 'opacity 1s ease-in-out';
+            }, 5000);
+        });
+        
+        // 동영상 로드 에러 처리
+        video.addEventListener('error', function() {
+            console.log('Video failed to load');
+            video.style.display = 'none';
+        });
+        
+        // 동영상이 이미 로드된 경우 (캐시된 경우)
+        if (video.readyState >= 3) {
+            setTimeout(function() {
+                video.style.opacity = '0.5';
+                video.style.transition = 'opacity 1s ease-in-out';
+            }, 5000);
+        }
+    }
+    
+    // 6초 후 텍스트를 선명하고 부드럽게 표시
+    setTimeout(function() {
+        if (futureText) {
+            futureText.style.opacity = '1';
+            futureText.style.transform = 'translateY(0) scale(1)';
+            futureText.classList.add('text-fade-in');
+        }
+    }, 6000);
+    
+    // 텍스트에 그림자 효과 추가 (더 선명하게)
+    if (futureText) {
+        futureText.style.textShadow = '2px 2px 4px rgba(0,0,0,0.3)';
+        futureText.style.fontWeight = '700';
+    }
+});
+</script>
 {% endblock %}
