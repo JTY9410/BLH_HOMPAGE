@@ -61,7 +61,10 @@ def create_static_site():
             'context': {
                 **context, 
                 'title': 'Notices - BLH COMPANY',
-                'notices': get_sample_notices()
+                'notices': get_sample_notices(),
+                'range': range,
+                'len': len,
+                'enumerate': enumerate
             }
         }
     }
@@ -99,22 +102,16 @@ def get_static_url(endpoint, **kwargs):
 
 def get_sample_notices():
     """샘플 공지사항 데이터"""
-    return [
-        {
-            'id': 1,
-            'title': 'BLH COMPANY 웹사이트 리뉴얼 완료',
-            'content': 'AI 기반 모빌리티 솔루션을 소개하는 새로운 웹사이트가 완성되었습니다.',
-            'created_at': '2025-09-29',
+    notices_data = []
+    for i in range(1, 11):  # 10개의 샘플 공지사항 생성
+        notices_data.append({
+            'id': i,
+            'title': f'BLH COMPANY 공지사항 {i}',
+            'content': f'AI 기반 모빌리티 솔루션 관련 공지사항 내용 {i}입니다.',
+            'created_at': f'2025-09-{29-i+1:02d}',
             'author': 'BLH COMPANY'
-        },
-        {
-            'id': 2,
-            'title': 'EV 진단 서비스 출시',
-            'content': 'BLE 기반 OBD-II 진단기를 활용한 전기차 배터리 진단 서비스가 시작됩니다.',
-            'created_at': '2025-09-28',
-            'author': 'BLH COMPANY'
-        }
-    ]
+        })
+    return notices_data
 
 def create_fallback_html(file_path, filename):
     """기본 HTML 파일 생성"""
