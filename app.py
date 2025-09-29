@@ -122,6 +122,10 @@ def landing():
 def index():
     return render_template('index.html')
 
+@app.route('/landing')
+def landing_page():
+    return render_template('landing.html')
+
 @app.route('/services')
 def services():
     return render_template('services.html')
