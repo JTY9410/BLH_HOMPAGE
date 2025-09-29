@@ -5,41 +5,39 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-tech-900 via-mobility-900 to-tech-800">
-    <!-- Background Effects -->
-    <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-gradient-to-r from-mobility-500/10 via-transparent to-tech-500/10"></div>
-        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-mobility-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
-        <div class="absolute bottom-1/4 right-1/4 w-80 h-80 bg-tech-500/20 rounded-full blur-3xl animate-pulse-slow delay-1000"></div>
+<section class="relative pt-32 pb-20 overflow-hidden bg-gradient-to-br from-neutral-50 to-white">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.15) 1px, transparent 0); background-size: 20px 20px;"></div>
     </div>
     
     <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        <h1 class="text-5xl lg:text-7xl font-bold text-white mb-6">
-            <span class="bg-gradient-to-r from-mobility-400 to-tech-400 bg-clip-text text-transparent">BLH COMPANY</span>
+        <h1 class="text-5xl lg:text-7xl font-bold text-primary-900 mb-6">
+            <span class="text-accent-600">BLH COMPANY</span>
         </h1>
-        <p class="text-xl text-tech-300 max-w-3xl mx-auto">
+        <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
             모빌리티 산업의 디지털 혁신을 선도하는 AI 기반 솔루션 전문 기업
         </p>
     </div>
 </section>
 
 <!-- Company Overview Section -->
-<section class="py-20 bg-gradient-to-b from-tech-50 to-white">
+<section class="py-20 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
             <!-- Company Info -->
             <div>
-                <div class="bg-white rounded-3xl p-8 shadow-xl border border-tech-200">
-                    <h2 class="text-4xl font-bold text-tech-900 mb-8">회사 개요</h2>
+                <div class="bg-white rounded-3xl p-8 shadow-xl border border-neutral-200">
+                    <h2 class="text-4xl font-bold text-primary-900 mb-8">회사 개요</h2>
                     
                     <div class="space-y-6">
                         <div class="flex items-start space-x-4">
-                            <div class="w-12 h-12 bg-mobility-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-building text-mobility-600"></i>
+                            <div class="w-12 h-12 bg-accent-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-building text-accent-600"></i>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-tech-900 mb-1">회사명</h4>
-                                <p class="text-tech-600">비엘에이치컴퍼니 주식회사</p>
+                                <h4 class="font-semibold text-primary-900 mb-1">회사명</h4>
+                                <p class="text-neutral-600">비엘에이치컴퍼니 주식회사</p>
                             </div>
                         </div>
                         
