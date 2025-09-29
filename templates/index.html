@@ -18,19 +18,15 @@
         <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.15) 1px, transparent 0); background-size: 20px 20px;"></div>
     </div>
     
-    <!-- Background Video -->
+    <!-- Background Image -->
     <div class="absolute inset-0 flex items-center justify-center">
-        <video 
-            id="hero-video" 
+        <img 
+            id="hero-image" 
             class="w-full h-full object-cover opacity-0 transition-opacity duration-1000"
-            autoplay 
-            muted 
-            loop 
-            playsinline
-        >
-            <source src="{{ url_for('static', filename='videos/landing-video.mp4') }}" type="video/mp4">
-        </video>
-        <!-- Video Overlay -->
+            src="{{ url_for('static', filename='images/hero/제목 없는 디자인.png') }}"
+            alt="BLH COMPANY 히어로 이미지"
+        />
+        <!-- Image Overlay -->
         <div class="absolute inset-0 bg-white/30"></div>
     </div>
     
@@ -383,34 +379,34 @@
     </div>
 </section>
 
-<!-- Video Animation Script -->
+<!-- Image Animation Script -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const video = document.getElementById('hero-video');
+    const heroImage = document.getElementById('hero-image');
     const futureText = document.getElementById('future-text');
     
-    console.log('Page loaded, initializing video animations...');
+    console.log('Page loaded, initializing image animations...');
     
-    // 동영상 애니메이션 초기화
-    if (video) {
-        console.log('Video element found, setting up animations...');
+    // 이미지 애니메이션 초기화
+    if (heroImage) {
+        console.log('Hero image element found, setting up animations...');
         
-        // 5초 후 동영상을 50% 투명도로 표시
+        // 5초 후 이미지를 50% 투명도로 표시
         setTimeout(function() {
-            console.log('5초 경과: 동영상 50% 투명도로 표시');
-            video.style.opacity = '0.5';
-            video.style.transition = 'opacity 1.5s ease-in-out';
+            console.log('5초 경과: 이미지 50% 투명도로 표시');
+            heroImage.style.opacity = '0.5';
+            heroImage.style.transition = 'opacity 1.5s ease-in-out';
         }, 5000);
         
-        // 동영상 로드 에러 처리
-        video.addEventListener('error', function() {
-            console.log('Video failed to load - hiding video element');
-            video.style.display = 'none';
+        // 이미지 로드 에러 처리
+        heroImage.addEventListener('error', function() {
+            console.log('Image failed to load - hiding image element');
+            heroImage.style.display = 'none';
         });
         
-        // 동영상 로드 성공 시 로그
-        video.addEventListener('loadeddata', function() {
-            console.log('Video loaded successfully');
+        // 이미지 로드 성공 시 로그
+        heroImage.addEventListener('load', function() {
+            console.log('Hero image loaded successfully');
         });
     }
     

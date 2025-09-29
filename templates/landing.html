@@ -486,6 +486,32 @@
         </div>
         
         
+        <!-- 5초 후 나타나는 문구 -->
+        <div class="delayed-content absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 text-center opacity-0 invisible transition-all duration-1000" id="delayedContent">
+            <div class="bg-black/80 backdrop-blur-lg rounded-3xl p-8 md:p-12 border-2 border-accent-300/30 shadow-2xl max-w-2xl mx-4">
+                <h3 class="text-3xl md:text-4xl font-bold text-white mb-6 bg-gradient-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent">
+                    모빌리티의 미래가 시작됩니다
+                </h3>
+                <p class="text-lg md:text-xl text-neutral-200 mb-8 leading-relaxed">
+                    AI와 빅데이터로 혁신하는 중고차 거래의 새로운 기준
+                </p>
+                <div class="grid grid-cols-3 gap-6 md:gap-8">
+                    <div class="text-center">
+                        <i class="fas fa-microchip text-3xl md:text-4xl text-accent-400 mb-3 animate-pulse"></i>
+                        <p class="text-sm md:text-base text-white font-medium">AI 기반 진단</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-coins text-3xl md:text-4xl text-accent-400 mb-3 animate-pulse"></i>
+                        <p class="text-sm md:text-base text-white font-medium">정확한 가격 산정</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="fas fa-shipping-fast text-3xl md:text-4xl text-accent-400 mb-3 animate-pulse"></i>
+                        <p class="text-sm md:text-base text-white font-medium">스마트 탁송</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- 5초 후 나타나는 홈페이지 이동 문구 -->
         <div class="home-navigation-text absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 px-8 py-4 bg-gradient-to-r from-mobility-600 to-mobility-700 text-white font-semibold rounded-full cursor-pointer select-none border-2 border-white/30 backdrop-blur-lg shadow-lg hover:from-mobility-700 hover:to-mobility-800 hover:shadow-xl transition-all duration-300 md:bottom-10 md:px-10 md:py-5" id="homeNavigationText">
             <i class="fas fa-home mr-2"></i>
@@ -523,14 +549,16 @@
                 video.classList.add('fade-out');
                 
                 // 5초 후 나타나는 문구 표시
-                delayedContent.classList.add('show');
+                if (delayedContent) {
+                    delayedContent.style.opacity = '1';
+                    delayedContent.style.visibility = 'visible';
+                }
                 
                 // 홈페이지 이동 문구도 표시
                 homeNavigationText.classList.add('show');
                 
                 console.log('Video faded out and delayed content shown');
             }, 5000);
-            
             // 홈페이지 이동 버튼 클릭 이벤트
             const homepageButton = document.querySelector('.btn-homepage');
             if (homepageButton) {
