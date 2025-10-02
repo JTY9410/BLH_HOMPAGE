@@ -113,7 +113,7 @@ def init_db():
     conn.commit()
     conn.close()
 
-# 라우트 정의
+# 한국어 라우트 정의
 @app.route('/')
 def landing():
     return render_template('landing.html')
@@ -125,6 +125,27 @@ def index():
 @app.route('/landing')
 def landing_page():
     return render_template('landing.html')
+
+# 영문 라우트 정의
+@app.route('/en')
+def index_en():
+    return render_template('index_en.html')
+
+@app.route('/en/services')
+def services_en():
+    return render_template('services_en.html')
+
+@app.route('/en/about')
+def about_en():
+    return render_template('about_en.html')
+
+@app.route('/en/investors')
+def investors_en():
+    return render_template('investors_en.html')
+
+@app.route('/en/contact')
+def contact_en():
+    return render_template('contact_en.html')
 
 @app.route('/services')
 def services():

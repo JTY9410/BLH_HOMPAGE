@@ -83,16 +83,31 @@
                 </div>
             </div>
             
-            <!-- Right Visual -->
+            <!-- Right Visual with Creative Design -->
             <div class="relative">
-                <!-- Enhanced Main Card -->
-                <div class="relative bg-white rounded-3xl border border-neutral-200 p-10 shadow-soft hover:shadow-medium transition-all duration-500 hover:-translate-y-2 group">
-                    <div class="text-center">
-                        <div class="w-28 h-28 bg-gradient-to-br from-accent-500 via-accent-600 to-primary-600 rounded-3xl mx-auto mb-8 flex items-center justify-center group-hover:animate-glow transition-all duration-500 group-hover:scale-110">
-                            <i class="fas fa-microchip text-4xl text-white group-hover:animate-pulse-slow"></i>
+                <!-- Morphing Background Shape -->
+                <div class="morph-shape absolute -top-10 -left-10 w-32 h-32 bg-gradient-to-br from-primary-200/30 to-accent-200/30 -z-10"></div>
+                <div class="morph-shape absolute -bottom-10 -right-10 w-24 h-24 bg-gradient-to-br from-accent-200/30 to-primary-200/30 -z-10" style="animation-delay: -2s;"></div>
+                
+                <!-- Enhanced Main Card with 3D Effect -->
+                <div class="card-3d relative">
+                    <div class="card-inner glass-card rounded-3xl p-10 shadow-hard hover:shadow-glow-lg transition-all duration-500 group holographic">
+                        <div class="text-center relative z-10">
+                            <div class="w-28 h-28 bg-gradient-to-br from-accent-500 via-accent-600 to-primary-600 rounded-3xl mx-auto mb-8 flex items-center justify-center group-hover:animate-glow transition-all duration-500 group-hover:scale-110 magnetic">
+                                <i class="fas fa-microchip text-4xl text-white group-hover:animate-pulse-slow neon-blue"></i>
+                            </div>
+                            <h3 class="text-3xl font-bold text-primary-900 mb-4 group-hover:text-accent-600 transition-colors duration-300 gradient-text-fire">AI 진단 시스템</h3>
+                            <p class="text-neutral-600 text-lg">실시간 차량 상태 분석</p>
                         </div>
-                        <h3 class="text-3xl font-bold text-primary-900 mb-4 group-hover:text-accent-600 transition-colors duration-300">AI 진단 시스템</h3>
-                        <p class="text-neutral-600 text-lg">실시간 차량 상태 분석</p>
+                        
+                        <!-- Particle System -->
+                        <div class="particle-container">
+                            <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
+                            <div class="particle" style="left: 30%; animation-delay: 1s;"></div>
+                            <div class="particle" style="left: 50%; animation-delay: 2s;"></div>
+                            <div class="particle" style="left: 70%; animation-delay: 3s;"></div>
+                            <div class="particle" style="left: 90%; animation-delay: 4s;"></div>
+                        </div>
                     </div>
                 </div>
                 

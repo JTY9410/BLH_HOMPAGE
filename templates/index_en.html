@@ -1,0 +1,434 @@
+{% extends "base_en.html" %}
+
+{% block title %}BLH COMPANY - AI-Powered Mobility Solutions{% endblock %}
+
+{% block description %}Leading digital transformation in used car trading with AI and mobility technology. BLH COMPANY provides innovative solutions for online auctions, EV diagnostics, pricing, and logistics.{% endblock %}
+
+{% block og_title %}BLH COMPANY - Digital Innovation in Used Car Trading{% endblock %}
+{% block og_description %}AI and mobility technology integration for innovative used car trading solutions. Online auctions, EV diagnostics, pricing systems, and logistics management.{% endblock %}
+
+{% block twitter_title %}BLH COMPANY - AI-Powered Mobility Solutions{% endblock %}
+{% block twitter_description %}Leading digital transformation in used car trading through AI-powered mobility solutions{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Modern Design -->
+<section class="relative min-h-screen pt-16 overflow-hidden bg-gradient-to-br from-neutral-50 via-white to-primary-50">
+    <!-- Enhanced Background Pattern -->
+    <div class="absolute inset-0 opacity-[0.03]">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(59,130,246,0.8) 1px, transparent 0); background-size: 40px 40px;"></div>
+    </div>
+    
+    <!-- Animated Background Gradient -->
+    <div class="absolute inset-0 bg-gradient-to-r from-primary-100/20 via-accent-100/20 to-primary-100/20 animate-gradient bg-[length:200%_200%]"></div>
+    
+    <!-- Enhanced Background Image -->
+    <div class="absolute inset-0 flex items-center justify-center">
+        <img 
+            id="hero-image" 
+            class="w-full h-full object-cover opacity-0 transition-all duration-[1500ms] ease-out scale-105 hover:scale-100"
+            src="{{ url_for('static', filename='images/hero/제목 없는 디자인.png') }}"
+            alt="BLH COMPANY Hero Background"
+        />
+        <!-- Enhanced Image Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-white/20 to-white/30"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Left Content -->
+            <div class="space-y-8">
+                <!-- Badge -->
+                <div class="inline-flex items-center px-4 py-2 bg-accent-50 border border-accent-200 rounded-full">
+                    <i class="fas fa-robot mr-2 text-accent-600 text-sm"></i>
+                    <span class="text-sm font-medium text-accent-700">AI-Powered Mobility Solutions</span>
+                </div>
+                
+                <!-- Enhanced Main Title -->
+                <h1 class="text-6xl lg:text-7xl font-black leading-tight text-primary-900 tracking-tight">
+                    Digital Innovation in<br>
+                    <span class="bg-gradient-to-r from-accent-600 via-accent-500 to-primary-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">Used Car Trading</span>
+                </h1>
+                
+                <!-- Description -->
+                <p class="text-xl text-neutral-600 leading-relaxed max-w-2xl">
+                    AI-powered solutions for transparent and efficient used car trading. Online auctions, EV diagnostics, pricing systems, and logistics management leading the future of mobility industry.
+                </p>
+                
+                <!-- Stats -->
+                <div class="grid grid-cols-3 gap-8 py-8">
+                    <div class="text-center">
+                        <div class="text-3xl lg:text-4xl font-bold text-primary-900 mb-2">360K</div>
+                        <div class="text-sm text-neutral-500 font-medium">Vehicles Diagnosed</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl lg:text-4xl font-bold text-primary-900 mb-2">5</div>
+                        <div class="text-sm text-neutral-500 font-medium">Platform Operations</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl lg:text-4xl font-bold text-primary-900 mb-2">100K</div>
+                        <div class="text-sm text-neutral-500 font-medium">Logistics System</div>
+                    </div>
+                </div>
+                
+                <!-- Enhanced CTA Buttons -->
+                <div class="flex flex-wrap gap-6">
+                    <a href="{{ url_for('services_en') }}" class="group inline-flex items-center px-10 py-5 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-bold rounded-2xl hover:from-primary-700 hover:to-primary-800 transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-xl hover:shadow-2xl">
+                        <i class="fas fa-rocket mr-3 group-hover:animate-bounce-slow"></i>View Services
+                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                    <a href="{{ url_for('investors_en') }}" class="group inline-flex items-center px-10 py-5 border-2 border-neutral-300 text-neutral-700 font-bold rounded-2xl hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-300 hover:shadow-lg">
+                        <i class="fas fa-chart-line mr-3 group-hover:animate-pulse-slow"></i>For Investors
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right Visual -->
+            <div class="relative">
+                <!-- Enhanced Main Card -->
+                <div class="relative bg-white rounded-3xl border border-neutral-200 p-10 shadow-soft hover:shadow-medium transition-all duration-500 hover:-translate-y-2 group">
+                    <div class="text-center">
+                        <div class="w-28 h-28 bg-gradient-to-br from-accent-500 via-accent-600 to-primary-600 rounded-3xl mx-auto mb-8 flex items-center justify-center group-hover:animate-glow transition-all duration-500 group-hover:scale-110">
+                            <i class="fas fa-microchip text-4xl text-white group-hover:animate-pulse-slow"></i>
+                        </div>
+                        <h3 class="text-3xl font-bold text-primary-900 mb-4 group-hover:text-accent-600 transition-colors duration-300">AI Diagnostic System</h3>
+                        <p class="text-neutral-600 text-lg">Real-time vehicle condition analysis</p>
+                    </div>
+                </div>
+                
+                <!-- Enhanced Floating Cards -->
+                <div class="absolute -top-6 -left-6 bg-white rounded-3xl border border-neutral-200 p-6 shadow-medium hover:shadow-hard animate-float transition-all duration-300 hover:scale-110 group/card">
+                    <div class="text-center">
+                        <i class="fas fa-coins text-3xl text-success-500 mb-3 group-hover/card:animate-bounce-slow"></i>
+                        <div class="text-base font-bold text-neutral-700 group-hover/card:text-success-600 transition-colors duration-300">Accurate Pricing</div>
+                    </div>
+                </div>
+                
+                <div class="absolute -bottom-6 -right-6 bg-white rounded-3xl border border-neutral-200 p-6 shadow-medium hover:shadow-hard animate-float transition-all duration-300 hover:scale-110 group/card" style="animation-delay: 1s;">
+                    <div class="text-center">
+                        <i class="fas fa-shipping-fast text-3xl text-primary-500 mb-3 group-hover/card:animate-bounce-slow"></i>
+                        <div class="text-base font-bold text-neutral-700 group-hover/card:text-primary-600 transition-colors duration-300">Smart Logistics</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Services Section -->
+<section class="py-24 bg-gradient-to-b from-white via-neutral-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Enhanced Section Header -->
+        <div class="text-center mb-20 animate-fade-in-up">
+            <div class="inline-flex items-center px-6 py-3 bg-primary-100 border border-primary-200 rounded-full mb-6">
+                <i class="fas fa-cogs mr-3 text-primary-600"></i>
+                <span class="text-primary-700 font-semibold">Core Services</span>
+            </div>
+            <h2 class="text-5xl lg:text-6xl font-black text-primary-900 mb-8 tracking-tight">
+                <span class="bg-gradient-to-r from-primary-600 via-accent-600 to-primary-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">Innovative Solutions</span>
+            </h2>
+            <p class="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+                Leading the digital transformation of the used car industry with AI and mobility technology integration.
+            </p>
+        </div>
+        
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <!-- Enhanced Primary Service -->
+            <div class="lg:col-span-1">
+                <div class="group bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 rounded-3xl p-10 text-white shadow-hard hover:shadow-glow-lg transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
+                    <!-- Background Pattern -->
+                    <div class="absolute inset-0 opacity-10">
+                        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 30px 30px;"></div>
+                    </div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-8">
+                            <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mr-6 group-hover:scale-110 group-hover:bg-white/30 transition-all duration-500">
+                                <i class="fas fa-gavel text-3xl group-hover:animate-bounce-slow"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-black mb-2 group-hover:text-accent-200 transition-colors duration-300">Used Car Auctions & Sales</h3>
+                                <span class="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-bold">Core Service</span>
+                            </div>
+                        </div>
+                        <p class="text-neutral-200 text-lg mb-6">
+                            C2B online used car auction platform development and public auction system operation providing transparent and efficient used car trading.
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-400"></i>
+                                <span>Specialized automotive diagnostic technology</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-400"></i>
+                                <span>Big data-based pricing system</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fas fa-check mr-3 text-green-400"></i>
+                                <span>Transparent transaction process</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Secondary Services Grid -->
+            <div class="space-y-8">
+                <!-- EV Diagnostics -->
+                <div class="bg-white rounded-3xl border border-neutral-200 p-8 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-battery-three-quarters text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-primary-900 mb-1">EV Diagnostics</h3>
+                            <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Technology</span>
+                        </div>
+                    </div>
+                    <p class="text-neutral-600 mb-4">
+                        BLE-based OBD-II diagnostic device for electric vehicle battery condition analysis and performance evaluation.
+                    </p>
+                    <ul class="space-y-2 text-sm text-neutral-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check mr-2 text-green-500"></i>
+                            <span>Real-time battery health monitoring</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check mr-2 text-green-500"></i>
+                            <span>Predictive maintenance alerts</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Logistics Management -->
+                <div class="bg-white rounded-3xl border border-neutral-200 p-8 shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1 group">
+                    <div class="flex items-center mb-6">
+                        <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mr-4 group-hover:scale-110 transition-all duration-300">
+                            <i class="fas fa-truck text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-primary-900 mb-1">Logistics Management</h3>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">Platform</span>
+                        </div>
+                    </div>
+                    <p class="text-neutral-600 mb-4">
+                        Comprehensive vehicle transportation and custody management system for efficient logistics operations.
+                    </p>
+                    <ul class="space-y-2 text-sm text-neutral-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check mr-2 text-blue-500"></i>
+                            <span>Real-time tracking system</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check mr-2 text-blue-500"></i>
+                            <span>Automated scheduling</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Investment Opportunity Section -->
+<section class="py-24 bg-gradient-to-br from-primary-900 via-primary-800 to-accent-900 relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-10">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 30px 30px;"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <!-- Left Content -->
+            <div class="text-white">
+                <div class="inline-flex items-center px-6 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full mb-8">
+                    <i class="fas fa-chart-line mr-3 text-accent-200"></i>
+                    <span class="text-accent-200 font-semibold">Investment Opportunity</span>
+                </div>
+                
+                <h2 class="text-5xl lg:text-6xl font-black mb-8 tracking-tight">
+                    Join the Future of <span class="text-accent-200">Mobility</span>
+                </h2>
+                
+                <p class="text-xl text-neutral-200 mb-8 leading-relaxed">
+                    Invest in the digital transformation of the automotive industry. BLH COMPANY is pioneering AI-powered solutions that are reshaping how used cars are traded globally.
+                </p>
+                
+                <!-- Investment Highlights -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8">
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                        <div class="text-3xl font-bold text-accent-200 mb-2">$50M</div>
+                        <div class="text-neutral-300">Market Opportunity</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                        <div class="text-3xl font-bold text-accent-200 mb-2">300%</div>
+                        <div class="text-neutral-300">Growth Projection</div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-wrap gap-4">
+                    <a href="{{ url_for('investors_en') }}" class="group inline-flex items-center px-8 py-4 bg-white text-primary-900 font-bold rounded-2xl hover:bg-neutral-100 transition-all duration-300 transform hover:scale-105 shadow-xl">
+                        <i class="fas fa-file-alt mr-3 group-hover:animate-bounce-slow"></i>Investment Deck
+                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </a>
+                    <a href="{{ url_for('contact_en') }}" class="group inline-flex items-center px-8 py-4 border-2 border-white/30 text-white font-bold rounded-2xl hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm">
+                        <i class="fas fa-handshake mr-3 group-hover:animate-pulse-slow"></i>Contact Us
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right Visual - Investment Chart -->
+            <div class="relative">
+                <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 border border-white/20">
+                    <h3 class="text-2xl font-bold text-white mb-6">Market Growth Projection</h3>
+                    
+                    <!-- Simulated Chart -->
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-neutral-300">2025</span>
+                            <div class="flex-1 mx-4 bg-white/20 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-accent-400 to-accent-500 h-3 rounded-full w-1/4"></div>
+                            </div>
+                            <span class="text-white font-bold">$12.5M</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-neutral-300">2026</span>
+                            <div class="flex-1 mx-4 bg-white/20 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-accent-400 to-accent-500 h-3 rounded-full w-1/2"></div>
+                            </div>
+                            <span class="text-white font-bold">$25M</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-neutral-300">2027</span>
+                            <div class="flex-1 mx-4 bg-white/20 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-accent-400 to-accent-500 h-3 rounded-full w-3/4"></div>
+                            </div>
+                            <span class="text-white font-bold">$37.5M</span>
+                        </div>
+                        <div class="flex items-center justify-between">
+                            <span class="text-neutral-300">2028</span>
+                            <div class="flex-1 mx-4 bg-white/20 rounded-full h-3">
+                                <div class="bg-gradient-to-r from-accent-400 to-accent-500 h-3 rounded-full w-full"></div>
+                            </div>
+                            <span class="text-white font-bold">$50M</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 pt-6 border-t border-white/20">
+                        <div class="flex justify-between items-center">
+                            <span class="text-neutral-300">ROI Projection</span>
+                            <span class="text-2xl font-bold text-accent-200">300%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technology Showcase -->
+<section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-bold text-primary-900 mb-6">Cutting-Edge Technology</h2>
+            <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
+                Our AI-powered platform leverages the latest technologies to revolutionize the used car industry.
+            </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- AI & Machine Learning -->
+            <div class="group bg-gradient-to-br from-purple-50 to-indigo-50 rounded-3xl p-8 border border-purple-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300">
+                    <i class="fas fa-brain text-2xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-primary-900 mb-4">AI & Machine Learning</h3>
+                <p class="text-neutral-600 mb-4">
+                    Advanced algorithms for vehicle condition assessment, price prediction, and market analysis.
+                </p>
+                <ul class="space-y-2 text-sm text-neutral-600">
+                    <li class="flex items-center">
+                        <i class="fas fa-check mr-2 text-purple-500"></i>
+                        <span>Deep learning models</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check mr-2 text-purple-500"></i>
+                        <span>Predictive analytics</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check mr-2 text-purple-500"></i>
+                        <span>Computer vision</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Blockchain & Security -->
+            <div class="group bg-gradient-to-br from-green-50 to-emerald-50 rounded-3xl p-8 border border-green-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300">
+                    <i class="fas fa-shield-alt text-2xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-primary-900 mb-4">Blockchain & Security</h3>
+                <p class="text-neutral-600 mb-4">
+                    Secure, transparent, and immutable transaction records ensuring trust and reliability.
+                </p>
+                <ul class="space-y-2 text-sm text-neutral-600">
+                    <li class="flex items-center">
+                        <i class="fas fa-check mr-2 text-green-500"></i>
+                        <span>Smart contracts</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check mr-2 text-green-500"></i>
+                        <span>Immutable records</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check mr-2 text-green-500"></i>
+                        <span>Decentralized verification</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- IoT & Connectivity -->
+            <div class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-3xl p-8 border border-blue-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-all duration-300">
+                    <i class="fas fa-wifi text-2xl text-white"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-primary-900 mb-4">IoT & Connectivity</h3>
+                <p class="text-neutral-600 mb-4">
+                    Connected devices and sensors for real-time monitoring and data collection.
+                </p>
+                <ul class="space-y-2 text-sm text-neutral-600">
+                    <li class="flex items-center">
+                        <i class="fas fa-check mr-2 text-blue-500"></i>
+                        <span>OBD-II integration</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check mr-2 text-blue-500"></i>
+                        <span>Real-time monitoring</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-check mr-2 text-blue-500"></i>
+                        <span>Cloud connectivity</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const heroImage = document.getElementById('hero-image');
+
+    if (heroImage) {
+        setTimeout(function() {
+            heroImage.style.opacity = '0.5';
+            heroImage.style.transition = 'opacity 1.5s ease-in-out';
+        }, 5000);
+
+        heroImage.addEventListener('error', function() {
+            heroImage.style.display = 'none';
+        });
+    }
+});
+</script>
+{% endblock %}

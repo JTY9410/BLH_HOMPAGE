@@ -1,0 +1,451 @@
+/* Creative Design Elements - Canva-inspired */
+
+/* Morphing Shapes */
+.morph-shape {
+    position: absolute;
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    animation: morph 8s ease-in-out infinite;
+}
+
+@keyframes morph {
+    0%, 100% {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        transform: translate3d(0, 0, 0) rotateZ(0deg);
+    }
+    34% {
+        border-radius: 70% 60% 20% 40% / 40% 40% 60% 50%;
+        transform: translate3d(5px, -10px, 0) rotateZ(-5deg);
+    }
+    67% {
+        border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+        transform: translate3d(-5px, 10px, 0) rotateZ(5deg);
+    }
+}
+
+/* 3D Card Effects */
+.card-3d {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.card-3d:hover .card-inner {
+    transform: rotateY(10deg) rotateX(5deg);
+}
+
+.card-inner {
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+/* Glassmorphism Enhanced */
+.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 8px 32px 0 rgba(31, 38, 135, 0.37),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.glass-card-dark {
+    background: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 
+        0 8px 32px 0 rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Neumorphism Elements */
+.neuro-card {
+    background: #f0f0f0;
+    border-radius: 20px;
+    box-shadow: 
+        20px 20px 60px #d1d1d1,
+        -20px -20px 60px #ffffff;
+    transition: all 0.3s ease;
+}
+
+.neuro-card:hover {
+    box-shadow: 
+        inset 20px 20px 60px #d1d1d1,
+        inset -20px -20px 60px #ffffff;
+}
+
+.neuro-button {
+    background: linear-gradient(145deg, #e6e6e6, #ffffff);
+    border-radius: 15px;
+    box-shadow: 
+        5px 5px 10px #d1d1d1,
+        -5px -5px 10px #ffffff;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.neuro-button:active {
+    box-shadow: 
+        inset 5px 5px 10px #d1d1d1,
+        inset -5px -5px 10px #ffffff;
+}
+
+/* Gradient Text Effects */
+.gradient-text-rainbow {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: rainbow-gradient 3s ease infinite;
+}
+
+@keyframes rainbow-gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.gradient-text-fire {
+    background: linear-gradient(45deg, #ff6b35, #f7931e, #ffd23f);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fire-gradient 2s ease infinite;
+}
+
+@keyframes fire-gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Particle System */
+.particle-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: radial-gradient(circle, #3b82f6, transparent);
+    border-radius: 50%;
+    animation: float-particle 6s linear infinite;
+}
+
+@keyframes float-particle {
+    0% {
+        transform: translateY(100vh) translateX(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-10vh) translateX(100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Magnetic Hover Effect */
+.magnetic {
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.magnetic:hover {
+    transform: translate3d(0, -8px, 0);
+}
+
+/* Liquid Shapes */
+.liquid-shape {
+    position: relative;
+    overflow: hidden;
+}
+
+.liquid-shape::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+    animation: liquid-move 8s ease-in-out infinite;
+}
+
+@keyframes liquid-move {
+    0%, 100% {
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+    33% {
+        transform: translate3d(30px, -30px, 0) scale(1.1);
+    }
+    66% {
+        transform: translate3d(-20px, 20px, 0) scale(0.9);
+    }
+}
+
+/* Holographic Effect */
+.holographic {
+    position: relative;
+    background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.1) 50%, transparent 70%);
+    background-size: 200% 200%;
+    animation: holographic-shine 3s ease-in-out infinite;
+}
+
+.holographic::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: holographic-sweep 2s ease-in-out infinite;
+}
+
+@keyframes holographic-shine {
+    0%, 100% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+}
+
+@keyframes holographic-sweep {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Isometric Elements */
+.isometric-card {
+    transform: rotateX(15deg) rotateY(-15deg);
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease;
+}
+
+.isometric-card:hover {
+    transform: rotateX(20deg) rotateY(-20deg) translateZ(20px);
+}
+
+.isometric-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    transform: translateZ(-10px);
+    filter: brightness(0.8);
+    z-index: -1;
+}
+
+/* Neon Glow Effects */
+.neon-blue {
+    color: #00f5ff;
+    text-shadow: 
+        0 0 5px #00f5ff,
+        0 0 10px #00f5ff,
+        0 0 15px #00f5ff,
+        0 0 20px #00f5ff;
+    animation: neon-flicker 2s ease-in-out infinite alternate;
+}
+
+.neon-pink {
+    color: #ff006e;
+    text-shadow: 
+        0 0 5px #ff006e,
+        0 0 10px #ff006e,
+        0 0 15px #ff006e,
+        0 0 20px #ff006e;
+    animation: neon-flicker 2.5s ease-in-out infinite alternate;
+}
+
+@keyframes neon-flicker {
+    0%, 100% {
+        text-shadow: 
+            0 0 5px currentColor,
+            0 0 10px currentColor,
+            0 0 15px currentColor,
+            0 0 20px currentColor;
+    }
+    50% {
+        text-shadow: 
+            0 0 2px currentColor,
+            0 0 5px currentColor,
+            0 0 8px currentColor,
+            0 0 12px currentColor;
+    }
+}
+
+/* Geometric Patterns */
+.geometric-bg {
+    background-image: 
+        linear-gradient(30deg, #3b82f6 12%, transparent 12.5%, transparent 87%, #3b82f6 87.5%, #3b82f6),
+        linear-gradient(150deg, #3b82f6 12%, transparent 12.5%, transparent 87%, #3b82f6 87.5%, #3b82f6),
+        linear-gradient(30deg, #3b82f6 12%, transparent 12.5%, transparent 87%, #3b82f6 87.5%, #3b82f6),
+        linear-gradient(150deg, #3b82f6 12%, transparent 12.5%, transparent 87%, #3b82f6 87.5%, #3b82f6);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px;
+    opacity: 0.05;
+}
+
+/* Floating Action Buttons */
+.fab {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    z-index: 1000;
+}
+
+.fab:hover {
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+}
+
+.fab-bottom-right {
+    bottom: 30px;
+    right: 30px;
+}
+
+/* Parallax Layers */
+.parallax-container {
+    position: relative;
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    perspective: 1px;
+}
+
+.parallax-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.parallax-back {
+    transform: translateZ(-1px) scale(2);
+}
+
+.parallax-base {
+    transform: translateZ(0);
+}
+
+/* Micro Interactions */
+.micro-bounce {
+    transition: transform 0.2s ease;
+}
+
+.micro-bounce:hover {
+    transform: translateY(-2px);
+    animation: micro-bounce-anim 0.6s ease;
+}
+
+@keyframes micro-bounce-anim {
+    0%, 20%, 53%, 80%, 100% {
+        transform: translateY(-2px);
+    }
+    40%, 43% {
+        transform: translateY(-4px);
+    }
+    70% {
+        transform: translateY(-1px);
+    }
+    90% {
+        transform: translateY(-2px);
+    }
+}
+
+/* Data Visualization Elements */
+.chart-bar {
+    background: linear-gradient(to top, #3b82f6, #06b6d4);
+    border-radius: 4px 4px 0 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: chart-shine 2s ease-in-out infinite;
+}
+
+@keyframes chart-shine {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .card-3d:hover .card-inner {
+        transform: none;
+    }
+    
+    .isometric-card {
+        transform: none;
+    }
+    
+    .isometric-card:hover {
+        transform: translateY(-5px);
+    }
+    
+    .fab {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .fab-bottom-right {
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* Dark Mode Adaptations */
+@media (prefers-color-scheme: dark) {
+    .neuro-card {
+        background: #2d3748;
+        box-shadow: 
+            20px 20px 60px #1a202c,
+            -20px -20px 60px #4a5568;
+    }
+    
+    .neuro-card:hover {
+        box-shadow: 
+            inset 20px 20px 60px #1a202c,
+            inset -20px -20px 60px #4a5568;
+    }
+    
+    .neuro-button {
+        background: linear-gradient(145deg, #2d3748, #4a5568);
+        box-shadow: 
+            5px 5px 10px #1a202c,
+            -5px -5px 10px #4a5568;
+    }
+    
+    .neuro-button:active {
+        box-shadow: 
+            inset 5px 5px 10px #1a202c,
+            inset -5px -5px 10px #4a5568;
+    }
+}

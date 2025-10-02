@@ -1,19 +1,19 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}BLH COMPANY - AI 기반 모빌리티 솔루션{% endblock %}</title>
+    <title>{% block title %}BLH COMPANY - AI-Powered Mobility Solutions{% endblock %}</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="{% block description %}AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신. 온라인 경매, EV 진단, 가격 산정, 탁송 관재 시스템을 제공하는 BLH COMPANY입니다.{% endblock %}">
-    <meta name="keywords" content="중고차, AI, 모빌리티, 전기차 진단, 가격 산정, 온라인 경매, 탁송 관재, 부산, BLH COMPANY">
+    <meta name="description" content="{% block description %}Leading digital transformation in used car trading with AI and mobility technology. BLH COMPANY provides innovative solutions for online auctions, EV diagnostics, pricing, and logistics.{% endblock %}">
+    <meta name="keywords" content="used cars, AI, mobility, electric vehicle diagnostics, pricing, online auction, logistics, Busan, BLH COMPANY, automotive technology, digital transformation">
     <meta name="author" content="BLH COMPANY">
     <meta name="robots" content="index, follow">
     
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="{% block og_title %}BLH COMPANY - AI 기반 모빌리티 솔루션{% endblock %}">
-    <meta property="og:description" content="{% block og_description %}AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신. 투명하고 효율적인 중고차 거래를 위한 혁신적인 솔루션을 제공합니다.{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}BLH COMPANY - AI-Powered Mobility Solutions{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Leading digital transformation in used car trading through AI and mobility technology integration. Transparent and efficient solutions for the automotive industry.{% endblock %}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ request.url }}">
     <meta property="og:image" content="{{ url_for('static', filename='images/logo.png', _external=True) }}">
@@ -21,8 +21,8 @@
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{% block twitter_title %}BLH COMPANY - AI 기반 모빌리티 솔루션{% endblock %}">
-    <meta name="twitter:description" content="{% block twitter_description %}AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신{% endblock %}">
+    <meta name="twitter:title" content="{% block twitter_title %}BLH COMPANY - AI-Powered Mobility Solutions{% endblock %}">
+    <meta name="twitter:description" content="{% block twitter_description %}Leading digital transformation in used car trading through AI and mobility technology{% endblock %}">
     <meta name="twitter:image" content="{{ url_for('static', filename='images/logo.png', _external=True) }}">
     
     <!-- Canonical URL -->
@@ -48,8 +48,8 @@
             theme: {
                 extend: {
                     colors: {
-                        // 최신 색상 시스템 - Semantic Colors
-                        'primary': {
+                        // Latest Color System - Semantic Colors with CSS Variables
+                        primary: {
                             50: 'rgb(239 246 255)',
                             100: 'rgb(219 234 254)', 
                             200: 'rgb(191 219 254)',
@@ -62,7 +62,7 @@
                             900: 'rgb(30 58 138)',
                             950: 'rgb(23 37 84)'
                         },
-                        'accent': {
+                        accent: {
                             50: 'rgb(240 249 255)',
                             100: 'rgb(224 242 254)',
                             200: 'rgb(186 230 253)',
@@ -75,7 +75,7 @@
                             900: 'rgb(12 74 110)',
                             950: 'rgb(8 47 73)'
                         },
-                        'neutral': {
+                        neutral: {
                             50: 'rgb(250 250 250)',
                             100: 'rgb(245 245 245)',
                             200: 'rgb(229 229 229)',
@@ -88,26 +88,26 @@
                             900: 'rgb(23 23 23)',
                             950: 'rgb(10 10 10)'
                         },
-                        // 새로운 시맨틱 컬러
-                        'success': {
+                        // New Semantic Colors
+                        success: {
                             50: 'rgb(240 253 244)',
                             500: 'rgb(34 197 94)',
                             600: 'rgb(22 163 74)'
                         },
-                        'warning': {
+                        warning: {
                             50: 'rgb(255 251 235)',
                             500: 'rgb(245 158 11)',
                             600: 'rgb(217 119 6)'
                         },
-                        'error': {
+                        error: {
                             50: 'rgb(254 242 242)',
                             500: 'rgb(239 68 68)',
                             600: 'rgb(220 38 38)'
                         }
                     },
                     fontFamily: {
-                        'sans': ['Inter Variable', 'Noto Sans KR', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
-                        'display': ['Inter Variable', 'Noto Sans KR', 'system-ui', 'sans-serif'],
+                        'sans': ['Inter Variable', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        'display': ['Inter Variable', 'system-ui', 'sans-serif'],
                         'mono': ['JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', 'monospace'],
                     },
                     fontSize: {
@@ -212,25 +212,25 @@
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "BLH COMPANY",
-        "alternateName": "주식회사 비엘에이치컴퍼니",
+        "alternateName": "BLH Company Ltd.",
         "url": "{{ request.url_root }}",
         "logo": "{{ url_for('static', filename='images/logo.png', _external=True) }}",
-        "description": "AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신을 선도하는 벤처기업",
+        "description": "Leading digital transformation in used car trading through AI and mobility technology integration",
         "foundingDate": "2025",
         "founders": [
             {
                 "@type": "Person",
-                "name": "홍독경"
+                "name": "Hong Dok-kyung"
             },
             {
                 "@type": "Person", 
-                "name": "정태영"
+                "name": "Jung Tae-young"
             }
         ],
         "address": {
             "@type": "PostalAddress",
-            "streetAddress": "부산시 해운대 우동 1436 카이저빌 613호",
-            "addressLocality": "부산",
+            "streetAddress": "Kaiser Building 613, 1436 U-dong, Haeundae-gu",
+            "addressLocality": "Busan",
             "addressCountry": "KR"
         },
         "contactPoint": {
@@ -238,17 +238,17 @@
             "telephone": "+82-51-123-4567",
             "contactType": "customer service",
             "email": "info@blhcompany.com",
-            "availableLanguage": "Korean"
+            "availableLanguage": ["Korean", "English"]
         },
         "sameAs": [
             "https://github.com/JTY9410/blh_homepage"
         ],
         "knowsAbout": [
-            "AI 기반 모빌리티 솔루션",
-            "중고차 온라인 경매",
-            "전기차 진단 기술",
-            "빅데이터 가격 산정",
-            "탁송 관재 시스템"
+            "AI-powered mobility solutions",
+            "Used car online auctions",
+            "Electric vehicle diagnostics",
+            "Big data pricing systems",
+            "Logistics management systems"
         ]
     }
     </script>
@@ -261,44 +261,33 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <a href="{{ url_for('index') }}" class="flex items-center space-x-3 text-primary-900 hover:text-accent-600 transition-colors duration-300">
+                    <a href="{{ url_for('index_en') }}" class="flex items-center space-x-3 text-primary-900 hover:text-accent-600 transition-colors duration-300">
                         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BLH COMPANY" class="h-8 w-auto" loading="eager">
-                        <span class="font-semibold text-lg tracking-tight">BLH COMPANY</span>
+                        <span class="font-bold text-xl">BLH COMPANY</span>
                     </a>
                 </div>
                 
-                <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-1">
-                    <a href="{{ url_for('index') }}" class="text-neutral-600 hover:text-primary-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-neutral-50">홈</a>
-                    <a href="{{ url_for('services') }}" class="text-neutral-600 hover:text-primary-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-neutral-50">서비스</a>
-                    <a href="{{ url_for('about') }}" class="text-neutral-600 hover:text-primary-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-neutral-50">회사소개</a>
-                    <a href="{{ url_for('notices') }}" class="text-neutral-600 hover:text-primary-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-neutral-50 flex items-center">
-                        <i class="fas fa-bullhorn mr-2 text-xs"></i>공지사항
-                    </a>
-                    <a href="{{ url_for('contact') }}" class="ml-4 bg-primary-900 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-primary-800 transition-all duration-300 transform hover:scale-105">문의하기</a>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{{ url_for('index_en') }}" class="text-neutral-700 hover:text-primary-600 font-medium transition-colors duration-200">Home</a>
+                    <a href="{{ url_for('services_en') }}" class="text-neutral-700 hover:text-primary-600 font-medium transition-colors duration-200">Services</a>
+                    <a href="{{ url_for('about_en') }}" class="text-neutral-700 hover:text-primary-600 font-medium transition-colors duration-200">About</a>
+                    <a href="{{ url_for('investors_en') }}" class="text-neutral-700 hover:text-primary-600 font-medium transition-colors duration-200">Investors</a>
+                    <a href="{{ url_for('contact_en') }}" class="text-neutral-700 hover:text-primary-600 font-medium transition-colors duration-200">Contact</a>
+                    
+                    <!-- Language Switcher -->
+                    <div class="flex items-center space-x-2 border-l border-neutral-200 pl-6">
+                        <a href="{{ url_for('index') }}" class="px-3 py-1 text-sm text-neutral-600 hover:text-primary-600 transition-colors duration-200">한국어</a>
+                        <span class="text-neutral-400">|</span>
+                        <a href="{{ url_for('index_en') }}" class="px-3 py-1 text-sm text-primary-600 font-medium">English</a>
+                    </div>
                 </div>
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
-                    <button type="button" class="text-neutral-600 hover:text-primary-900 focus:outline-none transition-colors duration-300" id="mobile-menu-toggle">
-                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
+                    <button type="button" class="text-neutral-700 hover:text-primary-600 focus:outline-none focus:text-primary-600 transition-colors duration-200">
+                        <i class="fas fa-bars text-xl"></i>
                     </button>
                 </div>
-            </div>
-        </div>
-        
-        <!-- Mobile Navigation -->
-        <div class="md:hidden hidden" id="mobile-menu">
-            <div class="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-lg border-t border-neutral-200">
-                <a href="{{ url_for('index') }}" class="text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">홈</a>
-                <a href="{{ url_for('services') }}" class="text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">서비스</a>
-                <a href="{{ url_for('about') }}" class="text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">회사소개</a>
-                <a href="{{ url_for('notices') }}" class="text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">
-                    <i class="fas fa-bullhorn mr-2 text-xs"></i>공지사항
-                </a>
-                <a href="{{ url_for('contact') }}" class="bg-primary-900 text-white block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300 mt-2">문의하기</a>
             </div>
         </div>
     </nav>
@@ -311,118 +300,70 @@
     <!-- Footer -->
     <footer class="bg-neutral-50 border-t border-neutral-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <!-- Company Info -->
-                <div class="lg:col-span-2">
+                <div class="md:col-span-2">
                     <div class="flex items-center space-x-3 mb-4">
                         <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BLH COMPANY" class="h-8 w-auto">
-                        <span class="text-xl font-semibold text-primary-900 tracking-tight">BLH COMPANY</span>
+                        <span class="font-bold text-xl text-primary-900">BLH COMPANY</span>
                     </div>
-                    <p class="text-neutral-600 leading-relaxed mb-6 max-w-md">
-                        AI 기반 모빌리티 솔루션으로 중고차 거래의 투명성과 효율성을 제고합니다.
+                    <p class="text-neutral-600 mb-4 max-w-md">
+                        Leading digital transformation in used car trading through AI and mobility technology integration.
                     </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-neutral-400 hover:text-primary-600 transition-colors duration-200">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-neutral-400 hover:text-primary-600 transition-colors duration-200">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="https://github.com/JTY9410/blh_homepage" class="text-neutral-400 hover:text-primary-600 transition-colors duration-200">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <!-- Services -->
+                <!-- Quick Links -->
                 <div>
-                    <h3 class="text-primary-900 font-medium text-sm uppercase tracking-wide mb-4">서비스</h3>
+                    <h3 class="font-semibold text-neutral-900 mb-4">Quick Links</h3>
                     <ul class="space-y-2">
-                        <li><a href="{{ url_for('services') }}" class="text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">온라인 경매</a></li>
-                        <li><a href="{{ url_for('services') }}" class="text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">EV 진단</a></li>
-                        <li><a href="{{ url_for('services') }}" class="text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">가격 산정</a></li>
-                        <li><a href="{{ url_for('services') }}" class="text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">탁송 관재</a></li>
+                        <li><a href="{{ url_for('services_en') }}" class="text-neutral-600 hover:text-primary-600 transition-colors duration-200">Services</a></li>
+                        <li><a href="{{ url_for('about_en') }}" class="text-neutral-600 hover:text-primary-600 transition-colors duration-200">About Us</a></li>
+                        <li><a href="{{ url_for('investors_en') }}" class="text-neutral-600 hover:text-primary-600 transition-colors duration-200">Investors</a></li>
+                        <li><a href="{{ url_for('contact_en') }}" class="text-neutral-600 hover:text-primary-600 transition-colors duration-200">Contact</a></li>
                     </ul>
                 </div>
                 
-                <!-- Contact -->
+                <!-- Contact Info -->
                 <div>
-                    <h3 class="text-primary-900 font-medium text-sm uppercase tracking-wide mb-4">연락처</h3>
-                    <div class="space-y-2">
-                        <div class="text-neutral-600 text-sm">
-                            <p>부산시 해운대 우동 1436</p>
-                            <p>카이저빌 613호</p>
-                        </div>
-                        <div>
-                            <a href="mailto:info@blhcompany.com" class="text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">info@blhcompany.com</a>
-                        </div>
-                        <div>
-                            <a href="tel:051-123-4567" class="text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">051-123-4567</a>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-6 space-y-2">
-                        <a href="{{ url_for('about') }}" class="block text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">회사소개</a>
-                        <a href="{{ url_for('notices') }}" class="block text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">공지사항</a>
-                        <a href="{{ url_for('contact') }}" class="block text-neutral-600 hover:text-primary-900 transition-colors duration-300 text-sm">문의하기</a>
-                    </div>
+                    <h3 class="font-semibold text-neutral-900 mb-4">Contact Info</h3>
+                    <ul class="space-y-2 text-neutral-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-primary-600"></i>
+                            <span class="text-sm">Busan, South Korea</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-primary-600"></i>
+                            <span class="text-sm">info@blhcompany.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-primary-600"></i>
+                            <span class="text-sm">+82-51-123-4567</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
             
-            <!-- Bottom Bar -->
-            <div class="mt-8 pt-6 border-t border-neutral-200">
-                <div class="flex flex-col md:flex-row justify-between items-center">
-                    <p class="text-neutral-500 text-sm">&copy; 2025 BLH COMPANY. All rights reserved.</p>
-                    <div class="flex items-center space-x-4 mt-4 md:mt-0">
-                        <div class="flex items-center space-x-2 text-neutral-500 text-xs">
-                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                            <span>시스템 정상 운영</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="border-t border-neutral-200 mt-8 pt-8 text-center">
+                <p class="text-neutral-500 text-sm">
+                    © 2025 BLH COMPANY. All rights reserved. | 
+                    <a href="#" class="hover:text-primary-600 transition-colors duration-200">Privacy Policy</a> | 
+                    <a href="#" class="hover:text-primary-600 transition-colors duration-200">Terms of Service</a>
+                </p>
             </div>
         </div>
     </footer>
 
-    <!-- Mobile Menu Script -->
-    <script>
-        // Mobile menu toggle
-        document.addEventListener('DOMContentLoaded', function() {
-            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            if (mobileMenuToggle && mobileMenu) {
-                mobileMenuToggle.addEventListener('click', function() {
-                    mobileMenu.classList.toggle('hidden');
-                });
-            }
-        });
-    </script>
-    
-    <!-- Custom JS -->
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    
     {% block extra_js %}{% endblock %}
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID', {
-            'page_title': document.title,
-            'page_location': window.location.href
-        });
-    </script>
-    
-    <!-- Google Search Console -->
-    <meta name="google-site-verification" content="GOOGLE_SITE_VERIFICATION_CODE">
-    
-    <!-- Performance Monitoring -->
-    <script>
-        // Basic performance monitoring
-        window.addEventListener('load', function() {
-            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
-            console.log('Page load time:', loadTime + 'ms');
-            
-            // Send to analytics if needed
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'page_load_time', {
-                    'value': loadTime,
-                    'event_category': 'Performance'
-                });
-            }
-        });
-    </script>
 </body>
 </html>
