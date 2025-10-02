@@ -1,600 +1,168 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BLH COMPANY - Welcome</title>
+{% extends "base.html" %}
+
+{% block title %}BLH COMPANY - Welcome{% endblock %}
+
+{% block description %}AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신을 선도하는 BLH COMPANY에 오신 것을 환영합니다.{% endblock %}
+
+{% block content %}
+<!-- Hero Section with Modern Design -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-neutral-950 via-neutral-900 to-primary-900">
+    <!-- Enhanced Background Pattern -->
+    <div class="absolute inset-0 opacity-[0.03]">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.8) 1px, transparent 0); background-size: 40px 40px;"></div>
+    </div>
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신을 선도하는 BLH COMPANY에 오신 것을 환영합니다.">
-    <meta name="keywords" content="BLH COMPANY, AI, 모빌리티, 중고차, 전기차 진단, 가격 산정, 온라인 경매">
-    <meta name="author" content="BLH COMPANY">
-    <meta name="robots" content="index, follow">
+    <!-- Animated Background Gradient -->
+    <div class="absolute inset-0 bg-gradient-to-r from-primary-600/10 via-accent-500/10 to-primary-600/10 animate-gradient bg-[length:200%_200%]"></div>
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="BLH COMPANY - AI 기반 모빌리티 솔루션">
-    <meta property="og:description" content="AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신을 선도하는 벤처기업">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ request.url }}">
-    <meta property="og:image" content="{{ url_for('static', filename='images/logo.png', _external=True) }}">
-    <meta property="og:site_name" content="BLH COMPANY">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="BLH COMPANY - AI 기반 모빌리티 솔루션">
-    <meta name="twitter:description" content="AI와 모빌리티 기술을 융합한 중고차 거래의 디지털 혁신">
-    <meta name="twitter:image" content="{{ url_for('static', filename='images/logo.png', _external=True) }}">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="{{ request.url }}">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/logo.png') }}">
-    <link rel="apple-touch-icon" href="{{ url_for('static', filename='images/logo.png') }}">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind Config -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'mobility': {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                            700: '#0369a1',
-                            800: '#075985',
-                            900: '#0c4a6e',
-                        },
-                        'tech': {
-                            50: '#f8fafc',
-                            100: '#f1f5f9',
-                            200: '#e2e8f0',
-                            300: '#cbd5e1',
-                            400: '#94a3b8',
-                            500: '#64748b',
-                            600: '#475569',
-                            700: '#334155',
-                            800: '#1e293b',
-                            900: '#0f172a',
-                        }
-                    },
-                    fontFamily: {
-                        'sans': ['Inter', 'Noto Sans KR', 'sans-serif'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'gradient': 'gradient 15s ease infinite',
-                        'pulse-slow': 'pulse 4s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        gradient: {
-                            '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
-                            '50%': { 'background-size': '200% 200%', 'background-position': 'right center' },
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body, html {
-            height: 100%;
-            font-family: 'Noto Sans KR', sans-serif;
-            overflow: hidden;
-        }
-        
-        .landing-container {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #000;
-        }
-        
-        .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 1;
-            opacity: 1;
-            transition: opacity 2s ease-in-out;
-        }
-        
-        .video-background.fade-out {
-            opacity: 0.5;
-        }
-        
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 2;
-        }
-        
-        .top-logo {
-            position: absolute;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            z-index: 4;
-            text-align: center;
-        }
-        
-        .logo {
-            width: 180px;
-            height: auto;
-            filter: brightness(1.2);
-            transition: all 0.3s ease;
-        }
-        
-        .logo:hover {
-            transform: scale(1.05);
-        }
-        
-        .homepage-button {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            z-index: 4;
-        }
-        
-        .btn-homepage {
-            display: inline-flex;
-            align-items: center;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-        
-        .btn-homepage:hover {
-            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-            color: white;
-            text-decoration: none;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
-        }
-        
-        .btn-homepage:active {
-            transform: translateY(0);
-        }
-        
-        
-        .home-navigation-text {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-size: 1.1rem;
-            font-weight: 500;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.5s ease-in-out;
-            z-index: 4;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-            cursor: pointer;
-            user-select: none;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-        }
-        
-        .home-navigation-text:hover {
-            background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
-            transform: translateX(-50%) translateY(-5px);
-            box-shadow: 0 12px 35px rgba(0,0,0,0.4);
-        }
-        
-        .home-navigation-text:active {
-            transform: translateX(-50%) translateY(-2px);
-        }
-        
-        .home-navigation-text.show {
-            opacity: 1;
-            visibility: visible;
-            animation: slideInUp 0.8s ease-out;
-        }
-        
-        .home-navigation-text .arrow {
-            display: inline-block;
-            margin-left: 10px;
-            animation: bounce 1.5s infinite;
-        }
-        
-        /* 5초 후 나타나는 문구 스타일 */
-        .delayed-content {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            text-align: center;
-            z-index: 3;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 1s ease-in-out;
-        }
-        
-        .delayed-content.show {
-            opacity: 1;
-            visibility: visible;
-            animation: fadeInUp 1s ease-out;
-        }
-        
-        .delayed-text {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 40px 60px;
-            border-radius: 20px;
-            backdrop-filter: blur(15px);
-            border: 2px solid rgba(37, 99, 235, 0.3);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .delayed-title {
-            color: #ffffff;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(135deg, #3b82f6, #06b6d4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .delayed-description {
-            color: #e2e8f0;
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-        
-        .delayed-features {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-        }
-        
-        .feature-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: #ffffff;
-            font-size: 1rem;
-            font-weight: 500;
-        }
-        
-        .feature-item i {
-            font-size: 2rem;
-            color: #3b82f6;
-            margin-bottom: 10px;
-            animation: pulse 2s infinite;
-        }
-        
-        .feature-item span {
-            font-size: 0.9rem;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-            }
-            50% {
-                box-shadow: 0 4px 25px rgba(37, 99, 235, 0.8);
-            }
-            100% {
-                box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
-            }
-        }
-        
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateX(-50%) translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-        
-        .enter-button.pulse {
-            animation: pulse 2s infinite;
-        }
-        
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .top-logo {
-                top: 20px;
-            }
-            
-            .logo {
-                width: 150px;
-            }
-            
-            .homepage-button {
-                top: 20px;
-                right: 20px;
-            }
-            
-            .btn-homepage {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-            
-            .home-navigation-text {
-                bottom: 20px;
-                padding: 12px 25px;
-                font-size: 1rem;
-            }
-            
-            .delayed-text {
-                padding: 30px 40px;
-                margin: 0 20px;
-            }
-            
-            .delayed-title {
-                font-size: 2rem;
-            }
-            
-            .delayed-description {
-                font-size: 1.1rem;
-            }
-            
-            .delayed-features {
-                gap: 30px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .top-logo {
-                top: 15px;
-            }
-            
-            .logo {
-                width: 120px;
-            }
-            
-            .homepage-button {
-                top: 15px;
-                right: 15px;
-            }
-            
-            .btn-homepage {
-                padding: 8px 16px;
-                font-size: 0.8rem;
-            }
-            
-            .home-navigation-text {
-                bottom: 15px;
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-            
-            .delayed-text {
-                padding: 25px 30px;
-                margin: 0 15px;
-            }
-            
-            .delayed-title {
-                font-size: 1.8rem;
-            }
-            
-            .delayed-description {
-                font-size: 1rem;
-            }
-            
-            .delayed-features {
-                gap: 20px;
-                flex-direction: column;
-            }
-            
-            .feature-item {
-                margin-bottom: 15px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="relative w-full h-screen flex items-center justify-center bg-black overflow-hidden">
-        <!-- Video Background -->
-        <video class="video-background absolute inset-0 w-full h-full object-cover z-10" autoplay muted loop playsinline>
+    <!-- Video Background -->
+    <div class="absolute inset-0 z-10">
+        <video 
+            id="hero-video" 
+            class="w-full h-full object-cover opacity-0 transition-all duration-[1500ms] ease-out"
+            autoplay 
+            muted 
+            loop 
+            playsinline
+            loading="eager">
             <source src="{{ url_for('static', filename='videos/landing-video.mp4') }}" type="video/mp4">
-            Your browser does not support the video tag.
+            <!-- Fallback Image -->
+            <img src="{{ url_for('static', filename='images/hero/제목 없는 디자인.png') }}" 
+                 alt="BLH COMPANY Hero Background"
+                 class="w-full h-full object-cover">
         </video>
-        
-        <!-- Video Overlay -->
-        <div class="absolute inset-0 bg-black bg-opacity-40 z-20"></div>
-        
-        <!-- Top Logo -->
-        <div class="absolute top-7 left-1/2 transform -translate-x-1/2 z-40 text-center md:top-8 lg:top-8">
-            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BLH COMPANY" 
-                 class="w-32 h-auto filter brightness-110 transition-all duration-300 hover:scale-105 md:w-40 lg:w-44">
+        <!-- Video Overlay for Better Text Contrast -->
+        <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/60 via-transparent to-neutral-900/30"></div>
+    </div>
+    
+    <!-- Main Content with Enhanced Animations -->
+    <div class="relative z-20 text-center px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <!-- Logo with Glow Effect -->
+        <div class="mb-12 animate-fade-in-up">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" 
+                 alt="BLH COMPANY" 
+                 class="h-20 sm:h-24 lg:h-28 mx-auto mb-8 drop-shadow-2xl animate-float filter brightness-110 hover:brightness-125 transition-all duration-500">
         </div>
         
-        <!-- Homepage Button -->
-        <div class="absolute top-7 right-7 z-40 md:top-8 md:right-8 lg:top-8 lg:right-8">
-            <a href="{{ url_for('index') }}" 
-               class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-mobility-600 to-mobility-700 text-white font-semibold rounded-full hover:from-mobility-700 hover:to-mobility-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-mobility-500/25 border-2 border-white/30 backdrop-blur-lg md:px-8 md:py-4">
-                <i class="fas fa-home mr-2"></i>
-                홈페이지로 이동
-            </a>
-        </div>
+        <!-- Enhanced Title with Better Typography -->
+        <h1 class="text-5xl sm:text-6xl lg:text-8xl font-black text-white mb-8 animate-fade-in-up leading-tight tracking-tight">
+            <span class="bg-gradient-to-r from-primary-300 via-accent-300 to-primary-300 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto] drop-shadow-lg">
+                AI 기반 모빌리티
+            </span>
+            <br>
+            <span class="text-white drop-shadow-2xl">솔루션의 혁신</span>
+        </h1>
         
+        <!-- Enhanced Description -->
+        <p class="text-xl sm:text-2xl text-neutral-200 mb-12 max-w-4xl mx-auto leading-relaxed animate-fade-in-up drop-shadow-lg">
+            중고차 거래의 디지털 전환을 선도하는 혁신적인 AI 기반 모빌리티 솔루션
+        </p>
         
-        <!-- 5초 후 나타나는 문구 -->
-        <div class="delayed-content absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 text-center opacity-0 invisible transition-all duration-1000" id="delayedContent">
-            <div class="bg-black/80 backdrop-blur-lg rounded-3xl p-8 md:p-12 border-2 border-accent-300/30 shadow-2xl max-w-2xl mx-4">
-                <h3 class="text-3xl md:text-4xl font-bold text-white mb-6 bg-gradient-to-r from-accent-400 to-accent-600 bg-clip-text text-transparent">
-                    모빌리티의 미래가 시작됩니다
-                </h3>
-                <p class="text-lg md:text-xl text-neutral-200 mb-8 leading-relaxed">
-                    AI와 빅데이터로 혁신하는 중고차 거래의 새로운 기준
-                </p>
-                <div class="grid grid-cols-3 gap-6 md:gap-8">
-                    <div class="text-center">
-                        <i class="fas fa-microchip text-3xl md:text-4xl text-accent-400 mb-3 animate-pulse"></i>
-                        <p class="text-sm md:text-base text-white font-medium">AI 기반 진단</p>
-                    </div>
-                    <div class="text-center">
-                        <i class="fas fa-coins text-3xl md:text-4xl text-accent-400 mb-3 animate-pulse"></i>
-                        <p class="text-sm md:text-base text-white font-medium">정확한 가격 산정</p>
-                    </div>
-                    <div class="text-center">
-                        <i class="fas fa-shipping-fast text-3xl md:text-4xl text-accent-400 mb-3 animate-pulse"></i>
-                        <p class="text-sm md:text-base text-white font-medium">스마트 탁송</p>
-                    </div>
+        <!-- Enhanced Service Features -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 animate-fade-in-up">
+            <!-- AI 기반 진단 -->
+            <div class="group bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/20 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow">
+                <div class="w-20 h-20 bg-gradient-to-br from-primary-500 to-accent-500 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 group-hover:animate-glow transition-all duration-500">
+                    <i class="fas fa-microchip text-3xl text-white group-hover:animate-pulse-slow"></i>
                 </div>
+                <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-accent-200 transition-colors duration-300">AI 기반 진단</h3>
+                <p class="text-neutral-300 leading-relaxed">
+                    첨단 AI 기술을 활용한 정밀한 차량 상태 진단 시스템
+                </p>
+            </div>
+            
+            <!-- 정확한 가격 산정 -->
+            <div class="group bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/20 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow">
+                <div class="w-20 h-20 bg-gradient-to-br from-success-500 to-accent-500 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 group-hover:animate-glow transition-all duration-500">
+                    <i class="fas fa-coins text-3xl text-white group-hover:animate-pulse-slow"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-accent-200 transition-colors duration-300">정확한 가격 산정</h3>
+                <p class="text-neutral-300 leading-relaxed">
+                    빅데이터 분석을 통한 투명하고 정확한 중고차 가격 산정
+                </p>
+            </div>
+            
+            <!-- 스마트 탁송 -->
+            <div class="group bg-white/10 backdrop-blur-md rounded-3xl p-8 hover:bg-white/20 transition-all duration-500 hover:-translate-y-2 hover:shadow-glow">
+                <div class="w-20 h-20 bg-gradient-to-br from-accent-500 to-primary-500 rounded-2xl mx-auto mb-6 flex items-center justify-center group-hover:scale-110 group-hover:animate-glow transition-all duration-500">
+                    <i class="fas fa-shipping-fast text-3xl text-white group-hover:animate-pulse-slow"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4 group-hover:text-accent-200 transition-colors duration-300">스마트 탁송</h3>
+                <p class="text-neutral-300 leading-relaxed">
+                    효율적이고 안전한 차량 운송 관리 시스템
+                </p>
             </div>
         </div>
-
-        <!-- 5초 후 나타나는 홈페이지 이동 문구 -->
-        <div class="home-navigation-text absolute bottom-8 left-1/2 transform -translate-x-1/2 z-30 px-8 py-4 bg-gradient-to-r from-mobility-600 to-mobility-700 text-white font-semibold rounded-full cursor-pointer select-none border-2 border-white/30 backdrop-blur-lg shadow-lg hover:from-mobility-700 hover:to-mobility-800 hover:shadow-xl transition-all duration-300 md:bottom-10 md:px-10 md:py-5" id="homeNavigationText">
-            <i class="fas fa-home mr-2"></i>
-            홈페이지로 이동하세요
-            <span class="ml-2">↓</span>
+        
+        <!-- Enhanced CTA Buttons -->
+        <div class="flex flex-wrap justify-center gap-6 animate-fade-in-up">
+            <a href="{{ url_for('index') }}" class="group inline-flex items-center px-12 py-6 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-bold text-lg rounded-2xl hover:from-primary-700 hover:to-primary-800 transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-xl hover:shadow-2xl">
+                <i class="fas fa-home mr-4 group-hover:animate-bounce-slow"></i>메인으로 이동
+                <i class="fas fa-arrow-right ml-3 group-hover:translate-x-1 transition-transform duration-300"></i>
+            </a>
+            <a href="{{ url_for('services') }}" class="group inline-flex items-center px-12 py-6 border-2 border-white/30 text-white font-bold text-lg rounded-2xl hover:bg-white/10 hover:border-white/50 transition-all duration-300 backdrop-blur-sm hover:shadow-lg">
+                <i class="fas fa-rocket mr-4 group-hover:animate-pulse-slow"></i>서비스 보기
+            </a>
         </div>
     </div>
     
-    <!-- Custom JavaScript -->
-    
-    <script>
-        // Video autoplay fallback for mobile devices
-        document.addEventListener('DOMContentLoaded', function() {
-            const video = document.querySelector('.video-background');
-            const homeNavigationText = document.getElementById('homeNavigationText');
-            const delayedContent = document.getElementById('delayedContent');
-            
-            // Ensure video plays on mobile
-            video.addEventListener('loadeddata', function() {
-                video.play().catch(function(error) {
-                    console.log('Video autoplay failed:', error);
-                });
-            });
-            
-            // Add click to play for mobile
-            document.addEventListener('touchstart', function() {
-                video.play().catch(function(error) {
-                    console.log('Video play failed:', error);
-                });
-            });
-            
-            // 5초 후 동영상 투명도 변경 및 새로운 문구 표시
-            setTimeout(function() {
-                // 동영상 투명도를 50%로 변경
-                video.classList.add('fade-out');
-                
-                // 5초 후 나타나는 문구 표시
-                if (delayedContent) {
-                    delayedContent.style.opacity = '1';
-                    delayedContent.style.visibility = 'visible';
-                }
-                
-                // 홈페이지 이동 문구도 표시
-                homeNavigationText.classList.add('show');
-                
-                console.log('Video faded out and delayed content shown');
-            }, 5000);
-            // 홈페이지 이동 버튼 클릭 이벤트
-            const homepageButton = document.querySelector('.btn-homepage');
-            if (homepageButton) {
-                homepageButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // Add loading state
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>이동 중...';
-                    this.style.pointerEvents = 'none';
-                    
-                    // Small delay for UX
-                    setTimeout(() => {
-                        window.location.href = '{{ url_for("index") }}';
-                    }, 500);
-                });
-            }
-            
-            // 홈페이지 이동 문구 클릭 시 홈페이지로 이동
-            if (homeNavigationText) {
-                homeNavigationText.addEventListener('click', function() {
-                    // Add loading state
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>이동 중...';
-                    this.style.pointerEvents = 'none';
-                    
-                    // Small delay for UX
-                    setTimeout(() => {
-                        window.location.href = '{{ url_for("index") }}';
-                    }, 500);
-                });
-            }
+    <!-- Delayed Text Overlay (5초 후 나타나는 텍스트) -->
+    <div id="future-text" class="fixed inset-0 flex items-center justify-center pointer-events-none z-50 opacity-0 transition-all duration-1000">
+        <div class="bg-white rounded-3xl px-20 py-16 shadow-2xl border-4 border-gray-400 max-w-4xl mx-4">
+            <h2 class="text-6xl lg:text-8xl font-black text-black leading-tight tracking-tight text-center">
+                <span class="text-blue-700 font-black">모빌리티의 미래가</span><br>
+                <span class="text-black font-black">시작됩니다</span>
+            </h2>
+        </div>
+    </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const heroVideo = document.getElementById('hero-video');
+    const futureText = document.getElementById('future-text');
+
+    console.log('Page loaded, initializing video animations...');
+
+    if (heroVideo) {
+        console.log('Hero video element found, setting up animations...');
+        setTimeout(function() {
+            console.log('5초 경과: 비디오 50% 투명도로 표시');
+            heroVideo.style.opacity = '0.5';
+            heroVideo.style.transition = 'opacity 1.5s ease-in-out';
+        }, 5000);
+
+        heroVideo.addEventListener('error', function() {
+            console.log('Video failed to load - hiding video element');
+            heroVideo.style.display = 'none';
         });
-        
-        // Performance monitoring
-        window.addEventListener('load', function() {
-            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
-            console.log('Landing page load time:', loadTime + 'ms');
+        heroVideo.addEventListener('loadeddata', function() {
+            console.log('Hero video loaded successfully');
         });
-    </script>
-</body>
-</html>
+    }
+
+    if (futureText) {
+        console.log('Future text element found, setting up text animation...');
+        setTimeout(function() {
+            console.log('5초 경과: 텍스트를 화면 정중앙에 선명도 100%로 표시');
+            futureText.style.opacity = '1';
+            futureText.style.transform = 'translateY(0) scale(1)';
+            futureText.style.filter = 'brightness(1) contrast(1) saturate(1)';
+            futureText.style.fontWeight = '900';
+            futureText.style.letterSpacing = '-0.01em';
+            futureText.style.color = '#000000';
+
+            const textContainer = futureText.querySelector('div');
+            if (textContainer) {
+                textContainer.style.backgroundColor = '#ffffff';
+                textContainer.style.borderColor = '#6b7280';
+                textContainer.style.borderWidth = '4px';
+                textContainer.style.opacity = '1';
+                textContainer.style.filter = 'none';
+            }
+        }, 5000);
+    }
+    console.log('Animation script initialized successfully');
+});
+</script>
+{% endblock %}

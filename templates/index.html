@@ -11,23 +11,26 @@
 {% block twitter_description %}중고차 거래의 디지털 혁신을 선도하는 AI 기반 모빌리티 솔루션{% endblock %}
 
 {% block content %}
-<!-- Hero Section -->
-<section class="relative min-h-screen pt-16 overflow-hidden bg-gradient-to-br from-neutral-50 to-white">
-    <!-- Background Pattern -->
-    <div class="absolute inset-0 opacity-5">
-        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(0,0,0,0.15) 1px, transparent 0); background-size: 20px 20px;"></div>
+<!-- Hero Section with Modern Design -->
+<section class="relative min-h-screen pt-16 overflow-hidden bg-gradient-to-br from-neutral-50 via-white to-primary-50">
+    <!-- Enhanced Background Pattern -->
+    <div class="absolute inset-0 opacity-[0.03]">
+        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(59,130,246,0.8) 1px, transparent 0); background-size: 40px 40px;"></div>
     </div>
     
-    <!-- Background Image -->
+    <!-- Animated Background Gradient -->
+    <div class="absolute inset-0 bg-gradient-to-r from-primary-100/20 via-accent-100/20 to-primary-100/20 animate-gradient bg-[length:200%_200%]"></div>
+    
+    <!-- Enhanced Background Image -->
     <div class="absolute inset-0 flex items-center justify-center">
         <img 
             id="hero-image" 
-            class="w-full h-full object-cover opacity-0 transition-opacity duration-1000"
+            class="w-full h-full object-cover opacity-0 transition-all duration-[1500ms] ease-out scale-105 hover:scale-100"
             src="{{ url_for('static', filename='images/hero/제목 없는 디자인.png') }}"
             alt="BLH COMPANY 히어로 이미지"
         />
-        <!-- Image Overlay -->
-        <div class="absolute inset-0 bg-white/30"></div>
+        <!-- Enhanced Image Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-white/20 to-white/30"></div>
     </div>
     
     
@@ -41,10 +44,10 @@
                     <span class="text-sm font-medium text-accent-700">AI 기반 모빌리티 솔루션</span>
                 </div>
                 
-                <!-- Main Title -->
-                <h1 class="text-5xl lg:text-6xl font-bold leading-tight text-primary-900">
+                <!-- Enhanced Main Title -->
+                <h1 class="text-6xl lg:text-7xl font-black leading-tight text-primary-900 tracking-tight">
                     중고차 거래의<br>
-                    <span class="text-accent-600">디지털 혁신</span>
+                    <span class="bg-gradient-to-r from-accent-600 via-accent-500 to-primary-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">디지털 혁신</span>
                 </h1>
                 
                 <!-- Description -->
@@ -68,27 +71,28 @@
                     </div>
                 </div>
                 
-                <!-- CTA Buttons -->
-                <div class="flex flex-wrap gap-4">
-                    <a href="{{ url_for('services') }}" class="inline-flex items-center px-8 py-4 bg-primary-900 text-white font-semibold rounded-full hover:bg-primary-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                        <i class="fas fa-rocket mr-2"></i>서비스 보기
+                <!-- Enhanced CTA Buttons -->
+                <div class="flex flex-wrap gap-6">
+                    <a href="{{ url_for('services') }}" class="group inline-flex items-center px-10 py-5 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-bold rounded-2xl hover:from-primary-700 hover:to-primary-800 transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-xl hover:shadow-2xl">
+                        <i class="fas fa-rocket mr-3 group-hover:animate-bounce-slow"></i>서비스 보기
+                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform duration-300"></i>
                     </a>
-                    <a href="{{ url_for('contact') }}" class="inline-flex items-center px-8 py-4 border-2 border-neutral-300 text-neutral-700 font-semibold rounded-full hover:bg-neutral-50 transition-all duration-300">
-                        <i class="fas fa-envelope mr-2"></i>문의하기
+                    <a href="{{ url_for('contact') }}" class="group inline-flex items-center px-10 py-5 border-2 border-neutral-300 text-neutral-700 font-bold rounded-2xl hover:bg-neutral-50 hover:border-neutral-400 transition-all duration-300 hover:shadow-lg">
+                        <i class="fas fa-envelope mr-3 group-hover:animate-pulse-slow"></i>문의하기
                     </a>
                 </div>
             </div>
             
             <!-- Right Visual -->
             <div class="relative">
-                <!-- Main Card -->
-                <div class="relative bg-white rounded-3xl border border-neutral-200 p-8 shadow-xl">
+                <!-- Enhanced Main Card -->
+                <div class="relative bg-white rounded-3xl border border-neutral-200 p-10 shadow-soft hover:shadow-medium transition-all duration-500 hover:-translate-y-2 group">
                     <div class="text-center">
-                        <div class="w-24 h-24 bg-gradient-to-br from-accent-500 to-accent-600 rounded-2xl mx-auto mb-6 flex items-center justify-center">
-                            <i class="fas fa-car text-3xl text-white"></i>
+                        <div class="w-28 h-28 bg-gradient-to-br from-accent-500 via-accent-600 to-primary-600 rounded-3xl mx-auto mb-8 flex items-center justify-center group-hover:animate-glow transition-all duration-500 group-hover:scale-110">
+                            <i class="fas fa-microchip text-4xl text-white group-hover:animate-pulse-slow"></i>
                         </div>
-                        <h3 class="text-2xl font-bold text-primary-900 mb-4">AI 진단 시스템</h3>
-                        <p class="text-neutral-600">실시간 차량 상태 분석</p>
+                        <h3 class="text-3xl font-bold text-primary-900 mb-4 group-hover:text-accent-600 transition-colors duration-300">AI 진단 시스템</h3>
+                        <p class="text-neutral-600 text-lg">실시간 차량 상태 분석</p>
                     </div>
                 </div>
                 
@@ -118,31 +122,43 @@
     </div>
 </section>
 
-<!-- Services Section -->
-<section class="py-20 bg-white">
+<!-- Enhanced Services Section -->
+<section class="py-24 bg-gradient-to-b from-white via-neutral-50 to-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Section Header -->
-        <div class="text-center mb-16">
-            <h2 class="text-4xl lg:text-5xl font-bold text-primary-900 mb-6">핵심 서비스</h2>
-            <p class="text-xl text-neutral-600 max-w-3xl mx-auto">
-                AI와 모빌리티 기술을 융합한 독창적인 솔루션으로 중고차 산업을 혁신합니다.
+        <!-- Enhanced Section Header -->
+        <div class="text-center mb-20 animate-fade-in-up">
+            <div class="inline-flex items-center px-6 py-3 bg-primary-100 border border-primary-200 rounded-full mb-6">
+                <i class="fas fa-cogs mr-3 text-primary-600"></i>
+                <span class="text-primary-700 font-semibold">핵심 서비스</span>
+            </div>
+            <h2 class="text-5xl lg:text-6xl font-black text-primary-900 mb-8 tracking-tight">
+                <span class="bg-gradient-to-r from-primary-600 via-accent-600 to-primary-600 bg-clip-text text-transparent animate-gradient bg-[length:200%_auto]">혁신적인 솔루션</span>
+            </h2>
+            <p class="text-xl text-neutral-600 max-w-4xl mx-auto leading-relaxed">
+                AI와 모빌리티 기술을 융합한 독창적인 솔루션으로 중고차 산업의 디지털 전환을 선도합니다.
             </p>
         </div>
         
         <!-- Services Grid -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <!-- Primary Service -->
+            <!-- Enhanced Primary Service -->
             <div class="lg:col-span-1">
-                <div class="bg-primary-900 rounded-3xl p-8 text-white shadow-xl hover:shadow-2xl transition-all duration-300">
-                    <div class="flex items-center mb-6">
-                        <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mr-4">
-                            <i class="fas fa-gavel text-2xl"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-2xl font-bold mb-1">중고차 경매 및 공매</h3>
-                            <span class="px-3 py-1 bg-white/10 rounded-full text-sm font-medium">핵심 서비스</span>
-                        </div>
+                <div class="group bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 rounded-3xl p-10 text-white shadow-hard hover:shadow-glow-lg transition-all duration-500 hover:-translate-y-2 relative overflow-hidden">
+                    <!-- Background Pattern -->
+                    <div class="absolute inset-0 opacity-10">
+                        <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 30px 30px;"></div>
                     </div>
+                    
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-8">
+                            <div class="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mr-6 group-hover:scale-110 group-hover:bg-white/30 transition-all duration-500">
+                                <i class="fas fa-gavel text-3xl group-hover:animate-bounce-slow"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-3xl font-black mb-2 group-hover:text-accent-200 transition-colors duration-300">중고차 경매 및 공매</h3>
+                                <span class="px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-bold">핵심 서비스</span>
+                            </div>
+                        </div>
                     <p class="text-neutral-200 text-lg mb-6">
                         C2B 온라인 중고차 경매 플랫폼 개발과 중고차 공매시스템 개발 운영으로 투명하고 효율적인 중고차 거래를 제공합니다.
                     </p>
