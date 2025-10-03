@@ -13,9 +13,13 @@ def static_files(filename):
     try:
         return app.send_static_file(filename)
     except Exception as e:
-        # Vercel 환경에서 정적 파일 오류 시 404 반환
+        # Vercel 환경에서 정적 파일 오류 시 기본 응답 반환
         if os.environ.get('VERCEL'):
-            return f"Static file not found: {filename}", 404
+            return jsonify({
+                'error': 'Static file not found',
+                'filename': filename,
+                'status': 404
+            }), 404
         raise e
 
 # SEO 라우트
@@ -167,11 +171,36 @@ _vercel_data = {
 # 데이터베이스 연결 헬퍼 함수
 def get_db_connection():
     if os.environ.get('VERCEL'):
-        # Vercel 환경에서는 메모리 데이터베이스 사용
-        conn = sqlite3.connect(':memory:')
-        # 매번 테이블 생성
-        init_vercel_tables(conn)
-        return conn
+        # Vercel 환경에서는 간단한 메모리 데이터베이스 사용
+        try:
+            conn = sqlite3.connect(':memory:')
+            # 기본 테이블만 생성
+            cursor = conn.cursor()
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS notices (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    title TEXT NOT NULL,
+                    content TEXT NOT NULL,
+                    author TEXT DEFAULT 'BLH COMPANY',
+                    views INTEGER DEFAULT 0,
+                    is_published BOOLEAN DEFAULT 1,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            
+            # 샘플 데이터 추가
+            cursor.execute('''
+                INSERT OR IGNORE INTO notices (id, title, content, author, views) 
+                VALUES (1, 'BLH COMPANY 웹사이트 오픈', 
+                        'BLH COMPANY의 새로운 웹사이트가 오픈되었습니다.', 
+                        'BLH COMPANY', 0)
+            ''')
+            
+            conn.commit()
+            return conn
+        except Exception as e:
+            # 오류 발생 시 빈 메모리 데이터베이스 반환
+            return sqlite3.connect(':memory:')
     else:
         return sqlite3.connect('blh_company.db')
 
