@@ -36,6 +36,15 @@ def health_check():
         'version': '1.0.0'
     })
 
+# Vercel 테스트 엔드포인트
+@app.route('/api/test')
+def vercel_test():
+    return jsonify({
+        'message': 'Vercel function working!',
+        'environment': 'vercel' if os.environ.get('VERCEL') else 'local',
+        'timestamp': datetime.now().isoformat()
+    })
+
 # 데이터베이스 초기화
 def init_db():
     # Vercel 환경에서는 별도 처리하지 않음 (get_db_connection에서 처리)
@@ -158,13 +167,10 @@ _vercel_data = {
 # 데이터베이스 연결 헬퍼 함수
 def get_db_connection():
     if os.environ.get('VERCEL'):
-        # Vercel 환경에서는 SQLite 파일 사용 (임시)
-        db_path = '/tmp/blh_company.db'
-        conn = sqlite3.connect(db_path)
-        # 매번 테이블 확인 및 생성
-        if not _vercel_data['admin_initialized']:
-            init_vercel_tables(conn)
-            _vercel_data['admin_initialized'] = True
+        # Vercel 환경에서는 메모리 데이터베이스 사용
+        conn = sqlite3.connect(':memory:')
+        # 매번 테이블 생성
+        init_vercel_tables(conn)
         return conn
     else:
         return sqlite3.connect('blh_company.db')
