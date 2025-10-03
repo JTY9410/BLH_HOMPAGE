@@ -1,9 +1,11 @@
-from flask import Flask, render_template, request, jsonify, redirect, url_for
+from flask import Flask, render_template, request, jsonify, redirect, url_for, session, flash
 import sqlite3
 import os
 from datetime import datetime
+import hashlib
 
 app = Flask(__name__, static_folder='static', static_url_path='/static')
+app.secret_key = 'blh_company_secret_key_2025'  # 세션 관리를 위한 시크릿 키
 
 # 정적 파일 라우트 추가
 @app.route('/static/<path:filename>')
@@ -75,6 +77,17 @@ def init_db():
         )
     ''')
     
+    # 관리자 계정 테이블
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS admin_users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password_hash TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            last_login TIMESTAMP
+        )
+    ''')
+    
     # 회사 정보 삽입
     cursor.execute('''
         INSERT OR IGNORE INTO company_info 
@@ -110,8 +123,28 @@ def init_db():
             VALUES (?, ?, ?, ?, ?)
         ''', notice)
     
+    # 기본 관리자 계정 생성 (bhl / bhl1004)
+    admin_password_hash = hashlib.sha256('bhl1004'.encode()).hexdigest()
+    cursor.execute('''
+        INSERT OR IGNORE INTO admin_users (username, password_hash)
+        VALUES (?, ?)
+    ''', ('bhl', admin_password_hash))
+    
     conn.commit()
     conn.close()
+
+# 관리자 로그인 확인 함수
+def check_admin_login():
+    return 'admin_logged_in' in session and session['admin_logged_in']
+
+# 관리자 로그인 데코레이터
+def admin_required(f):
+    def decorated_function(*args, **kwargs):
+        if not check_admin_login():
+            return redirect(url_for('admin_login'))
+        return f(*args, **kwargs)
+    decorated_function.__name__ = f.__name__
+    return decorated_function
 
 # 한국어 라우트 정의
 @app.route('/')
@@ -205,7 +238,96 @@ def notice_detail(notice_id):
     else:
         return "공지사항을 찾을 수 없습니다.", 404
 
+# 관리자 로그인 페이지
+@app.route('/admin/login', methods=['GET', 'POST'])
+def admin_login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        password_hash = hashlib.sha256(password.encode()).hexdigest()
+        
+        conn = sqlite3.connect('blh_company.db')
+        cursor = conn.cursor()
+        
+        cursor.execute('''
+            SELECT id FROM admin_users 
+            WHERE username = ? AND password_hash = ?
+        ''', (username, password_hash))
+        
+        admin = cursor.fetchone()
+        
+        if admin:
+            session['admin_logged_in'] = True
+            session['admin_username'] = username
+            
+            # 마지막 로그인 시간 업데이트
+            cursor.execute('''
+                UPDATE admin_users 
+                SET last_login = CURRENT_TIMESTAMP 
+                WHERE username = ?
+            ''', (username,))
+            conn.commit()
+            
+            flash('로그인 성공!', 'success')
+            return redirect(url_for('admin_dashboard'))
+        else:
+            flash('아이디 또는 비밀번호가 잘못되었습니다.', 'error')
+        
+        conn.close()
+    
+    return render_template('admin/login.html')
+
+# 관리자 로그아웃
+@app.route('/admin/logout')
+def admin_logout():
+    session.pop('admin_logged_in', None)
+    session.pop('admin_username', None)
+    flash('로그아웃되었습니다.', 'info')
+    return redirect(url_for('admin_login'))
+
+# 관리자 대시보드
+@app.route('/admin')
+@app.route('/admin/dashboard')
+@admin_required
+def admin_dashboard():
+    conn = sqlite3.connect('blh_company.db')
+    cursor = conn.cursor()
+    
+    # 통계 정보 조회
+    cursor.execute('SELECT COUNT(*) FROM notices')
+    total_notices = cursor.fetchone()[0]
+    
+    cursor.execute('SELECT COUNT(*) FROM notices WHERE is_published = 1')
+    published_notices = cursor.fetchone()[0]
+    
+    cursor.execute('SELECT COUNT(*) FROM inquiries')
+    total_inquiries = cursor.fetchone()[0]
+    
+    cursor.execute('SELECT SUM(view_count) FROM notices')
+    total_views = cursor.fetchone()[0] or 0
+    
+    # 최근 공지사항 5개
+    cursor.execute('''
+        SELECT id, title, created_at, view_count, is_published
+        FROM notices 
+        ORDER BY created_at DESC 
+        LIMIT 5
+    ''')
+    recent_notices = cursor.fetchall()
+    
+    conn.close()
+    
+    stats = {
+        'total_notices': total_notices,
+        'published_notices': published_notices,
+        'total_inquiries': total_inquiries,
+        'total_views': total_views
+    }
+    
+    return render_template('admin/dashboard.html', stats=stats, recent_notices=recent_notices)
+
 @app.route('/admin/notices')
+@admin_required
 def admin_notices():
     conn = sqlite3.connect('blh_company.db')
     cursor = conn.cursor()
@@ -222,6 +344,7 @@ def admin_notices():
     return render_template('admin/notices.html', notices=notices)
 
 @app.route('/admin/notices/new', methods=['GET', 'POST'])
+@admin_required
 def new_notice():
     if request.method == 'POST':
         title = request.form['title']
@@ -246,6 +369,7 @@ def new_notice():
     return render_template('admin/new_notice.html')
 
 @app.route('/admin/notices/<int:notice_id>/edit', methods=['GET', 'POST'])
+@admin_required
 def edit_notice(notice_id):
     conn = sqlite3.connect('blh_company.db')
     cursor = conn.cursor()
@@ -279,6 +403,7 @@ def edit_notice(notice_id):
         return "공지사항을 찾을 수 없습니다.", 404
 
 @app.route('/admin/notices/<int:notice_id>/delete', methods=['POST'])
+@admin_required
 def delete_notice(notice_id):
     conn = sqlite3.connect('blh_company.db')
     cursor = conn.cursor()

@@ -1,38 +1,102 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>공지사항 관리 - BLH COMPANY</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,container-queries"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'Noto Sans KR', 'system-ui', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            200: '#bfdbfe',
+                            300: '#93c5fd',
+                            400: '#60a5fa',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                            950: '#172554'
+                        },
+                        accent: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-neutral-50 min-h-screen">
+    <!-- 네비게이션 -->
+    <nav class="bg-white shadow-sm border-b border-neutral-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- 로고 -->
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-gradient-to-br from-primary-600 to-accent-600 rounded-xl flex items-center justify-center mr-3">
+                        <i class="fas fa-shield-alt text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-primary-900">BLH COMPANY</h1>
+                        <p class="text-xs text-neutral-500">공지사항 관리</p>
+                    </div>
+                </div>
 
-{% block title %}공지사항 관리 - BLH COMPANY{% endblock %}
-
-{% block content %}
-<!-- Admin Header -->
-<section class="pt-32 pb-16 bg-gradient-to-br from-primary-900 to-accent-900">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center text-white">
-            <h1 class="text-4xl lg:text-5xl font-bold mb-4">
-                <i class="fas fa-cog mr-4"></i>공지사항 관리
-            </h1>
-            <p class="text-xl text-primary-100">
-                공지사항을 작성, 수정, 삭제할 수 있습니다
-            </p>
+                <!-- 사용자 메뉴 -->
+                <div class="flex items-center space-x-4">
+                    <a href="{{ url_for('admin_dashboard') }}" class="text-sm text-neutral-600 hover:text-primary-600 transition-colors duration-300">
+                        <i class="fas fa-tachometer-alt mr-1"></i>대시보드
+                    </a>
+                    <a href="{{ url_for('index') }}" class="text-sm text-neutral-600 hover:text-primary-600 transition-colors duration-300">
+                        <i class="fas fa-home mr-1"></i>홈페이지
+                    </a>
+                    <a href="{{ url_for('admin_logout') }}" class="text-sm text-red-600 hover:text-red-700 transition-colors duration-300">
+                        <i class="fas fa-sign-out-alt mr-1"></i>로그아웃
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </nav>
 
-<!-- Admin Controls -->
-<section class="py-8 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <h2 class="text-2xl font-bold text-primary-900">공지사항 목록</h2>
-            <a href="{{ url_for('new_notice') }}" 
-               class="inline-flex items-center px-6 py-3 bg-primary-900 text-white font-semibold rounded-xl hover:bg-primary-800 transition-all duration-300 transform hover:scale-105 shadow-lg">
-                <i class="fas fa-plus mr-2"></i>새 공지사항 작성
-            </a>
+        <!-- 헤더 -->
+        <div class="mb-8">
+            <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div>
+                    <h2 class="text-3xl font-black text-primary-900 mb-2">공지사항 관리</h2>
+                    <p class="text-neutral-600">공지사항을 작성, 수정, 삭제할 수 있습니다</p>
+                </div>
+                <a href="{{ url_for('new_notice') }}" 
+                   class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-primary-600 to-primary-700 text-white font-bold rounded-2xl hover:from-primary-700 hover:to-primary-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+                    <i class="fas fa-plus mr-2"></i>새 공지사항 작성
+                </a>
+            </div>
         </div>
-    </div>
-</section>
 
-<!-- Notices Table -->
-<section class="pb-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- 공지사항 테이블 -->
         {% if notices %}
         <div class="bg-white rounded-3xl shadow-xl border border-neutral-200 overflow-hidden">
             <div class="overflow-x-auto">
@@ -112,5 +176,5 @@
         </div>
         {% endif %}
     </div>
-</section>
-{% endblock %}
+</body>
+</html>
