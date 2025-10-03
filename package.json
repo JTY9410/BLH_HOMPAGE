@@ -1,0 +1,35 @@
+{
+  "name": "blh-company-homepage",
+  "version": "1.0.0",
+  "description": "BLH COMPANY 홈페이지 - AI 기반 모빌리티 솔루션",
+  "scripts": {
+    "deploy": "./deploy.sh",
+    "deploy:quick": "./quick-deploy.sh",
+    "deploy:docker": "docker-compose down && docker-compose up -d --build",
+    "deploy:github": "git add . && git commit -m '🔄 자동 업데이트' && git push origin main",
+    "deploy:vercel": "vercel --prod --yes",
+    "start": "docker-compose up -d",
+    "stop": "docker-compose down",
+    "restart": "docker-compose restart",
+    "logs": "docker-compose logs -f",
+    "status": "docker-compose ps",
+    "health": "curl -f http://localhost/health"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JTY9410/BLH_HOMPAGE.git"
+  },
+  "keywords": [
+    "flask",
+    "docker",
+    "vercel",
+    "mobility",
+    "ai",
+    "blh-company"
+  ],
+  "author": "BLH COMPANY",
+  "license": "MIT",
+  "devDependencies": {
+    "vercel": "^48.2.0"
+  }
+}
