@@ -172,35 +172,43 @@ _vercel_data = {
 def get_db_connection():
     if os.environ.get('VERCEL'):
         # Vercel 환경에서는 간단한 메모리 데이터베이스 사용
-        try:
-            conn = sqlite3.connect(':memory:')
-            # 기본 테이블만 생성
-            cursor = conn.cursor()
+        conn = sqlite3.connect(':memory:')
+        cursor = conn.cursor()
+        
+        # 기본 테이블 생성
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS notices (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                title TEXT NOT NULL,
+                content TEXT NOT NULL,
+                author TEXT DEFAULT 'BLH COMPANY',
+                views INTEGER DEFAULT 0,
+                is_published BOOLEAN DEFAULT 1,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            )
+        ''')
+        
+        # 샘플 데이터 추가
+        sample_notices = [
+            ('EV 진단 솔루션 2.0 출시', 
+             '더욱 정확하고 빠른 전기차 진단을 위한 새로운 버전이 출시되었습니다.', 
+             'BLH COMPANY', 0, 1),
+            ('모빌리티 혁신상 수상', 
+             'BLH COMPANY가 AI 기반 모빌리티 솔루션으로 2025 모빌리티 혁신상을 수상했습니다.', 
+             'BLH COMPANY', 0, 1),
+            ('대형 딜러와 파트너십 체결', 
+             '국내 주요 중고차 딜러와의 전략적 파트너십을 체결했습니다.', 
+             'BLH COMPANY', 0, 1)
+        ]
+        
+        for notice in sample_notices:
             cursor.execute('''
-                CREATE TABLE IF NOT EXISTS notices (
-                    id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    title TEXT NOT NULL,
-                    content TEXT NOT NULL,
-                    author TEXT DEFAULT 'BLH COMPANY',
-                    views INTEGER DEFAULT 0,
-                    is_published BOOLEAN DEFAULT 1,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                )
-            ''')
-            
-            # 샘플 데이터 추가
-            cursor.execute('''
-                INSERT OR IGNORE INTO notices (id, title, content, author, views) 
-                VALUES (1, 'BLH COMPANY 웹사이트 오픈', 
-                        'BLH COMPANY의 새로운 웹사이트가 오픈되었습니다.', 
-                        'BLH COMPANY', 0)
-            ''')
-            
-            conn.commit()
-            return conn
-        except Exception as e:
-            # 오류 발생 시 빈 메모리 데이터베이스 반환
-            return sqlite3.connect(':memory:')
+                INSERT OR IGNORE INTO notices (title, content, author, views, is_published)
+                VALUES (?, ?, ?, ?, ?)
+            ''', notice)
+        
+        conn.commit()
+        return conn
     else:
         return sqlite3.connect('blh_company.db')
 

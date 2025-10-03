@@ -8,10 +8,6 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "api/index.py"
-    },
-    {
       "src": "/(.*)",
       "dest": "api/index.py"
     }
@@ -19,10 +15,5 @@
   "env": {
     "FLASK_ENV": "production",
     "VERCEL": "1"
-  },
-  "functions": {
-    "api/index.py": {
-      "maxDuration": 10
-    }
   }
 }
