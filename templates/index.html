@@ -222,166 +222,59 @@
                     
                     <!-- Default Content -->
                     <div id="service-content" class="relative z-10">
-                        <!-- Default State -->
+                        <!-- Default State with Logo -->
                         <div id="default-content" class="text-center">
-                            <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
-                                <i class="fas fa-hand-pointer text-4xl"></i>
+                            <div class="w-32 h-32 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
+                                <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BLH COMPANY" class="w-24 h-24 object-contain">
                             </div>
-                            <h3 class="text-3xl font-black mb-4">서비스를 선택해주세요</h3>
+                            <h3 class="text-3xl font-black mb-4">BLH COMPANY</h3>
                             <p class="text-neutral-200 text-lg">왼쪽에서 관심 있는 서비스를 클릭하면 상세 정보를 확인할 수 있습니다.</p>
                         </div>
                         
                         <!-- Auction Service Content -->
                         <div id="auction-content" class="hidden">
-                            <div class="text-center mb-8">
-                                <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
-                                    <i class="fas fa-gavel text-4xl"></i>
-                                </div>
-                                <h3 class="text-3xl font-black mb-4">중고차 경매 및 공매</h3>
-                                <p class="text-neutral-200 text-lg mb-6">투명하고 공정한 온라인 중고차 경매 플랫폼</p>
-                            </div>
-                            
-                            <!-- Service Images -->
-                            <div class="grid grid-cols-2 gap-4 mb-8">
-                                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                                    <img src="{{ url_for('static', filename='images/auction.png') }}" alt="온라인 경매" class="w-16 h-16 mx-auto mb-3 object-contain">
-                                    <p class="text-sm font-medium text-white/90">온라인 경매</p>
-                                </div>
-                                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center">
-                                    <img src="{{ url_for('static', filename='images/car.png') }}" alt="중고차" class="w-16 h-16 mx-auto mb-3 object-contain">
-                                    <p class="text-sm font-medium text-white/90">중고차</p>
+                            <div class="flex items-center justify-center h-full">
+                                <div class="grid grid-cols-2 gap-6">
+                                    <div class="text-center">
+                                        <img src="{{ url_for('static', filename='images/auction.png') }}" alt="온라인 경매" class="w-24 h-24 mx-auto mb-3 object-contain">
+                                        <p class="text-sm font-medium text-white/90">온라인 경매</p>
+                                    </div>
+                                    <div class="text-center">
+                                        <img src="{{ url_for('static', filename='images/car.png') }}" alt="중고차" class="w-24 h-24 mx-auto mb-3 object-contain">
+                                        <p class="text-sm font-medium text-white/90">중고차</p>
+                                    </div>
                                 </div>
                             </div>
-                            
-                            <ul class="space-y-3">
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>자동차 진단에 특화된 기술 도입</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>위치 기반 자동차 탁송 시스템</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>AI 기반 중고차 도매시세 제공</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>투명하고 안정적인 거래 환경</span>
-                                </li>
-                            </ul>
                         </div>
                         
                         <!-- EV Service Content -->
                         <div id="ev-content" class="hidden">
-                            <div class="text-center mb-8">
-                                <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
-                                    <i class="fas fa-battery-full text-4xl"></i>
-                                </div>
-                                <h3 class="text-3xl font-black mb-4">EV 진단 서비스</h3>
-                                <p class="text-neutral-200 text-lg mb-6">BLE 기반 전기차 배터리 상태 진단</p>
-                            </div>
-                            
-                            <!-- Service Image -->
-                            <div class="text-center mb-8">
-                                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 inline-block">
-                                    <img src="{{ url_for('static', filename='images/el.png') }}" alt="EV 진단" class="w-20 h-20 mx-auto object-contain">
+                            <div class="flex items-center justify-center h-full">
+                                <div class="text-center">
+                                    <img src="{{ url_for('static', filename='images/el.png') }}" alt="EV 진단" class="w-32 h-32 mx-auto mb-4 object-contain">
+                                    <p class="text-lg font-medium text-white/90">EV 진단 서비스</p>
                                 </div>
                             </div>
-                            
-                            <ul class="space-y-3">
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>배터리 SOH, 셀 전압 편차 측정</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>절연저항, 모터 상태 실시간 모니터링</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>AI 기반 고장 패턴 예측</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>구독 서비스 형태 제공</span>
-                                </li>
-                            </ul>
                         </div>
                         
                         <!-- Pricing Service Content -->
                         <div id="pricing-content" class="hidden">
-                            <div class="text-center mb-8">
-                                <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
-                                    <i class="fas fa-chart-line text-4xl"></i>
-                                </div>
-                                <h3 class="text-3xl font-black mb-4">정확한 가격 산정</h3>
-                                <p class="text-neutral-200 text-lg mb-6">AI 기반 빅데이터 가격 분석</p>
-                            </div>
-                            
-                            <!-- Service Image -->
-                            <div class="text-center mb-8">
-                                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 inline-block">
-                                    <img src="{{ url_for('static', filename='images/p.png') }}" alt="가격 산정" class="w-20 h-20 mx-auto object-contain">
+                            <div class="flex items-center justify-center h-full">
+                                <div class="text-center">
+                                    <img src="{{ url_for('static', filename='images/p.png') }}" alt="가격 산정" class="w-32 h-32 mx-auto mb-4 object-contain">
+                                    <p class="text-lg font-medium text-white/90">가격 산정 서비스</p>
                                 </div>
                             </div>
-                            
-                            <ul class="space-y-3">
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>차량 상태 및 주행거리 분석</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>시장 동향 및 수요 분석</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>지역별 가격 차이 반영</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>계절적 요인 고려</span>
-                                </li>
-                            </ul>
                         </div>
                         
                         <!-- Logistics Service Content -->
                         <div id="logistics-content" class="hidden">
-                            <div class="text-center mb-8">
-                                <div class="w-24 h-24 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-6">
-                                    <i class="fas fa-truck text-4xl"></i>
-                                </div>
-                                <h3 class="text-3xl font-black mb-4">탁송 관재 시스템</h3>
-                                <p class="text-neutral-200 text-lg mb-6">GPS 기반 실시간 위치 추적</p>
-                            </div>
-                            
-                            <!-- Service Image -->
-                            <div class="text-center mb-8">
-                                <div class="bg-white/10 backdrop-blur-sm rounded-xl p-8 inline-block">
-                                    <img src="{{ url_for('static', filename='images/driv.png') }}" alt="탁송 관재" class="w-20 h-20 mx-auto object-contain">
+                            <div class="flex items-center justify-center h-full">
+                                <div class="text-center">
+                                    <img src="{{ url_for('static', filename='images/driv.png') }}" alt="탁송 관재" class="w-32 h-32 mx-auto mb-4 object-contain">
+                                    <p class="text-lg font-medium text-white/90">탁송 관재 시스템</p>
                                 </div>
                             </div>
-                            
-                            <ul class="space-y-3">
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>GPS 기반 실시간 위치 추적</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>통합 ERP 시스템 연동</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>효율적인 탁송 관리</span>
-                                </li>
-                                <li class="flex items-center">
-                                    <i class="fas fa-check mr-3 text-green-400"></i>
-                                    <span>실시간 모니터링 대시보드</span>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>
