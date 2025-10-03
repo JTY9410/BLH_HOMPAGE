@@ -276,27 +276,71 @@
                     </a>
                 </div>
                 
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ url_for('index_en') }}" class="text-neutral-700 hover:text-primary-600 font-medium transition-colors duration-200">Home</a>
-                    <a href="{{ url_for('services_en') }}" class="text-neutral-700 hover:text-primary-600 font-medium transition-colors duration-200">Services</a>
-                    <a href="{{ url_for('about_en') }}" class="text-neutral-700 hover:text-primary-600 font-medium transition-colors duration-200">About</a>
-                    <a href="{{ url_for('investors_en') }}" class="text-neutral-700 hover:text-primary-600 font-medium transition-colors duration-200">Investors</a>
-                    <a href="{{ url_for('contact_en') }}" class="text-neutral-700 hover:text-primary-600 font-medium transition-colors duration-200">Contact</a>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="{{ url_for('index_en') }}" class="text-neutral-600 hover:text-primary-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-neutral-50">Home</a>
+                    <a href="{{ url_for('services_en') }}" class="text-neutral-600 hover:text-primary-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-neutral-50">Services</a>
+                    <a href="{{ url_for('about_en') }}" class="text-neutral-600 hover:text-primary-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-neutral-50">About</a>
+                    <a href="{{ url_for('investors_en') }}" class="text-neutral-600 hover:text-primary-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-neutral-50">Investors</a>
+                    <a href="{{ url_for('contact_en') }}" class="text-neutral-600 hover:text-primary-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-neutral-50">Contact</a>
                     
-                    <!-- Language Switcher -->
-                    <div class="flex items-center space-x-2 border-l border-neutral-200 pl-6">
-                        <a href="{{ url_for('index') }}" class="px-3 py-1 text-sm text-neutral-600 hover:text-primary-600 transition-colors duration-200">한국어</a>
-                        <span class="text-neutral-400">|</span>
-                        <a href="{{ url_for('index_en') }}" class="px-3 py-1 text-sm text-primary-600 font-medium">English</a>
+                    <!-- Language Selector -->
+                    <div class="relative group">
+                        <button class="flex items-center text-neutral-600 hover:text-primary-900 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-neutral-50">
+                            <i class="fas fa-globe mr-2"></i>
+                            <span>English</span>
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-neutral-200 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="py-2">
+                                <a href="{{ url_for('index') }}" class="flex items-center px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50">
+                                    <i class="fas fa-flag mr-3 text-red-500"></i>
+                                    한국어
+                                </a>
+                                <a href="{{ url_for('index_en') }}" class="flex items-center px-4 py-2 text-sm text-neutral-700 hover:bg-neutral-50">
+                                    <i class="fas fa-flag mr-3 text-blue-500"></i>
+                                    English
+                                </a>
+                            </div>
+                        </div>
                     </div>
+                    
+                    <a href="{{ url_for('contact_en') }}" class="ml-4 bg-primary-900 text-white px-6 py-2 rounded-full text-sm font-medium hover:bg-primary-800 transition-all duration-300 transform hover:scale-105">Contact Us</a>
                 </div>
                 
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
-                    <button type="button" class="text-neutral-700 hover:text-primary-600 focus:outline-none focus:text-primary-600 transition-colors duration-200">
-                        <i class="fas fa-bars text-xl"></i>
+                    <button type="button" class="text-neutral-600 hover:text-primary-900 focus:outline-none transition-colors duration-300" id="mobile-menu-toggle">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
                     </button>
                 </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-lg border-t border-neutral-200">
+                <a href="{{ url_for('index_en') }}" class="text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">Home</a>
+                <a href="{{ url_for('services_en') }}" class="text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">Services</a>
+                <a href="{{ url_for('about_en') }}" class="text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">About</a>
+                <a href="{{ url_for('investors_en') }}" class="text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">Investors</a>
+                <a href="{{ url_for('contact_en') }}" class="text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">Contact</a>
+                
+                <!-- Mobile Language Selector -->
+                <div class="border-t border-neutral-200 pt-3 mt-3">
+                    <div class="text-xs font-medium text-neutral-500 uppercase tracking-wide mb-2 px-3">Language</div>
+                    <a href="{{ url_for('index') }}" class="flex items-center text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">
+                        <i class="fas fa-flag mr-3 text-red-500"></i>
+                        한국어
+                    </a>
+                    <a href="{{ url_for('index_en') }}" class="flex items-center text-neutral-600 hover:text-primary-900 block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300">
+                        <i class="fas fa-flag mr-3 text-blue-500"></i>
+                        English
+                    </a>
+                </div>
+                
+                <a href="{{ url_for('contact_en') }}" class="bg-primary-900 text-white block px-3 py-2 rounded-lg text-base font-medium transition-colors duration-300 mt-2">Contact Us</a>
             </div>
         </div>
     </nav>
@@ -373,6 +417,20 @@
         </div>
     </footer>
 
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuToggle && mobileMenu) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+        });
+    </script>
+    
     {% block extra_js %}{% endblock %}
 </body>
 </html>
