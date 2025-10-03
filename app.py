@@ -10,7 +10,13 @@ app.secret_key = 'blh_company_secret_key_2025'  # 세션 관리를 위한 시크
 # 정적 파일 라우트 추가
 @app.route('/static/<path:filename>')
 def static_files(filename):
-    return app.send_static_file(filename)
+    try:
+        return app.send_static_file(filename)
+    except Exception as e:
+        # Vercel 환경에서 정적 파일 오류 시 404 반환
+        if os.environ.get('VERCEL'):
+            return f"Static file not found: {filename}", 404
+        raise e
 
 # SEO 라우트
 @app.route('/sitemap.xml')
@@ -32,9 +38,11 @@ def health_check():
 
 # 데이터베이스 초기화
 def init_db():
-    # Vercel 환경에서는 메모리 데이터베이스 사용
-    db_path = ':memory:' if os.environ.get('VERCEL') else 'blh_company.db'
-    conn = sqlite3.connect(db_path)
+    # Vercel 환경에서는 별도 처리하지 않음 (get_db_connection에서 처리)
+    if os.environ.get('VERCEL'):
+        return
+    
+    conn = sqlite3.connect('blh_company.db')
     cursor = conn.cursor()
     
     # 회사 정보 테이블
@@ -140,10 +148,97 @@ def check_admin_login():
     return 'admin_logged_in' in session and session['admin_logged_in']
 
 # 관리자 로그인 데코레이터
+# Vercel 환경용 글로벌 데이터 저장소
+_vercel_data = {
+    'notices': [],
+    'inquiries': [],
+    'admin_initialized': False
+}
+
 # 데이터베이스 연결 헬퍼 함수
 def get_db_connection():
-    db_path = ':memory:' if os.environ.get('VERCEL') else 'blh_company.db'
-    return sqlite3.connect(db_path)
+    if os.environ.get('VERCEL'):
+        # Vercel 환경에서는 SQLite 파일 사용 (임시)
+        db_path = '/tmp/blh_company.db'
+        conn = sqlite3.connect(db_path)
+        # 매번 테이블 확인 및 생성
+        if not _vercel_data['admin_initialized']:
+            init_vercel_tables(conn)
+            _vercel_data['admin_initialized'] = True
+        return conn
+    else:
+        return sqlite3.connect('blh_company.db')
+
+def init_vercel_tables(conn):
+    """Vercel 환경에서 테이블 초기화"""
+    cursor = conn.cursor()
+    
+    # 회사 정보 테이블
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS company_info (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            ceo TEXT NOT NULL,
+            capital TEXT NOT NULL,
+            address TEXT NOT NULL,
+            business_type TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    # 문의 테이블
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS inquiries (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT NOT NULL,
+            phone TEXT,
+            company TEXT,
+            message TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    # 공지사항 테이블
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS notices (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT NOT NULL,
+            content TEXT NOT NULL,
+            author TEXT DEFAULT 'BLH COMPANY',
+            views INTEGER DEFAULT 0,
+            is_published BOOLEAN DEFAULT 1,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    # 관리자 사용자 테이블
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS admin_users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            username TEXT UNIQUE NOT NULL,
+            password_hash TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    # 기본 관리자 계정 생성
+    admin_password = hashlib.sha256('bhl1004'.encode()).hexdigest()
+    cursor.execute('''
+        INSERT OR IGNORE INTO admin_users (username, password_hash) 
+        VALUES (?, ?)
+    ''', ('bhl', admin_password))
+    
+    # 샘플 공지사항 추가
+    cursor.execute('''
+        INSERT OR IGNORE INTO notices (id, title, content, author, views) 
+        VALUES (1, 'BLH COMPANY 웹사이트 오픈', 
+                'BLH COMPANY의 새로운 웹사이트가 오픈되었습니다. AI 기반 모빌리티 솔루션을 통해 더 나은 서비스를 제공하겠습니다.', 
+                'BLH COMPANY', 0)
+    ''')
+    
+    conn.commit()
 
 def admin_required(f):
     def decorated_function(*args, **kwargs):
