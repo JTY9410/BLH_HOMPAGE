@@ -32,7 +32,9 @@ def health_check():
 
 # 데이터베이스 초기화
 def init_db():
-    conn = sqlite3.connect('blh_company.db')
+    # Vercel 환경에서는 메모리 데이터베이스 사용
+    db_path = ':memory:' if os.environ.get('VERCEL') else 'blh_company.db'
+    conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
     
     # 회사 정보 테이블
@@ -138,6 +140,11 @@ def check_admin_login():
     return 'admin_logged_in' in session and session['admin_logged_in']
 
 # 관리자 로그인 데코레이터
+# 데이터베이스 연결 헬퍼 함수
+def get_db_connection():
+    db_path = ':memory:' if os.environ.get('VERCEL') else 'blh_company.db'
+    return sqlite3.connect(db_path)
+
 def admin_required(f):
     def decorated_function(*args, **kwargs):
         if not check_admin_login():
@@ -194,7 +201,7 @@ def contact():
 
 @app.route('/notices')
 def notices():
-    conn = sqlite3.connect('blh_company.db')
+    conn = get_db_connection()
     cursor = conn.cursor()
     
     # 공지사항 목록 조회 (최신순)
@@ -211,7 +218,7 @@ def notices():
 
 @app.route('/notices/<int:notice_id>')
 def notice_detail(notice_id):
-    conn = sqlite3.connect('blh_company.db')
+    conn = get_db_connection()
     cursor = conn.cursor()
     
     # 공지사항 상세 조회
@@ -246,7 +253,7 @@ def admin_login():
         password = request.form['password']
         password_hash = hashlib.sha256(password.encode()).hexdigest()
         
-        conn = sqlite3.connect('blh_company.db')
+        conn = get_db_connection()
         cursor = conn.cursor()
         
         cursor.execute('''
@@ -290,7 +297,7 @@ def admin_logout():
 @app.route('/admin/dashboard')
 @admin_required
 def admin_dashboard():
-    conn = sqlite3.connect('blh_company.db')
+    conn = get_db_connection()
     cursor = conn.cursor()
     
     # 통계 정보 조회
@@ -329,7 +336,7 @@ def admin_dashboard():
 @app.route('/admin/notices')
 @admin_required
 def admin_notices():
-    conn = sqlite3.connect('blh_company.db')
+    conn = get_db_connection()
     cursor = conn.cursor()
     
     # 모든 공지사항 조회 (관리자용)
@@ -353,7 +360,7 @@ def new_notice():
         is_published = 'is_published' in request.form
         priority = int(request.form.get('priority', 0))
         
-        conn = sqlite3.connect('blh_company.db')
+        conn = get_db_connection()
         cursor = conn.cursor()
         
         cursor.execute('''
@@ -371,7 +378,7 @@ def new_notice():
 @app.route('/admin/notices/<int:notice_id>/edit', methods=['GET', 'POST'])
 @admin_required
 def edit_notice(notice_id):
-    conn = sqlite3.connect('blh_company.db')
+    conn = get_db_connection()
     cursor = conn.cursor()
     
     if request.method == 'POST':
@@ -405,7 +412,7 @@ def edit_notice(notice_id):
 @app.route('/admin/notices/<int:notice_id>/delete', methods=['POST'])
 @admin_required
 def delete_notice(notice_id):
-    conn = sqlite3.connect('blh_company.db')
+    conn = get_db_connection()
     cursor = conn.cursor()
     
     cursor.execute('DELETE FROM notices WHERE id = ?', (notice_id,))
@@ -419,7 +426,7 @@ def submit_inquiry():
     try:
         data = request.get_json()
         
-        conn = sqlite3.connect('blh_company.db')
+        conn = get_db_connection()
         cursor = conn.cursor()
         
         cursor.execute('''
@@ -443,7 +450,7 @@ def submit_inquiry():
 
 @app.route('/api/company-info')
 def get_company_info():
-    conn = sqlite3.connect('blh_company.db')
+    conn = get_db_connection()
     cursor = conn.cursor()
     
     cursor.execute('SELECT * FROM company_info LIMIT 1')
@@ -459,6 +466,10 @@ def get_company_info():
             'business_type': info[5]
         })
     return jsonify({'error': '회사 정보를 찾을 수 없습니다.'})
+
+# Vercel 환경에서는 애플리케이션 로드 시 데이터베이스 초기화
+if os.environ.get('VERCEL'):
+    init_db()
 
 if __name__ == '__main__':
     init_db()
