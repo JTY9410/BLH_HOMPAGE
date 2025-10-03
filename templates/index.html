@@ -223,16 +223,70 @@
                     <!-- Default Content -->
                     <div id="service-content" class="relative z-10">
                         <!-- Default State with Logo -->
-                        <div id="default-content" class="flex items-center justify-center h-full">
-                            <div class="bg-white/20 backdrop-blur-sm rounded-3xl p-6">
+                        <div id="default-content" class="flex items-center justify-center h-full relative">
+                            <!-- Background Icons -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="grid grid-cols-3 gap-8 opacity-20">
+                                    <div class="text-6xl text-white/30 animate-pulse">
+                                        <i class="fas fa-car"></i>
+                                    </div>
+                                    <div class="text-6xl text-white/30 animate-pulse" style="animation-delay: 0.5s;">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                    <div class="text-6xl text-white/30 animate-pulse" style="animation-delay: 1s;">
+                                        <i class="fas fa-truck"></i>
+                                    </div>
+                                    <div class="text-6xl text-white/30 animate-pulse" style="animation-delay: 1.5s;">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="text-6xl text-white/30 animate-pulse" style="animation-delay: 2s;">
+                                        <i class="fas fa-cogs"></i>
+                                    </div>
+                                    <div class="text-6xl text-white/30 animate-pulse" style="animation-delay: 2.5s;">
+                                        <i class="fas fa-shield-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Main Logo -->
+                            <div class="bg-white/20 backdrop-blur-sm rounded-3xl p-6 relative z-10">
                                 <img src="{{ url_for('static', filename='images/logo.png') }}" alt="BLH COMPANY" class="object-contain">
                             </div>
                         </div>
                         
                         <!-- Auction Service Content -->
                         <div id="auction-content" class="hidden">
-                            <div class="flex items-center justify-center h-full">
-                                <div class="bg-white/10 rounded-3xl p-6">
+                            <div class="flex items-center justify-center h-full relative">
+                                <!-- Background Icons -->
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="grid grid-cols-4 gap-6 opacity-15">
+                                        <div class="text-5xl text-white/20 animate-bounce">
+                                            <i class="fas fa-gavel"></i>
+                                        </div>
+                                        <div class="text-5xl text-white/20 animate-bounce" style="animation-delay: 0.3s;">
+                                            <i class="fas fa-money-bill-wave"></i>
+                                        </div>
+                                        <div class="text-5xl text-white/20 animate-bounce" style="animation-delay: 0.6s;">
+                                            <i class="fas fa-handshake"></i>
+                                        </div>
+                                        <div class="text-5xl text-white/20 animate-bounce" style="animation-delay: 0.9s;">
+                                            <i class="fas fa-trophy"></i>
+                                        </div>
+                                        <div class="text-5xl text-white/20 animate-bounce" style="animation-delay: 1.2s;">
+                                            <i class="fas fa-clock"></i>
+                                        </div>
+                                        <div class="text-5xl text-white/20 animate-bounce" style="animation-delay: 1.5s;">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <div class="text-5xl text-white/20 animate-bounce" style="animation-delay: 1.8s;">
+                                            <i class="fas fa-certificate"></i>
+                                        </div>
+                                        <div class="text-5xl text-white/20 animate-bounce" style="animation-delay: 2.1s;">
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Main Image -->
+                                <div class="bg-white/10 rounded-3xl p-6 relative z-10">
                                     <img src="{{ url_for('static', filename='images/auction.png') }}" alt="온라인 경매" class="object-contain">
                                 </div>
                             </div>
@@ -240,8 +294,32 @@
                         
                         <!-- EV Service Content -->
                         <div id="ev-content" class="hidden">
-                            <div class="flex items-center justify-center h-full">
-                                <div class="bg-white/10 rounded-3xl p-6">
+                            <div class="flex items-center justify-center h-full relative">
+                                <!-- Background Icons -->
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="grid grid-cols-3 gap-8 opacity-15">
+                                        <div class="text-6xl text-white/20 animate-pulse">
+                                            <i class="fas fa-bolt"></i>
+                                        </div>
+                                        <div class="text-6xl text-white/20 animate-pulse" style="animation-delay: 0.4s;">
+                                            <i class="fas fa-battery-full"></i>
+                                        </div>
+                                        <div class="text-6xl text-white/20 animate-pulse" style="animation-delay: 0.8s;">
+                                            <i class="fas fa-plug"></i>
+                                        </div>
+                                        <div class="text-6xl text-white/20 animate-pulse" style="animation-delay: 1.2s;">
+                                            <i class="fas fa-microchip"></i>
+                                        </div>
+                                        <div class="text-6xl text-white/20 animate-pulse" style="animation-delay: 1.6s;">
+                                            <i class="fas fa-search"></i>
+                                        </div>
+                                        <div class="text-6xl text-white/20 animate-pulse" style="animation-delay: 2.0s;">
+                                            <i class="fas fa-tools"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Main Image -->
+                                <div class="bg-white/10 rounded-3xl p-6 relative z-10">
                                     <img src="{{ url_for('static', filename='images/el.png') }}" alt="EV 진단" class="object-contain">
                                 </div>
                             </div>
@@ -249,8 +327,38 @@
                         
                         <!-- Pricing Service Content -->
                         <div id="pricing-content" class="hidden">
-                            <div class="flex items-center justify-center h-full">
-                                <div class="bg-white/10 rounded-3xl p-6">
+                            <div class="flex items-center justify-center h-full relative">
+                                <!-- Background Icons -->
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="grid grid-cols-4 gap-6 opacity-15">
+                                        <div class="text-5xl text-white/20 animate-spin" style="animation-duration: 3s;">
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                        <div class="text-5xl text-white/20 animate-spin" style="animation-duration: 3s; animation-delay: 0.5s;">
+                                            <i class="fas fa-calculator"></i>
+                                        </div>
+                                        <div class="text-5xl text-white/20 animate-spin" style="animation-duration: 3s; animation-delay: 1s;">
+                                            <i class="fas fa-chart-bar"></i>
+                                        </div>
+                                        <div class="text-5xl text-white/20 animate-spin" style="animation-duration: 3s; animation-delay: 1.5s;">
+                                            <i class="fas fa-percentage"></i>
+                                        </div>
+                                        <div class="text-5xl text-white/20 animate-spin" style="animation-duration: 3s; animation-delay: 2s;">
+                                            <i class="fas fa-balance-scale"></i>
+                                        </div>
+                                        <div class="text-5xl text-white/20 animate-spin" style="animation-duration: 3s; animation-delay: 2.5s;">
+                                            <i class="fas fa-tag"></i>
+                                        </div>
+                                        <div class="text-5xl text-white/20 animate-spin" style="animation-duration: 3s; animation-delay: 3s;">
+                                            <i class="fas fa-dollar-sign"></i>
+                                        </div>
+                                        <div class="text-5xl text-white/20 animate-spin" style="animation-duration: 3s; animation-delay: 3.5s;">
+                                            <i class="fas fa-receipt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Main Image -->
+                                <div class="bg-white/10 rounded-3xl p-6 relative z-10">
                                     <img src="{{ url_for('static', filename='images/p.png') }}" alt="가격 산정" class="object-contain">
                                 </div>
                             </div>
@@ -258,8 +366,32 @@
                         
                         <!-- Logistics Service Content -->
                         <div id="logistics-content" class="hidden">
-                            <div class="flex items-center justify-center h-full">
-                                <div class="bg-white/10 rounded-3xl p-6">
+                            <div class="flex items-center justify-center h-full relative">
+                                <!-- Background Icons -->
+                                <div class="absolute inset-0 flex items-center justify-center">
+                                    <div class="grid grid-cols-3 gap-8 opacity-15">
+                                        <div class="text-6xl text-white/20 animate-bounce">
+                                            <i class="fas fa-truck"></i>
+                                        </div>
+                                        <div class="text-6xl text-white/20 animate-bounce" style="animation-delay: 0.3s;">
+                                            <i class="fas fa-route"></i>
+                                        </div>
+                                        <div class="text-6xl text-white/20 animate-bounce" style="animation-delay: 0.6s;">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                        </div>
+                                        <div class="text-6xl text-white/20 animate-bounce" style="animation-delay: 0.9s;">
+                                            <i class="fas fa-shipping-fast"></i>
+                                        </div>
+                                        <div class="text-6xl text-white/20 animate-bounce" style="animation-delay: 1.2s;">
+                                            <i class="fas fa-warehouse"></i>
+                                        </div>
+                                        <div class="text-6xl text-white/20 animate-bounce" style="animation-delay: 1.5s;">
+                                            <i class="fas fa-clipboard-check"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Main Image -->
+                                <div class="bg-white/10 rounded-3xl p-6 relative z-10">
                                     <img src="{{ url_for('static', filename='images/driv.png') }}" alt="탁송 관재" class="object-contain">
                                 </div>
                             </div>
